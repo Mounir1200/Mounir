@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr" data-motion="reduced">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2ad78">
+  <meta name="description" content="Mounir DABIRE, ingénieur IA. Agents intelligents, mémoire persistante, RAG et systèmes en production. Découvrez mes projets et mon parcours.">
+  <title>Mounir DABIRE — Ingénieur IA</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="landing.css">
+  <link rel="stylesheet" href="experience.css">
+  <link rel="stylesheet" href="encore.css">
+  <link rel="stylesheet" href="transitions.css">
+  <link rel="stylesheet" href="gallery.css">
+  <link rel="stylesheet" href="narrative.css">
+  <link rel="stylesheet" href="life.css">
+  <link rel="stylesheet" href="photography.css">
+  <link rel="preload" href="assets/portrait-cobalt-peche.png" as="image">
+  <link rel="preload" href="assets/fonts/InstrumentSerif-Italic.ttf" as="font" type="font/ttf" crossorigin>
+  <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData) document.documentElement.dataset.welcome = 'pending';</script>
+  <script src="app.js" defer></script>
+  <script src="cursor.js" defer></script>
+  <script src="photography.js" defer></script>
+</head>
+<body>
+  <div id="welcome-screen" class="welcome-screen" aria-hidden="true"><p class="welcome-word">Hello<span>.</span></p></div>
+  <svg id="cursor-trail" aria-hidden="true" focusable="false"></svg>
+  <div id="page-transition" aria-hidden="true" hidden><span class="transition-panel"></span><span class="transition-panel"></span><span class="transition-panel"></span><span class="transition-word"></span></div>
+  <a class="skip-link" href="#projets">Aller aux projets</a>
+  <header class="site-header">
+    <a class="wordmark" href="#univers" aria-label="Mounir DABIRE, accueil">MD<span aria-hidden="true">↗</span></a>
+    <nav aria-label="Navigation principale">
+      <a href="#univers" data-nav>Accueil</a>
+      <a href="#portrait" data-nav>Parcours</a>
+      <a href="#experiences" data-nav>Expériences</a>
+      <a href="#projets" data-nav>Projets</a>
+      <a href="#hobbies" data-nav>Hobbies</a>
+      <a href="#galerie" data-nav>Galerie</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+    <a class="header-link" href="assets/Mounir-DABIRE-CV.pdf" target="_blank" rel="noopener">Mon CV <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="poster-hero" id="univers" data-intro="idle" aria-labelledby="hero-title">
+      <div class="poster-masthead">
+        <div class="poster-edition"><p>Ingénieur IA & développeur</p><p>Angers, France <span aria-hidden="true">↗</span> 2026</p></div>
+        <h1 id="hero-title"><span class="name-first">MOUNIR</span><span class="name-last">Dabire<span class="name-stop" aria-hidden="true">.</span></span></h1>
+      </div>
+      <div class="poster-stage">
+        <div class="poster-grid" aria-hidden="true"></div>
+        <div class="poster-side poster-side-left" aria-hidden="true"><span>DES</span><span>IDÉES</span><i>↗</i></div>
+        <div class="poster-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+        <figure class="poster-portrait"><img id="poster-image" src="assets/portrait-cobalt-peche.png" alt="Portrait de Mounir DABIRE, chemise cobalt et tee-shirt pêche" width="1122" height="1402" fetchpriority="high"><span class="portrait-corner corner-one" aria-hidden="true"></span><span class="portrait-corner corner-two" aria-hidden="true"></span></figure>
+        <div class="poster-side poster-side-right" aria-hidden="true"><span>au</span><span>réel.</span><i class="poster-symbol">✳</i></div>
+        <span class="poster-registration registration-left" aria-hidden="true">+</span><span class="poster-registration registration-right" aria-hidden="true">+</span>
+      </div>
+      <div class="poster-meter" aria-hidden="true"><span></span></div>
+      <div class="poster-footer">
+        <p>Je conçois des agents IA.<br><span>Et les systèmes qui les rendent utiles.</span></p>
+        <div class="poster-actions"><div class="intro-controls"><button id="intro-toggle" type="button" hidden>Pause</button><button id="intro-replay" type="button" aria-label="Rejouer l’affiche" hidden>↺</button></div><a id="intro-cue" class="poster-enter" href="#presentation"><span>Explorer le portfolio</span><span class="enter-arrow" aria-hidden="true">↓</span></a></div>
+      </div>
+      <p id="intro-status" class="sr-only" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="intro-section section-shell" id="presentation" aria-labelledby="intro-title">
+      <div class="section-index"><span class="crosshair" aria-hidden="true">+</span><span>Des idées au réel — le fil conducteur</span></div>
+      <h2 class="motion-reveal" id="intro-title">Apprendre. Construire.<br><em>Rendre l'IA utile.</em></h2>
+      <div class="intro-bottom"><p>De Ouagadougou à Angers, de la formation d’ingénieur aux agents en production : mon parcours relie les données, le développement et les usages. Voici comment ces étapes se répondent.</p><a class="text-link" href="#portrait">Suivre le parcours <span aria-hidden="true">↓</span></a></div>
+      <div class="expertise-strip" aria-label="Domaines d'expertise"><span>Agents IA</span><i aria-hidden="true">/</i><span>RAG & MCP</span><i aria-hidden="true">/</i><span>Python & FastAPI</span><i aria-hidden="true">/</i><span>Cloud Azure & AWS</span></div>
+    </section>
+
+    <section class="portrait-section section-shell" id="portrait" aria-labelledby="portrait-title">
+      <div class="portrait-photo"><img src="assets/portrait-cobalt-peche.png" alt="Portrait de Mounir DABIRE revisité par IA, chemise bleue et tee-shirt pêche sur fond bleu" width="1122" height="1402" loading="lazy"><span class="photo-caption">Mounir DABIRE / Angers, France</span><span class="photo-cross" aria-hidden="true">+</span></div>
+      <div class="portrait-copy motion-reveal"><p class="micro-label">01 — Apprendre</p><h2 id="portrait-title">De Ouagadougou<br><em>à Angers.</em></h2><p>Après deux années de classes préparatoires à La Salle, à Ouagadougou, j’ai rejoint l’ESAIP à Angers pour me spécialiser en Big Data.</p><p>Deux échanges Erasmus, à KTU en Lituanie puis à RWU en Allemagne, ont aussi jalonné cette formation. En 2026, j’obtiens mon diplôme d’ingénieur.</p><p class="portrait-bridge">La suite se joue sur le terrain : des systèmes de données chez Moov Africa aux assistants IA à l’ESSCA.</p><div class="portrait-story-links"><a class="text-link" href="#experiences">Passer à la pratique <span aria-hidden="true">↓</span></a><a class="text-link" href="assets/Mounir-DABIRE-CV.pdf" target="_blank" rel="noopener">Mon CV <span aria-hidden="true">↗</span></a></div></div>
+      <details class="education-details"><summary>Les repères de ma formation <span class="detail-symbol" aria-hidden="true">+</span></summary><div class="education-grid"><div><h3>ESAIP</h3><p>2022–2026 · Diplôme d'ingénieur, spécialisation Big Data, parcours anglophone.</p></div><div><h3>Deux échanges Erasmus</h3><p>RWU, Allemagne · 2024–2025<br>KTU, Lituanie · 2023</p></div><div><h3>CPGE La Salle</h3><p>2020–2022 · Classes préparatoires à Ouagadougou, Burkina Faso.</p></div></div></details>
+      <div class="exchange-story" aria-labelledby="exchange-title">
+        <div class="exchange-heading motion-reveal"><h3 id="exchange-title">Apprendre <em>ailleurs.</em></h3><p>Deux échanges Erasmus, et des souvenirs qui débordent des salles de cours.</p></div>
+        <div class="exchange-grid">
+          <article class="exchange-chapter motion-reveal">
+            <div class="exchange-label"><span>01 / KTU</span><span>2023</span></div><h4>Lituanie<span aria-hidden="true">↗</span></h4>
+            <p class="exchange-intro">Un premier échange à Kaunas.</p>
+            <div class="exchange-photos">
+              <a class="gallery-link life-photo exchange-cover" href="assets/life/lituanie-panorama.webp" data-gallery-group="lituanie" data-gallery-title="Prendre de la hauteur." data-gallery-caption="Lituanie · Échange à KTU, 2023" aria-label="Agrandir le panorama en Lituanie"><img src="assets/life/lituanie-panorama-small.webp" alt="Panorama de la ville, entre toits rouges, arbres et ciel bleu" width="900" height="678" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a>
+              <a class="gallery-link life-photo" href="assets/life/lituanie-basket.webp" data-gallery-group="lituanie" data-gallery-title="Un soir de basket." data-gallery-caption="Souvenir de Lituanie · 2023" aria-label="Agrandir la photo du match de basket"><img src="assets/life/lituanie-basket-small.webp" alt="Match de basket dans une arène entourée de tribunes remplies" width="900" height="678" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a>
+              <a class="gallery-link life-photo" href="assets/life/lituanie-matin.webp" data-gallery-group="lituanie" data-gallery-title="La ville au petit matin." data-gallery-caption="Souvenir de Lituanie · 2023" aria-label="Agrandir la photo du matin en Lituanie"><img src="assets/life/lituanie-matin-small.webp" alt="Rue et arbres dans la lumière claire du petit matin" width="900" height="678" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a>
+            </div><p class="album-note">KTU · Erasmus <span>3 souvenirs à ouvrir ↗</span></p>
+          </article>
+          <article class="exchange-chapter motion-reveal">
+            <div class="exchange-label"><span>02 / RWU</span><span>2024–2025</span></div><h4>Allemagne<span aria-hidden="true">↗</span></h4>
+            <p class="exchange-intro">Puis Ravensburg-Weingarten, avec RWU.</p>
+            <div class="exchange-photos">
+              <a class="gallery-link life-photo exchange-cover" href="assets/life/allemagne-coucher-soleil.webp" data-gallery-group="allemagne" data-gallery-title="La fin du jour." data-gallery-caption="Allemagne · Échange à RWU, 2024–2025" aria-label="Agrandir le coucher de soleil en Allemagne"><img src="assets/life/allemagne-coucher-soleil-small.webp" alt="Soleil couchant au-dessus des toits, vu depuis une terrasse pavée" width="900" height="507" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a>
+              <a class="gallery-link life-photo" href="assets/life/allemagne-nuit.webp" data-gallery-group="allemagne" data-gallery-title="Une lumière dans la nuit." data-gallery-caption="Souvenir d’Allemagne · 2024" aria-label="Agrandir la sculpture illuminée en Allemagne"><img src="assets/life/allemagne-nuit-small.webp" alt="Sculpture de cheval illuminée de lumières dorées dans la nuit" width="506" height="900" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a>
+              <a class="gallery-link life-photo" href="assets/life/allemagne-cours.webp" data-gallery-group="allemagne" data-gallery-title="Retour en cours." data-gallery-caption="Échange à RWU · 2025" aria-label="Agrandir la photo du tableau de cours"><img src="assets/life/allemagne-cours-small.webp" alt="Tableau de salle de cours couvert d’équations mathématiques" width="900" height="507" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a>
+            </div><p class="album-note">RWU · Erasmus <span>3 souvenirs à ouvrir ↗</span></p>
+          </article>
+        </div>
+        <a class="text-link exchange-next" href="#experiences">De la formation au terrain <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="experience-section section-shell" id="experiences" aria-labelledby="experience-title">
+      <div class="experience-head motion-reveal"><div><p class="chapter-label">02 — Mettre en pratique</p><h2 id="experience-title">Construire, puis<br><em>faire évoluer.</em></h2></div><p>Des données aux assistants IA, mes expériences m’amènent à travailler sur toute la chaîne : préparer l’information, développer une application et la faire fonctionner en production.</p></div>
+      <div class="experience-row motion-reveal"><p class="experience-date">2024</p><div><span class="experience-thread">Partir des données</span><h3>Data engineering</h3><p>Moov Africa Burkina</p></div><p>Étude d’une architecture Data Lakehouse, données CDR et simulations de streaming.</p></div>
+      <div class="experience-row motion-reveal"><p class="experience-date">Avril — juillet 2025</p><div><span class="experience-thread">Relier l’IA à un besoin</span><h3>Développeur fullstack</h3><p>ESSCA · Stage</p></div><p>Outil RH utilisant le RAG et Microsoft Graph ; évolution et redéploiement d’ESSCABOT.</p></div>
+      <div class="experience-row motion-reveal"><p class="experience-date">Sept. 2025 — fév. 2026</p><div><span class="experience-thread">Construire le système</span><h3>Développeur FullStack IA</h3><p>ESSCA · Projet de fin d’études</p></div><p>Architecture multi-assistants, API FastAPI, interface React et chat vocal en temps réel.</p></div>
+      <div class="experience-row motion-reveal"><p class="experience-date">Avril 2026 — présent</p><div><span class="experience-thread">Le faire vivre</span><h3>Développeur IA</h3><p>ESSCA · Angers</p></div><p>Évolution d’ESSCABOT, RAG sur Azure AI Search, gestion des accès et suivi en production.</p></div>
+
+      <div class="story-bridge motion-reveal"><p>En entreprise, je développe pour des besoins concrets. Dans mes projets personnels, j’explore d’autres questions : ce qu’un agent retient, ce qu’il savait au moment de décider, et ce qu’il peut nous aider à accomplir.</p><a class="text-link" href="#projets">Poursuivre l’exploration <span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <div class="kinetic-band" aria-hidden="true"><div class="kinetic-band-track"><span>IMAGINER <em>CONSTRUIRE</em> RELIER <i>↗</i></span><span>IMAGINER <em>CONSTRUIRE</em> RELIER <i>↗</i></span></div></div>
+
+    <section class="projects-section section-shell" id="projets" aria-labelledby="projects-title">
+      <div class="section-heading motion-reveal"><div><p class="chapter-label">03 — Explorer</p><h2 id="projects-title">Explorer<br><span class="outline-text">plus loin.</span></h2></div><div class="section-aside"><p>En parallèle du travail en production, j’explore la mémoire des agents, leurs décisions et les usages qu’ils rendent possibles.</p><span class="mono">PROJETS PERSONNELS & OPEN SOURCE</span></div></div>
+      <article class="featured-project memory-project motion-reveal">
+        <div class="project-art memory-art" aria-label="Schéma conceptuel : les sessions d'un agent sont reliées à une mémoire persistante" role="img">
+          <div class="art-meta"><span>URDWELL / MÉMOIRE PERSISTANTE</span><span aria-hidden="true">↗</span></div>
+          <div class="memory-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="memory-core" aria-hidden="true"><span>U</span><i>↗</i></div>
+          <div class="memory-session session-a">Session 01</div><div class="memory-session session-b">Session 02</div><div class="memory-session session-c">Session 03</div>
+          <div class="art-footer"><span>Le contexte reste.</span><span class="mono">MCP / ONNX / PARQUET</span></div>
+        </div>
+        <div class="project-copy"><div class="project-number">[ 01 ] <span>Open source · 2026</span></div><h3>UrdWell</h3><p>Une mémoire qui survit<br>à la conversation.</p><div class="project-description">Un serveur MCP qui donne aux agents IA une mémoire persistante entre les sessions. Recherche sémantique et BM25, fusion RRF et historique des informations.</div><a class="project-link" href="https://github.com/Mounir1200/urdwell-mcp" target="_blank" rel="noopener">Explorer le projet <span aria-hidden="true">↗</span></a></div>
+      </article>
+      <article class="featured-project hindsight-project motion-reveal">
+        <div class="project-art time-art" aria-label="Schéma conceptuel : distinguer le moment d'un fait, sa connaissance et la décision de l'agent" role="img">
+          <div class="art-meta"><span>HINDSIGHT / RESPONSABILITÉ TEMPORELLE</span><span aria-hidden="true">↗</span></div>
+          <div class="time-orbits" aria-hidden="true"><i></i><i></i><i></i><b>H</b></div>
+          <div class="time-label time-label-a">Le fait</div><div class="time-label time-label-b">La connaissance</div><div class="time-label time-label-c">La décision</div>
+          <div class="art-footer"><span>Comprendre, à cet instant.</span><span class="mono">PYTHON / COCKROACHDB / AWS</span></div>
+        </div>
+        <div class="project-copy"><div class="project-number">[ 02 ] <span>Open source · 2026</span></div><h3>HindSight</h3><p>Ce que l'agent savait.<br>Au moment où il a décidé.</p><div class="project-description">Reconstituer les faits, les informations disponibles et les preuves consultées pour évaluer une décision d'agent. Une démonstration sur un litige de facturation télécom.</div><a class="project-link" href="https://github.com/Mounir1200/HindSight" target="_blank" rel="noopener">Explorer le projet <span aria-hidden="true">↗</span></a></div>
+      </article>
+      <div class="project-register"><p class="register-title">D'autres façons de rendre l'IA utile.</p>
+        <details><summary><span>03</span><h3>Grant Copilot</h3><span class="register-category">Agents · Hackathon</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Un agent Slack qui recherche des subventions sur Grants.gov, présélectionne les opportunités avec des filtres déterministes et prépare des brouillons à relire. Chaque résultat renvoie à sa fiche officielle.</p><a class="text-link" href="https://github.com/Mounir1200/Grant-Copilot" target="_blank" rel="noopener">Voir le dépôt ↗</a></div></details>
+        <details><summary><span>04</span><h3>ADQUA</h3><span class="register-category">Recherche sémantique</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Un outil auto-hébergé qui extrait les compétences d'un CV PDF, collecte des offres sur les sites carrières et les classe localement par pertinence sémantique.</p><a class="text-link" href="https://github.com/Mounir1200/Ad-qua" target="_blank" rel="noopener">Voir le dépôt ↗</a></div></details>
+        <details><summary><span>05</span><h3>ChartMind</h3><span class="register-category">Produit IA · Web & mobile</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Une application web et mobile d'aide à l'analyse technique des marchés, utilisant Mistral AI. Un projet à la croisée de la conception produit, de React et de l'IA.</p></div></details>
+        <details><summary><span>06</span><h3>Projets académiques</h3><span class="register-category">Vision · UX · Accessibilité</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body academic-projects"><p><strong>Visages synthétiques.</strong> Préparation des données, entraînement et évaluation d'un modèle distinguant les visages réels des visages modifiés.</p><p><strong>Activ’ESAIP.</strong> Conception du parcours de saisie d'un outil d'estimation des coûts de réseaux de chauffage urbain.</p><p><strong>Design4Green.</strong> Une expérience web écoresponsable pour évaluer l'accessibilité des sites selon le RGAA.</p></div></details>
+      </div>
+    </section>
+
+    <section class="hobbies-section section-shell" id="hobbies" aria-labelledby="hobbies-title">
+      <div class="hobbies-heading motion-reveal"><p class="chapter-label">04 — Hobbies</p><h2 id="hobbies-title">Ce qui m’anime,<br><em>en dehors du code.</em></h2><p>Le parcours ne tient pas qu’à un CV. Il y a aussi les images que je garde, les univers que j’explore et les moments que je prends pour moi.</p></div>
+
+      <article class="photography-story" id="photographie" aria-labelledby="photography-title">
+        <div class="hobby-intro motion-reveal"><div><span class="hobby-index">01 / Un regard</span><h3 id="photography-title">Photographie</h3></div><p>Mon Pixel, et ce qui attire mon regard. Des moments pris au hasard, d’autres que je veux garder précisément. Un ciel, une lumière, un détail dans une journée ordinaire.</p></div>
+        <div class="photo-fan" role="region" aria-roledescription="carrousel" aria-label="Mes photographies au Pixel">
+          <div class="fan-topline"><span>Juste un instant.</span><span>16 photographies · Au Pixel</span></div>
+          <div class="fan-stage" tabindex="-1" aria-label="Les photographies">
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-ciel-rose.webp" data-gallery-group="photographie" data-gallery-title="Le ciel en rose" data-gallery-caption="Au Pixel · 19 décembre 2025" aria-label="Agrandir : Le ciel en rose"><img src="assets/life/photo-ciel-rose-small.webp" alt="Un ciel rose et violet au-dessus d’une rue, d’arbres et d’un arrêt de bus." width="900" height="507" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>01 — Le ciel en rose</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20240920-124754470.webp" data-gallery-group="photographie" data-gallery-title="Face à l’eau" data-gallery-caption="Au Pixel · 20 septembre 2024" aria-label="Agrandir : Face à l’eau"><img src="assets/life/photo-20240920-124754470-small.webp" alt="Une personne de dos devant une vaste étendue d’eau, sous un ciel bleu dégagé." width="900" height="506" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>02 — Face à l’eau</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-printemps.webp" data-gallery-group="photographie" data-gallery-title="Arbres en fleurs" data-gallery-caption="Au Pixel · 8 avril 2026" aria-label="Agrandir : Arbres en fleurs"><img src="assets/life/photo-printemps-small.webp" alt="Des arbres couverts de fleurs roses au-dessus d’une pelouse verte, sous un ciel bleu." width="506" height="900" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>03 — Arbres en fleurs</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-musee.webp" data-gallery-group="photographie" data-gallery-title="Au musée" data-gallery-caption="Au Pixel · 8 juin 2025" aria-label="Agrandir : Au musée"><img src="assets/life/photo-musee-small.webp" alt="Une sculpture claire représentant un personnage assis, un bras levé, dans une salle éclairée par de hautes fenêtres." width="506" height="900" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>04 — Au musée</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/lituanie-panorama.webp" data-gallery-group="photographie" data-gallery-title="Lignes de quartier" data-gallery-caption="Au Pixel · 21 avril 2023" aria-label="Agrandir : Lignes de quartier"><img src="assets/life/lituanie-panorama-small.webp" alt="Un quartier résidentiel vu en hauteur, avec des rues bordées d’arbres sous un ciel bleu nuageux." width="900" height="678" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>05 — Lignes de quartier</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20250113-055733022.webp" data-gallery-group="photographie" data-gallery-title="Sous la lune" data-gallery-caption="Au Pixel · 13 janvier 2025" aria-label="Agrandir : Sous la lune"><img src="assets/life/photo-20250113-055733022-small.webp" alt="Une lune brillante au-dessus d’arbres dénudés et d’un terrain éclairé, de nuit." width="900" height="506" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>06 — Sous la lune</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20241208-125814361.webp" data-gallery-group="photographie" data-gallery-title="La ville en contrebas" data-gallery-caption="Au Pixel · 8 décembre 2024" aria-label="Agrandir : La ville en contrebas"><img src="assets/life/photo-20241208-125814361-small.webp" alt="Une vue plongeante sur une ville, avec des branches dénudées au premier plan et un ciel couvert." width="900" height="506" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>07 — La ville en contrebas</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20250608-160054811.webp" data-gallery-group="photographie" data-gallery-title="Au bout des marches" data-gallery-caption="Au Pixel · 8 juin 2025" aria-label="Agrandir : Au bout des marches"><img src="assets/life/photo-20250608-160054811-small.webp" alt="La façade d’une église à deux flèches, au sommet d’un escalier encadré par des arbres." width="506" height="900" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>08 — Au bout des marches</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20260310-174206694.webp" data-gallery-group="photographie" data-gallery-title="Dernière lumière" data-gallery-caption="Au Pixel · 10 mars 2026" aria-label="Agrandir : Dernière lumière"><img src="assets/life/photo-20260310-174206694-small.webp" alt="Un soleil orange à l’horizon au-dessus d’une rue, entre les arbres et les bâtiments." width="506" height="900" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>09 — Dernière lumière</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/lituanie-matin.webp" data-gallery-group="photographie" data-gallery-title="Entre routes et arbres" data-gallery-caption="Au Pixel · 25 juin 2023" aria-label="Agrandir : Entre routes et arbres"><img src="assets/life/lituanie-matin-small.webp" alt="Des routes, des immeubles et des arbres vus en hauteur, sous un ciel aux teintes douces." width="900" height="678" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>10 — Entre routes et arbres</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20250104-215654412.webp" data-gallery-group="photographie" data-gallery-title="Architecture de nuit" data-gallery-caption="Au Pixel · 4 janvier 2025" aria-label="Agrandir : Architecture de nuit"><img src="assets/life/photo-20250104-215654412-small.webp" alt="Une façade monumentale à deux tours éclairée de nuit, au-dessus de bâtiments et d’enseignes lumineuses." width="506" height="900" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>11 — Architecture de nuit</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20250608-134744582.webp" data-gallery-group="photographie" data-gallery-title="Pierre et lumière" data-gallery-caption="Au Pixel · 8 juin 2025" aria-label="Agrandir : Pierre et lumière"><img src="assets/life/photo-20250608-134744582-small.webp" alt="La statue d’un homme barbu tenant une feuille, devant de hautes fenêtres, avec un bas-relief exposé au pied du socle." width="506" height="900" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>12 — Pierre et lumière</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/allemagne-coucher-soleil.webp" data-gallery-group="photographie" data-gallery-title="Au-dessus des toits" data-gallery-caption="Au Pixel · 23 janvier 2025" aria-label="Agrandir : Au-dessus des toits"><img src="assets/life/allemagne-coucher-soleil-small.webp" alt="Une terrasse pavée dominant des toits, devant un coucher de soleil orange et bleu." width="900" height="507" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>13 — Au-dessus des toits</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20251219-162721842.webp" data-gallery-group="photographie" data-gallery-title="Le ciel, un instant après" data-gallery-caption="Au Pixel · 19 décembre 2025" aria-label="Agrandir : Le ciel, un instant après"><img src="assets/life/photo-20251219-162721842-small.webp" alt="Des nuages roses et violets au-dessus d’arbres sombres, d’une rue et d’un arrêt de bus." width="900" height="506" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>14 — Le ciel, un instant après</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20250123-155132032.webp" data-gallery-group="photographie" data-gallery-title="Traverser la terrasse" data-gallery-caption="Au Pixel · 23 janvier 2025" aria-label="Agrandir : Traverser la terrasse"><img src="assets/life/photo-20250123-155132032-small.webp" alt="Une personne traverse une terrasse pavée surplombant les toits, avec le soleil couchant à l’horizon." width="900" height="506" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>15 — Traverser la terrasse</figcaption></figure>
+            <figure class="fan-card"><a class="gallery-link life-photo fan-photo" href="assets/life/photo-20250608-160057885.webp" data-gallery-group="photographie" data-gallery-title="La façade entre les arbres" data-gallery-caption="Au Pixel · 8 juin 2025" aria-label="Agrandir : La façade entre les arbres"><img src="assets/life/photo-20250608-160057885-small.webp" alt="Une façade d’église à deux flèches encadrée de feuillages, avec un escalier au premier plan." width="506" height="900" loading="lazy" decoding="async" draggable="false"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>16 — La façade entre les arbres</figcaption></figure>
+          </div>
+          <div class="fan-controls">
+            <div class="fan-caption" aria-live="off"><p data-fan-title>Le ciel en rose</p><span data-fan-caption>Au Pixel · 19 décembre 2025</span></div>
+            <div class="fan-action-row">
+              <button class="fan-play" data-fan-play type="button" aria-label="Mettre le défilement des photos en pause"><span class="fan-play-symbol" aria-hidden="true">Ⅱ</span><span class="fan-play-label">Pause</span></button>
+              <div class="fan-transport"><button data-fan-prev type="button" aria-label="Photographie précédente">←</button><span class="fan-counter" data-fan-counter aria-live="off">01 / 16</span><button data-fan-next type="button" aria-label="Photographie suivante">→</button></div>
+            </div>
+          </div>
+          <p class="fan-help">Glisser pour parcourir · Cliquer sur une photo pour l’agrandir</p>
+          <p class="sr-only" data-fan-announcement aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </article>
+
+      <article class="gaming-story" aria-labelledby="gaming-title">
+        <div class="gaming-copy motion-reveal"><span class="hobby-index">02 / D’autres univers</span><h3 id="gaming-title">Jeux vidéo<br><em>& mangas.</em></h3><p>FC 25, PGR × Devil May Cry, les mangas… D’autres univers dans lesquels j’aime passer du temps.</p><p>Côté console : la ROG Xbox Ally X.</p><div class="gaming-tags"><span>FC 25</span><span>PGR × Devil May Cry</span><span>Mangas</span></div></div>
+        <div class="gaming-images">
+          <figure class="gaming-main motion-reveal"><a class="gallery-link life-photo" href="assets/life/jeu-pgr-dmc.webp" data-gallery-group="jeux" data-gallery-title="PGR × Devil May Cry" data-gallery-caption="Mes univers de jeu" aria-label="Agrandir la capture de PGR et Devil May Cry"><img src="assets/life/jeu-pgr-dmc-small.webp" alt="Personnages de jeu vidéo dans une rue pavée, capture de PGR × Devil May Cry" width="900" height="506" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>PGR × Devil May Cry <span aria-hidden="true">↗</span></figcaption></figure>
+          <figure class="gaming-team motion-reveal"><a class="gallery-link life-photo" href="assets/life/jeu-fc25.webp" data-gallery-group="jeux" data-gallery-title="FC 25" data-gallery-caption="Mon équipe Ultimate Team" aria-label="Agrandir l’équipe sur FC 25"><img src="assets/life/jeu-fc25-small.webp" alt="Photo de mon écran FC 25 avec les cartes de l’équipe Ultimate Team" width="900" height="507" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>FC 25 · Ultimate Team</figcaption></figure>
+          <figure class="gaming-console motion-reveal"><a class="gallery-link life-photo" href="assets/life/jeu-rog-ally.webp" data-gallery-group="jeux" data-gallery-title="ROG Xbox Ally X" data-gallery-caption="Côté console" aria-label="Agrandir la photo de la ROG Xbox Ally X"><img src="assets/life/jeu-rog-ally-small.webp" alt="Boîte de la console portable ROG Xbox Ally X" width="506" height="900" loading="lazy" decoding="async"><span class="life-photo-arrow" aria-hidden="true">↗</span></a><figcaption>ROG Xbox Ally X</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="reading-story" aria-labelledby="reading-title">
+        <div class="reading-heading motion-reveal"><span class="hobby-index">03 / Lecture</span><h3 id="reading-title">Quelques lignes<br><em>qui restent.</em></h3><p>Dans les marges de mes lectures.</p><span class="reading-asterisk" aria-hidden="true">✳</span></div>
+        <div class="reading-quotes">
+          <figure class="reading-quote motion-reveal"><blockquote><p>« Le rêveur, s’il faut le définir en détail, n’est pas un homme, mais, savez-vous ? une espèce de créature du genre neutre. Il gîte la plupart du temps quelques part dans un coin inaccessible, comme s’il s’y cachait même de la lumière du jour, et, une fois retiré chez lui, il y est collé comme l’escargot, ou du moins il ressemble beaucoup, à cet égard, à ce curieux animal qui est à la fois animal et maison et qui s’appelle tortue. »</p></blockquote><figcaption>Fiodor Dostoïevski <span>Les Nuits blanches</span></figcaption></figure>
+          <figure class="reading-quote reading-note motion-reveal"><blockquote><p>« Il suffit de fournir à l’esprit un alibi, si possible le plus généreux et le plus altruiste, pour que chacun se sente aussitôt en droit d’écraser son semblable. La conscience morale est bien ce masque dont Nietzsche se moque »</p></blockquote><figcaption>Un passage retenu de ma lecture de <cite>Les Nuits blanches</cite> de Fiodor Dostoïevski<span>Page 99 de mon exemplaire</span></figcaption></figure>
+        </div>
+      </article>
+
+      <div class="hobby-rhythms">
+        <article class="rhythm-story music-story motion-reveal"><span class="hobby-index">04 / Écouter</span><div class="rhythm-title"><h3>Musique</h3><div class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><p>La musique fait aussi partie de mon quotidien.</p></article>
+        <article class="rhythm-story training-story motion-reveal"><span class="hobby-index">05 / Bouger</span><div class="rhythm-title"><h3>Musculation</h3><svg class="training-mark" viewBox="0 0 100 60" aria-hidden="true" focusable="false"><path d="M12 19v22M25 9v42M25 30h50M75 9v42M88 19v22"/></svg></div><p>Du temps pour moi, aussi à la salle.</p></article>
+      </div>
+      <div class="hobbies-outro"><p>Des projets, des détours,<br><em>et quelques instants à garder.</em></p><a class="text-link" href="#galerie">Ouvrir l’album <span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <section class="gallery-section section-shell" id="galerie" aria-labelledby="gallery-title">
+      <div class="gallery-heading motion-reveal"><div><p class="micro-label">05 — Quelques instants</p><h2 id="gallery-title">Le parcours,<br><em>en images.</em></h2></div><p>Derrière les expériences et les projets, il y a aussi ces moments : un diplôme, une échappée, un trajet.<span>04 photographies · Cliquer pour agrandir ↗</span></p></div>
+      <div class="gallery-grid">
+        <figure class="gallery-item gallery-graduation motion-reveal"><a class="gallery-link" href="assets/gallery/diplome.jpeg" data-gallery-title="Un cap franchi." data-gallery-caption="Remise de diplôme · ESAIP" aria-label="Agrandir la photo de remise de diplôme"><div class="gallery-image"><img src="assets/gallery/diplome.jpeg" alt="Mounir en tenue de diplômé, étole turquoise et diplôme ESAIP dans les mains" width="900" height="1600" loading="lazy" decoding="async"><span class="gallery-expand" aria-hidden="true">↗</span></div></a><figcaption><span class="gallery-number">01</span><div><h3>Un cap franchi.</h3><p>Remise de diplôme · ESAIP</p></div><span aria-hidden="true">+</span></figcaption></figure>
+        <figure class="gallery-item gallery-water motion-reveal"><a class="gallery-link" href="assets/gallery/au-bord-de-leau.jpeg" data-gallery-title="Prendre le large." data-gallery-caption="Au bord de l’eau" aria-label="Agrandir la photo au bord de l’eau"><div class="gallery-image"><img src="assets/gallery/au-bord-de-leau.jpeg" alt="Mounir debout sur un quai, devant l’eau et un bateau" width="1134" height="2016" loading="lazy" decoding="async"><span class="gallery-expand" aria-hidden="true">↗</span></div></a><figcaption><span class="gallery-number">02</span><div><h3>Prendre le large.</h3><p>Au bord de l’eau</p></div><span aria-hidden="true">+</span></figcaption></figure>
+        <figure class="gallery-item gallery-everyday motion-reveal"><a class="gallery-link" href="assets/gallery/quotidien.jpeg" data-gallery-title="Entre deux trajets." data-gallery-caption="Un instant du quotidien" aria-label="Agrandir le selfie du quotidien"><div class="gallery-image"><img src="assets/gallery/quotidien.jpeg" alt="Selfie de Mounir avec ses lunettes et son sac à dos à un arrêt de transport" width="1152" height="2048" loading="lazy" decoding="async"><span class="gallery-expand" aria-hidden="true">↗</span></div></a><figcaption><span class="gallery-number">03</span><div><h3>Entre deux trajets.</h3><p>Un instant du quotidien</p></div><span aria-hidden="true">+</span></figcaption></figure>
+        <figure class="gallery-item gallery-studio motion-reveal"><a class="gallery-link" href="assets/portrait.jpg" data-gallery-title="Face à l’objectif." data-gallery-caption="Portrait original" aria-label="Agrandir le portrait original"><div class="gallery-image"><img src="assets/portrait.jpg" alt="Portrait de face de Mounir, lunettes transparentes, chemise noire rayée et tee-shirt blanc" width="1365" height="2048" loading="lazy" decoding="async"><span class="gallery-expand" aria-hidden="true">↗</span></div></a><figcaption><span class="gallery-number">04</span><div><h3>Face à l’objectif.</h3><p>Portrait original</p></div><span aria-hidden="true">+</span></figcaption></figure>
+      </div>
+      <div class="gallery-end" aria-hidden="true"><span>Instants choisis.</span><span>↗</span></div>
+    </section>
+
+    <footer class="contact-section section-shell" id="contact">
+      <div class="contact-top"><span class="micro-label">06 — Écrire la suite</span><span>Un projet, une question, une rencontre.</span></div>
+      <a class="contact-title motion-reveal" href="mailto:mounirdabire47@gmail.com">CONSTRUISONS<br>LA SUITE.<span aria-hidden="true">↗</span></a>
+      <div class="contact-links"><a href="mailto:mounirdabire47@gmail.com">mounirdabire47@gmail.com</a><div><a href="https://www.linkedin.com/in/mounir-dabire/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/Mounir1200" target="_blank" rel="noopener">GitHub ↗</a></div></div>
+      <div class="footer-bottom"><span>© 2026 Mounir DABIRE</span><a href="#univers">Retour en haut ↑</a></div>
+    </footer>
+  </main>
+  <dialog id="gallery-dialog" class="gallery-dialog" aria-labelledby="gallery-dialog-title">
+    <div class="gallery-dialog-bar"><span id="gallery-counter" aria-live="polite"></span><button id="gallery-close" type="button" aria-label="Fermer la photo">Fermer <span aria-hidden="true">×</span></button></div>
+    <div class="gallery-dialog-image"><img id="gallery-full-image" alt=""></div>
+    <div class="gallery-dialog-footer"><div><h3 id="gallery-dialog-title"></h3><p id="gallery-dialog-caption"></p></div><div class="gallery-dialog-controls"><button id="gallery-prev" type="button" aria-label="Photo précédente">←</button><button id="gallery-next" type="button" aria-label="Photo suivante">→</button></div></div>
+  </dialog>
+</body>
+</html>

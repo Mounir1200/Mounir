@@ -1,0 +1,18 @@
+# Generated previews and local review material
+_site/
+.review/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Local experiments superseded by the living poster
+PROMPT-VIDEO-*.md
+assets/*-prompt.txt
+assets/portrait-cybercore-v1.png
+assets/univers*
+
+# Local environment files
+.env
+.env.*
+!.env.example

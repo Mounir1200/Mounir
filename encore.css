@@ -1,0 +1,57 @@
+/* Two signatures: a moving type ribbon and scroll-driven editorial plates. */
+.kinetic-band{position:relative;overflow:hidden;background:var(--blue);color:var(--peach);border-top:2px solid var(--brown);border-bottom:2px solid var(--brown);padding:22px 0 29px;isolation:isolate}
+.kinetic-band-track{display:flex;align-items:center;width:max-content;gap:0;transform:translateX(0)}
+.kinetic-band-track>span{display:flex;align-items:baseline;gap:.3em;padding-right:.3em;flex:none;white-space:nowrap;font:500 clamp(68px,10vw,160px)/.95 var(--display);letter-spacing:-.065em}
+.kinetic-band-track em{font:italic 400 1.16em/.85 var(--editorial);letter-spacing:-.045em}
+.kinetic-band-track i{font-style:normal;font-size:.8em;align-self:center;letter-spacing:0;margin:0 .16em}
+.kinetic-band::after{content:"";position:absolute;inset:auto 0 8px;height:1px;background:var(--peach);pointer-events:none}
+.featured-project{--section-progress:.5;--paper-angle:0deg;--paper-scale:1;--paper-offset:0px}
+.featured-project .project-art{position:relative;z-index:1;transform-origin:50% 55%}
+.featured-project .project-copy{position:relative;z-index:2}
+.featured-project .project-copy h3{padding-bottom:.07em}
+.featured-project .project-number{border-bottom-width:2px}
+.featured-project .project-number::before{content:"";display:block;width:8px;height:8px;flex:none;background:var(--blue)}
+.featured-project .project-number{justify-content:flex-start;gap:13px}
+.featured-project .project-number span{margin-left:auto}
+.project-link{position:relative;min-height:60px;padding-left:0;padding-right:0;isolation:isolate}
+.project-link:is(:hover,:focus-visible){background:var(--brown);color:var(--peach);text-decoration:none;padding-left:14px;padding-right:14px}
+.project-link:is(:hover,:focus-visible) span{color:var(--peach)}
+.project-register details[open]{border-top:3px solid var(--blue)}
+.project-register details[open] summary{color:var(--brown)}
+.project-register summary:focus-visible{outline-offset:3px}
+#portrait{--section-progress:.5}
+#portrait .portrait-photo,#portrait .portrait-copy{transform:translateY(0)}
+#portrait .portrait-photo::after{content:"";position:absolute;top:-10px;right:-10px;width:64px;height:64px;border-top:2px solid var(--peach);border-right:2px solid var(--peach);pointer-events:none}
+#portrait .portrait-copy h2 em{position:relative}
+#portrait .portrait-copy h2 em::after{content:"";display:block;position:absolute;bottom:-.04em;left:0;right:0;border-bottom:1px solid var(--peach);transform-origin:left;transform:scaleX(1)}
+html[data-motion="full"] .kinetic-band-track{animation:encore-ribbon 25s linear infinite;animation-play-state:paused}
+html[data-motion="full"] .kinetic-band.is-visible .kinetic-band-track{animation-play-state:running}
+html[data-motion="full"] .kinetic-band:hover .kinetic-band-track{animation-play-state:paused}
+html[data-motion="full"] .featured-project{--paper-angle:calc((var(--section-progress,.5) - .5)*6deg);--paper-scale:calc(.98 + var(--section-progress,.5)*.04);--paper-offset:calc((.5 - var(--section-progress,.5))*22px)}
+html[data-motion="full"] .hindsight-project{--paper-angle:calc((.5 - var(--section-progress,.5))*6deg)}
+html[data-motion="full"] .featured-project .project-art{transform:perspective(1100px) translateY(var(--paper-offset)) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) rotateZ(var(--paper-angle)) scale(var(--paper-scale));transition:transform .28s cubic-bezier(.2,.6,.3,1)}
+html[data-motion="full"] .featured-project .project-copy h3{transform:translateX(calc((.5 - var(--section-progress,.5))*18px));transition:transform .35s cubic-bezier(.2,.6,.3,1)}
+html[data-motion="full"] .project-link span{transition:transform .35s cubic-bezier(.2,.6,.3,1)}
+html[data-motion="full"] .project-link:is(:hover,:focus-visible) span{transform:rotate(45deg)}
+html[data-motion="full"] #portrait .portrait-photo{transform:translateY(calc((.5 - var(--section-progress,.5))*32px));transition:transform .35s ease-out}
+html[data-motion="full"] #portrait .portrait-copy h2 em::after{transform:scaleX(calc(.25 + var(--section-progress,.5)*.75));transition:transform .35s ease-out}
+@keyframes encore-ribbon{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(min-width:1101px){.featured-project{padding-top:50px;padding-bottom:110px}.hindsight-project{padding-top:76px}.featured-project .project-copy{padding-top:30px}.featured-project .project-copy h3{font-size:clamp(64px,6.3vw,98px)}}
+@media(max-width:900px){
+ .kinetic-band{padding:18px 0 22px}.kinetic-band-track>span{font-size:clamp(58px,12vw,108px)}.kinetic-band::after{bottom:6px}
+ html[data-motion="full"] .featured-project .project-art{transform:none!important}
+ html[data-motion="full"] .featured-project .project-copy h3,html[data-motion="full"] #portrait .portrait-photo{transform:none}
+ #portrait .portrait-photo::after{top:-7px;right:-7px;width:45px;height:45px}
+ .featured-project .project-number{gap:9px}.project-number span{font-size:12px}
+}
+@media(max-width:390px){.kinetic-band-track>span{font-size:58px}.kinetic-band{padding-top:16px;padding-bottom:20px}.project-link{min-height:56px}.featured-project .project-number{font-size:11px}.featured-project .project-number span{font-size:11px}}
+@media(hover:none){html[data-motion="full"] .featured-project .project-art{transform:none!important}}
+html[data-motion="reduced"] .kinetic-band-track{animation:none;transform:none;flex-wrap:wrap;width:100%;padding:0 var(--gutter)}
+html[data-motion="reduced"] .kinetic-band-track>span{white-space:normal;flex-wrap:wrap;font-size:clamp(42px,7vw,100px);line-height:1.04}
+html[data-motion="reduced"] .kinetic-band-track>span+span{display:none}
+html[data-motion="reduced"] .featured-project .project-art,html[data-motion="reduced"] .featured-project .project-copy h3,html[data-motion="reduced"] #portrait .portrait-photo{transform:none!important}
+@media(prefers-reduced-motion:reduce){
+ .kinetic-band-track{animation:none!important;transform:none;flex-wrap:wrap;width:100%;padding:0 var(--gutter)}
+ .kinetic-band-track>span{white-space:normal;flex-wrap:wrap;font-size:clamp(42px,7vw,100px);line-height:1.04}.kinetic-band-track>span+span{display:none}
+ .featured-project .project-art,.featured-project .project-copy h3,#portrait .portrait-photo{transform:none!important}#portrait .portrait-copy h2 em::after{transform:none!important}
+}

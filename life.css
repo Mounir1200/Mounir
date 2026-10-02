@@ -1,0 +1,112 @@
+/* The personal chapters: travel albums, a photo journal and notes in the margin. */
+.site-header nav{gap:clamp(12px,1.65vw,25px)}
+.exchange-story{grid-column:1/-1;min-width:0;padding-top:42px;border-top:1px solid #f2ad7866}
+.exchange-heading{display:flex;align-items:end;justify-content:space-between;gap:36px;margin-bottom:42px}
+.exchange-heading h3{font-size:clamp(35px,4.6vw,65px);line-height:1.08;letter-spacing:-.045em}
+.exchange-heading h3 em{font:italic 400 1.2em/1 var(--editorial)}
+.exchange-heading>p{max-width:270px;font-size:14px;line-height:1.7}
+.exchange-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,6vw,90px)}
+.exchange-label{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.035em;border-top:1px solid var(--peach);padding-top:16px}
+.exchange-chapter h4{font:400 clamp(44px,5vw,70px)/1.05 var(--editorial);letter-spacing:-.035em;margin:18px 0 10px;display:flex;justify-content:space-between;align-items:center}
+.exchange-chapter h4 span{font:400 .65em/1 var(--body);color:var(--peach)}
+.exchange-intro{font-size:13px;line-height:1.6;margin-bottom:26px}
+.exchange-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.life-photo{position:relative;overflow:hidden;isolation:isolate;padding:0;background:var(--brown);transform:none;line-height:0}
+.life-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.life-photo-arrow{position:absolute;right:10px;bottom:10px;display:grid;place-items:center;width:34px;height:34px;line-height:1;background:var(--peach);color:var(--brown);font-size:23px;z-index:1}
+.exchange-photos .life-photo{aspect-ratio:3/2}
+.exchange-photos .exchange-cover{grid-column:1/-1;aspect-ratio:16/10}
+.exchange-photos a[href*="allemagne-nuit"] img{object-position:50% 36%}
+.album-note{display:flex;justify-content:space-between;gap:16px;font-size:11px;margin-top:16px;line-height:1.6}
+.album-note>span{opacity:.8}
+.exchange-next{display:flex;justify-content:space-between;margin-top:40px;border-top:1px solid #f2ad7866;padding-top:25px;font-size:14px}
+
+.hobbies-section{padding-top:clamp(65px,8vw,120px);padding-bottom:60px;background:var(--peach);color:var(--brown);overflow:clip;border-top:8px solid var(--blue)}
+.hobbies-heading{padding-bottom:65px}
+.hobbies-heading h2{font-size:clamp(52px,7.1vw,108px);line-height:.98;letter-spacing:-.065em}
+.hobbies-heading h2 em{font:italic 400 1.15em/1.08 var(--editorial);letter-spacing:-.04em}
+.hobbies-heading>p:last-child{max-width:480px;margin:32px 0 0 auto;font-size:15px;line-height:1.8}
+.hobby-index{display:block;font-size:11px;line-height:1.6;text-transform:uppercase;letter-spacing:.055em;margin-bottom:24px}
+.hobby-intro{display:flex;justify-content:space-between;gap:40px;align-items:end;border-top:1px solid var(--brown);padding-top:28px;margin-bottom:40px}
+.hobby-intro h3{font:400 clamp(42px,5vw,70px)/1 var(--editorial);letter-spacing:-.03em}
+.hobby-intro>p{max-width:390px;font-size:14px;line-height:1.8}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hobbies-section .life-photo:focus-visible{outline-color:var(--brown)}
+
+.gaming-story{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,8vw,120px);padding:54px 0 75px;border-top:1px solid var(--brown)}
+.gaming-copy h3{font-size:clamp(42px,4.7vw,68px);line-height:1.02;letter-spacing:-.05em;margin-bottom:28px}
+.gaming-copy h3 em{font:italic 400 1.2em/1.1 var(--editorial)}
+.gaming-copy>p{max-width:330px;font-size:14px;line-height:1.8;margin-top:15px}
+.gaming-tags{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:30px;padding-top:16px;border-top:1px solid var(--line);font-size:11px;line-height:1.7}
+.gaming-images{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.65fr);gap:24px 20px;align-items:start}
+.gaming-images figure{margin:0;min-width:0}
+.gaming-images .life-photo{outline:1px solid var(--brown);outline-offset:5px}
+.gaming-main{grid-column:1/-1}
+.gaming-main .life-photo,.gaming-team .life-photo{aspect-ratio:16/9}
+.gaming-console .life-photo{aspect-ratio:4/5}
+.gaming-console img{object-position:center 40%}
+.gaming-images figcaption{display:flex;justify-content:space-between;gap:12px;font-size:11px;line-height:1.6;margin-top:15px}
+
+.reading-story{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,8vw,120px);border-top:1px solid var(--brown);padding:60px 0 68px}
+.reading-heading h3{font-size:clamp(34px,3.6vw,52px);line-height:1.08;letter-spacing:-.05em}
+.reading-heading h3 em{font:italic 400 1.25em/1.05 var(--editorial)}
+.reading-heading>p{font-size:12px;line-height:1.6;margin-top:22px}
+.reading-asterisk{display:block;font-size:clamp(80px,12vw,170px);line-height:1.2;color:var(--blue);margin-top:40px;transform-origin:28% 50%}
+.reading-quote{margin:0}
+.reading-quote blockquote{margin:0;font:400 clamp(26px,2.65vw,38px)/1.25 var(--editorial);letter-spacing:-.012em}
+.reading-quote figcaption{font-size:12px;line-height:1.6;margin-top:24px}
+.reading-quote figcaption span{display:block;font:italic 400 21px/1.4 var(--editorial);margin-top:2px}
+.reading-note{border-top:1px solid var(--line);margin-top:36px;padding-top:32px}
+.reading-note blockquote{font-size:clamp(23px,2vw,28px);line-height:1.35}
+.reading-note figcaption{font-size:11px;max-width:330px}
+.reading-note figcaption span{font:400 11px/1.6 var(--body);margin-top:5px}
+
+.hobby-rhythms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--brown);border-bottom:1px solid var(--brown)}
+.rhythm-story{padding:32px 0 40px;min-width:0}
+.music-story{padding-right:40px;border-right:1px solid var(--brown)}
+.training-story{padding-left:40px}
+.rhythm-title{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.rhythm-story h3{font:400 clamp(34px,4.1vw,60px)/1.1 var(--editorial);letter-spacing:-.035em}
+.rhythm-story p{font-size:13px;line-height:1.8;margin-top:20px}
+.music-bars{display:flex;align-items:center;gap:5px;height:48px;color:var(--blue)}
+.music-bars i{display:block;width:4px;height:38px;background:currentColor;transform:scaleY(.45)}
+.music-bars i:nth-child(2n){transform:scaleY(.8);animation-delay:-.3s!important}.music-bars i:nth-child(3n){transform:scaleY(1);animation-delay:-.6s!important}
+.training-mark{width:74px;height:48px;flex-shrink:0;fill:none;stroke:var(--blue);stroke-width:5}
+.hobbies-outro{display:flex;justify-content:space-between;align-items:end;gap:28px;padding-top:48px}
+.hobbies-outro>p{font-size:clamp(23px,2.5vw,36px);line-height:1.25;letter-spacing:-.04em}
+.hobbies-outro>p em{font:italic 400 1.2em/1.3 var(--editorial)}
+.hobbies-outro .text-link{font-size:13px;white-space:nowrap}
+
+html[data-motion="full"] .life-photo img{transition:transform .7s cubic-bezier(.22,1,.36,1)}
+html[data-motion="full"] .life-photo:is(:hover,:focus-visible) img{transform:scale(1.045)}
+html[data-motion="full"] .music-story:is(:hover,:focus-within) .music-bars i{animation:music-pulse .85s ease-in-out alternate infinite}
+html[data-motion="full"] .training-mark{transition:transform .5s cubic-bezier(.22,1,.36,1)}
+html[data-motion="full"] .training-story:hover .training-mark{transform:translateY(-5px) rotate(-8deg)}
+@keyframes music-pulse{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+@media(max-width:1000px){.site-header{gap:18px}.site-header nav{gap:14px;font-size:12px}.exchange-heading{align-items:start}.exchange-heading>p{max-width:230px}.gaming-story,.reading-story{gap:45px}.music-story{padding-right:26px}.training-story{padding-left:26px}.music-bars{gap:3px}.training-mark{width:58px}}
+@media(max-width:700px){
+ .site-header{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:44px 44px;gap:0 8px;padding:8px var(--gutter)}
+ .site-header nav{display:contents}.site-header .wordmark{justify-self:center;font-size:23px;gap:5px}.site-header .wordmark span{font-size:23px}.site-header nav a{font-size:11px;justify-content:center;white-space:nowrap;min-width:0;gap:0}.site-header .header-link{display:none}
+ .exchange-story{padding-top:30px}.exchange-heading{flex-direction:column;gap:18px;margin-bottom:32px}.exchange-heading>p{max-width:380px}.exchange-heading h3{font-size:44px}.exchange-grid{gap:46px;grid-template-columns:1fr}.exchange-chapter h4{font-size:56px}.exchange-photos{gap:10px}.album-note{font-size:10px}.exchange-next{margin-top:32px;font-size:12px}
+ .hobbies-heading{padding-bottom:42px}.hobbies-heading h2{font-size:clamp(44px,8.5vw,62px)}.hobbies-heading>p:last-child{font-size:14px;margin-top:26px}.hobby-intro{align-items:start;flex-direction:column;gap:22px;margin-bottom:30px}.hobby-intro>p{max-width:480px}.hobby-index{margin-bottom:18px}
+ 
+ .gaming-story{grid-template-columns:1fr;gap:36px;padding:35px 0 44px}.gaming-copy h3{font-size:52px}.gaming-copy>p{max-width:460px}.gaming-tags{margin-top:22px}.gaming-images{gap:24px 18px}.gaming-images figcaption{font-size:10px}
+ .reading-story{grid-template-columns:1fr;gap:28px;padding:38px 0 46px}.reading-heading{position:relative;padding-right:55px}.reading-heading h3{font-size:42px}.reading-asterisk{position:absolute;right:0;bottom:-5px;margin:0;font-size:66px}.reading-quote blockquote{font-size:29px}.reading-note blockquote{font-size:25px}.reading-quote figcaption{font-size:11px}.reading-note figcaption{font-size:10px}
+ .hobby-rhythms{grid-template-columns:1fr}.rhythm-story{padding:28px 0 30px}.music-story{border-right:0;border-bottom:1px solid var(--brown)}.rhythm-story h3{font-size:45px}.rhythm-story p{font-size:12px}.music-bars{gap:5px;margin-right:8px}.training-mark{width:65px}
+ .hobbies-outro{align-items:start;flex-direction:column;padding-top:32px;gap:22px}.hobbies-outro>p{font-size:26px}.hobbies-outro .text-link{font-size:12px}
+}
+@media(max-width:360px){.site-header{column-gap:4px}.site-header nav a{font-size:10px}.hobbies-heading h2{font-size:43px}.hobby-intro h3{font-size:40px}.exchange-chapter h4{font-size:49px}.life-photo-arrow{width:30px;height:30px;font-size:21px;right:7px;bottom:7px}.reading-quote blockquote{font-size:27px}.reading-note blockquote{font-size:23px}}
+html[data-motion="reduced"] .life-photo{transform:none}
+@media(prefers-reduced-motion:reduce){.life-photo{transform:none!important}.life-photo img,.music-bars i,.training-mark{animation:none!important;transition:none!important;transform:none!important}}

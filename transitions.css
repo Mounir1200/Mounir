@@ -1,0 +1,15 @@
+/* Navigation becomes a brief, three-colour print sequence. */
+#page-transition{position:fixed;inset:0;z-index:90;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));pointer-events:none;visibility:hidden;overflow:hidden;isolation:isolate;contain:layout paint}
+#page-transition[hidden]{display:none}
+.transition-panel{height:100%;width:calc(100% + 1px);background:var(--blue);transform:translateY(100%);will-change:transform}
+.transition-panel:nth-child(2){background:var(--peach)}
+.transition-panel:nth-child(3){background:var(--brown)}
+.transition-word{position:absolute;left:50%;top:50%;max-width:94%;padding:.06em .2em .16em;translate:-50% -50%;font:italic 400 clamp(64px,13vw,200px)/.9 var(--editorial);letter-spacing:-.05em;background:var(--peach);color:var(--brown);white-space:nowrap;opacity:0}
+html[data-motion="full"] .poster-hero:is([data-intro="playing"],[data-intro="paused"]) .poster-grid{animation:poster-grid-drift 6500ms both cubic-bezier(.22,1,.36,1)}
+html[data-motion="full"] .poster-hero:is([data-intro="playing"],[data-intro="paused"]) .portrait-corner{animation:poster-register 6500ms both cubic-bezier(.22,1,.36,1)}
+html[data-motion="full"] .poster-hero[data-intro="complete"] .poster-grid{transform:perspective(900px) rotateX(12deg) scale(1.08)}
+@keyframes poster-grid-drift{0%{transform:perspective(900px) rotateX(25deg) rotateZ(-5deg) scale(1.2)}70%,100%{transform:perspective(900px) rotateX(12deg) rotateZ(0deg) scale(1.08)}}
+@keyframes poster-register{0%,6%{transform:scale(1.8)}24%,100%{transform:scale(1)}}
+@media(max-width:700px){.transition-word{font-size:18vw}}
+html[data-motion="reduced"] #page-transition{display:none!important}
+@media(prefers-reduced-motion:reduce){#page-transition{display:none!important}}

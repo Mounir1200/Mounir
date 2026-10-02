@@ -1,0 +1,16 @@
+Local fonts obtained from the official Google Fonts repository.
+
+SpaceGrotesk-Variable.ttf
+https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf
+
+InstrumentSerif-Regular.ttf
+https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentserif/InstrumentSerif-Regular.ttf
+
+InstrumentSerif-Italic.ttf
+https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentserif/InstrumentSerif-Italic.ttf
+
+SpaceGrotesk-OFL.txt
+https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt
+
+InstrumentSerif-OFL.txt
+https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentserif/OFL.txt

@@ -1,0 +1,48 @@
+/* A moving fan of real photographs, like prints spread across a desk. */
+.photography-story{padding-bottom:58px}
+.photography-story .hobby-intro{margin-bottom:20px}
+.photo-fan{position:relative;min-width:0}
+.fan-topline{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 15px;font-size:11px;line-height:1.6}
+.fan-topline>span:first-child{font:italic 400 clamp(29px,3vw,44px)/1.2 var(--editorial);letter-spacing:-.025em}
+.fan-stage{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;padding:20px 0;touch-action:pan-y}
+.fan-card{min-width:0;margin:0}
+.fan-card .fan-photo{display:block;padding:7px;background:var(--brown);border:1px solid var(--brown);transform:none;aspect-ratio:4/5;isolation:isolate;box-shadow:0 8px 18px #6c2b1124}
+.fan-photo img{width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.fan-card figcaption{margin-top:12px;font-size:12px;line-height:1.5}
+.fan-card .life-photo-arrow{right:16px;bottom:16px;background:var(--peach);color:var(--brown)}
+.fan-controls{display:none}
+.fan-caption{min-width:0}
+.fan-caption>p{font:400 clamp(27px,3vw,40px)/1.1 var(--editorial);letter-spacing:-.02em}
+.fan-caption>span{display:block;margin-top:9px;font-size:11px;line-height:1.5}
+.fan-action-row{display:flex;align-items:center;justify-content:flex-end;gap:22px}
+.fan-transport{display:flex;align-items:center;gap:15px}
+.fan-transport button{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--brown);font-size:25px;line-height:1;flex-shrink:0}
+.fan-transport button:hover{background:var(--brown);color:var(--peach);text-decoration:none}
+.fan-counter{font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:53px;text-align:center}
+.fan-play{display:flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:0 12px;font-size:12px;border:1px solid transparent}
+.fan-play:hover{border-color:var(--brown);text-decoration:none}
+.fan-play-symbol{width:13px;font-size:14px;line-height:1}
+.fan-help{display:none;font-size:11px;line-height:1.6;padding-top:16px;text-align:right;opacity:.85}
+.fan-ready .fan-help{display:block}
+.photo-fan.fan-ready .fan-stage{display:block;height:clamp(410px,42vw,590px);margin:0 calc(-1 * var(--gutter));overflow:clip;contain:layout paint;perspective:1000px}
+.photo-fan.fan-ready .fan-card{position:absolute;top:48px;left:50%;width:clamp(215px,26vw,355px);transform-origin:50% 60%;will-change:transform;backface-visibility:hidden}
+.photo-fan.fan-ready .fan-card figcaption{display:none}
+.photo-fan.fan-ready .fan-photo{aspect-ratio:4/5;cursor:zoom-in}
+.photo-fan.fan-ready .fan-card[data-current="true"] .fan-photo{border-color:var(--blue);background:var(--blue)}
+.photo-fan.fan-ready .fan-card:not([data-current="true"]) .life-photo-arrow{opacity:0}
+.photo-fan.fan-ready .fan-controls{display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid var(--line);padding-top:25px}
+.photo-fan.fan-ready .fan-card .fan-photo:is(:hover,:focus-visible){transform:none}
+.photo-fan.fan-ready .fan-card .fan-photo:is(:hover,:focus-visible) img{transform:none}
+.photo-fan.fan-ready .fan-photo:focus-visible{outline:3px solid var(--blue);outline-offset:6px}
+.photo-fan[data-dragging="true"] .fan-photo{cursor:grabbing}
+.photo-fan[data-dragging="true"] .fan-photo img{pointer-events:none}
+@media(min-width:1600px){.photo-fan.fan-ready .fan-stage{margin-left:0;margin-right:0}}
+@media(max-width:900px){.fan-topline{gap:18px}.fan-action-row{gap:10px}.fan-transport{gap:10px}.fan-play{padding:0 8px}.photo-fan.fan-ready .fan-controls{gap:22px}.fan-caption>p{font-size:30px}.fan-stage{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){
+ .photography-story{padding-bottom:40px}.photography-story .hobby-intro{margin-bottom:26px}.fan-topline{align-items:baseline;margin-bottom:5px}.fan-topline>span:first-child{font-size:33px}.fan-topline>span:last-child{max-width:120px;font-size:10px;text-align:right}
+ .photo-fan.fan-ready .fan-stage{height:370px}.photo-fan.fan-ready .fan-card{width:230px;top:35px}
+ .photo-fan.fan-ready .fan-controls{align-items:stretch;flex-direction:column;gap:22px;padding-top:22px}.fan-caption>p{font-size:30px}.fan-caption>span{font-size:10px}.fan-action-row{justify-content:space-between;gap:16px}.fan-play{padding:0 2px}.fan-transport{gap:13px}.fan-transport button{width:44px;height:44px}.fan-counter{font-size:11px;min-width:46px}.fan-help{text-align:left;font-size:10px;padding-top:12px}
+}
+@media(max-width:360px){.photo-fan.fan-ready .fan-stage{height:345px}.photo-fan.fan-ready .fan-card{width:210px;top:32px}.fan-topline>span:first-child{font-size:29px}.fan-topline>span:last-child{max-width:92px}.fan-transport{gap:9px}.fan-caption>p{font-size:28px}.fan-stage{gap:20px 16px}.fan-card .fan-photo{padding:4px}.fan-card figcaption{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.fan-photo,.fan-photo img{transition:none!important}.photo-fan.fan-ready .fan-card{will-change:auto}}
+html[data-motion="reduced"] .photo-fan.fan-ready .fan-card{will-change:auto}

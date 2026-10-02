@@ -1,0 +1,39 @@
+/* One path: learning, practice, independent exploration, personal moments. */
+.chapter-label{font-size:12px;font-weight:500;letter-spacing:.025em;text-transform:uppercase;margin-bottom:26px}
+.portrait-copy>p.portrait-bridge:not(.micro-label){border-left:2px solid var(--peach);padding-left:20px;margin-top:30px;font:400 24px/1.35 var(--editorial);color:var(--peach)}
+.portrait-story-links{display:flex;align-items:center;flex-wrap:wrap;gap:16px 30px}
+.portrait-story-links .text-link{font-size:13px}
+.experience-head h2 em{font:italic 400 1.15em/1.05 var(--editorial);letter-spacing:-.04em}
+.experience-head .chapter-label{font-size:12px;line-height:1.4;margin-top:0;margin-bottom:26px}
+.experience-head>p{align-self:end;line-height:1.8}
+.experience-row{padding-left:30px}
+.experience-row::before{top:0;bottom:0;height:auto;width:1px;background:var(--brown);opacity:.4}
+.experience-row::after{content:"";position:absolute;top:36px;left:-4px;width:9px;height:9px;background:var(--blue);border:2px solid var(--peach)}
+.experience-thread{display:block;font:italic 400 23px/1.2 var(--editorial);margin-bottom:13px}
+.story-bridge{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:32px;border-top:2px solid var(--blue);padding-top:34px;margin-top:58px}
+.story-bridge p{max-width:730px;font:400 clamp(25px,2.6vw,37px)/1.35 var(--editorial)}
+.story-bridge .text-link{white-space:nowrap;font-size:13px}
+.projects-section .section-aside{max-width:320px}
+.projects-section .section-aside .mono{display:block;font-size:10px;margin-top:22px}
+.portrait-section{row-gap:38px}
+.portrait-section .education-details{grid-column:1/-1;border-color:#f2ad7866;margin-top:0;color:var(--peach)}
+.portrait-section .education-grid{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:40px}
+.portrait-section .education-grid p{color:var(--peach)}
+#cursor-trail{position:fixed;inset:0;width:100%;height:100%;z-index:60;pointer-events:none;overflow:visible;opacity:0;contain:strict}
+@media(max-width:900px){.story-bridge{grid-template-columns:1fr;gap:22px;margin-top:36px}.story-bridge .text-link{justify-self:start}.chapter-label{margin-bottom:20px}.experience-row{padding-left:23px}.experience-row::after{top:29px}.experience-thread{font-size:22px}.portrait-section .education-grid{grid-template-columns:1fr;row-gap:24px}.projects-section .section-aside{max-width:520px}.portrait-copy .portrait-bridge{font-size:23px}}
+@media(max-width:600px){.portrait-story-links{column-gap:22px}.portrait-story-links .text-link{font-size:12px}.story-bridge p{font-size:27px}.chapter-label{font-size:11px}}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){#cursor-trail{display:none}}
+html[data-motion="reduced"] #cursor-trail{display:none}
+
+/* A quiet hello before the living poster is revealed. */
+.welcome-screen{position:fixed;inset:0;z-index:100;display:none;place-items:center;overflow:hidden;background:var(--peach);color:var(--brown);pointer-events:none;border-bottom:5px solid var(--blue);transform:translateY(0)}
+html[data-welcome="pending"] .welcome-screen,html[data-welcome="leaving"] .welcome-screen{display:grid}
+.welcome-word{font:italic 400 clamp(110px,20vw,280px)/1.1 var(--editorial);letter-spacing:-.055em;padding:0 .14em .16em 0}
+.welcome-word span{color:var(--blue)}
+html[data-welcome="pending"] .welcome-word{animation:welcome-hello 850ms cubic-bezier(.22,1,.36,1) both}
+html[data-welcome="leaving"] .welcome-screen{transform:translateY(-100%);transition:transform 650ms cubic-bezier(.76,0,.24,1)}
+/* If the main script fails, this decorative cover still gets out of the way. */
+html[data-welcome] #welcome-screen{animation:welcome-failsafe 1ms step-end 2600ms forwards!important}
+@keyframes welcome-hello{from{opacity:0;transform:translateY(18px) rotate(-3deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+@keyframes welcome-failsafe{to{visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.welcome-screen{display:none!important}}

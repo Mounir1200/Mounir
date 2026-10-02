@@ -1,0 +1,146 @@
+[
+  {
+    "source": "Photos-1-001/lituanie/PXL_20230421_140200783.jpg",
+    "asset": "lituanie-panorama",
+    "full": [
+      1800,
+      1355
+    ],
+    "small": [
+      900,
+      678
+    ]
+  },
+  {
+    "source": "Photos-1-001/lituanie/PXL_20230505_155356838.jpg",
+    "asset": "lituanie-basket",
+    "full": [
+      1800,
+      1355
+    ],
+    "small": [
+      900,
+      678
+    ]
+  },
+  {
+    "source": "Photos-1-001/lituanie/PXL_20230625_023245985.jpg",
+    "asset": "lituanie-matin",
+    "full": [
+      1800,
+      1355
+    ],
+    "small": [
+      900,
+      678
+    ]
+  },
+  {
+    "source": "Photos-1-001/allemagne/PXL_20250123_155124535.jpg",
+    "asset": "allemagne-coucher-soleil",
+    "full": [
+      1800,
+      1013
+    ],
+    "small": [
+      900,
+      507
+    ]
+  },
+  {
+    "source": "Photos-1-001/allemagne/PXL_20241208_175233217.NIGHT.jpg",
+    "asset": "allemagne-nuit",
+    "full": [
+      1012,
+      1800
+    ],
+    "small": [
+      506,
+      900
+    ]
+  },
+  {
+    "source": "Photos-1-001/allemagne/PXL_20250217_181526576.jpg",
+    "asset": "allemagne-cours",
+    "full": [
+      1800,
+      1013
+    ],
+    "small": [
+      900,
+      507
+    ]
+  },
+  {
+    "source": "Photos-1-001/photographie/PXL_20250608_134513406.jpg",
+    "asset": "photo-musee",
+    "full": [
+      1012,
+      1800
+    ],
+    "small": [
+      506,
+      900
+    ]
+  },
+  {
+    "source": "Photos-1-001/photographie/PXL_20251219_162656261.jpg",
+    "asset": "photo-ciel-rose",
+    "full": [
+      1800,
+      1013
+    ],
+    "small": [
+      900,
+      507
+    ]
+  },
+  {
+    "source": "Photos-1-001/photographie/PXL_20260408_094145723.jpg",
+    "asset": "photo-printemps",
+    "full": [
+      1012,
+      1800
+    ],
+    "small": [
+      506,
+      900
+    ]
+  },
+  {
+    "source": "Photos-1-001/jeux video/[10682647]1754470958.png",
+    "asset": "jeu-pgr-dmc",
+    "full": [
+      1120,
+      630
+    ],
+    "small": [
+      900,
+      506
+    ]
+  },
+  {
+    "source": "Photos-1-001/jeux video/PXL_20250723_090752025.jpg",
+    "asset": "jeu-fc25",
+    "full": [
+      1800,
+      1013
+    ],
+    "small": [
+      900,
+      507
+    ]
+  },
+  {
+    "source": "Photos-1-001/jeux video/PXL_20260417_111201793.jpg",
+    "asset": "jeu-rog-ally",
+    "full": [
+      1012,
+      1800
+    ],
+    "small": [
+      506,
+      900
+    ]
+  }
+]
