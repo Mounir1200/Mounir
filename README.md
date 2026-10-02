@@ -8,11 +8,11 @@ Site statique, sans build ni dépendance JavaScript. Servir ce dossier avec `pyt
 
 ## GitHub et déploiement
 
-Dépôt privé : https://github.com/Mounir1200/Mounir
+Dépôt public : https://github.com/Mounir1200/Mounir
 
 GitHub Pages : https://mounir1200.github.io/Mounir/
 
-Chaque push sur `main` lance `.github/workflows/pages.yml` : vérification des scripts, préparation du dossier `_site`, puis publication via GitHub Actions. Un lancement manuel est aussi disponible dans Actions. Le site Pages est public ; le dépôt reste privé. GitHub Pages sur un dépôt privé nécessite un abonnement GitHub compatible.
+Chaque push sur `main` lance `.github/workflows/pages.yml` : vérification des scripts, préparation du dossier `_site`, puis publication via GitHub Actions. Un lancement manuel est aussi disponible dans Actions. Le site et le dépôt sont publics ; ce choix permet d’utiliser GitHub Pages avec l’abonnement actuel.
 
 Pour vérifier le contenu publié localement : `python scripts/build_site.py`. Le script copie uniquement la page, ses ressources liées et les licences des polices. Il vérifie les fichiers et les ancres, conserve les chemins relatifs compatibles avec `/Mounir/`, puis ajoute `.nojekyll`. Les documents de travail, manifestes de sources, captures de contrôle et anciens essais vidéo ne sont pas publiés.
 
