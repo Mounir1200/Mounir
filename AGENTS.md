@@ -11,3 +11,7 @@ Examples:
 - `feat: add quiet looping background music`
 - `fix: keep music controls in sync during playback`
 - `docs: document portfolio setup`
+
+# Third-party asset attribution
+
+Never attribute a licensing declaration, legal assurance, or rights warranty to the portfolio owner. Describe third-party assets using their verified creator, original source URL, and the license stated by that source. Do not equate a free download with an absence of copyright. Keep public documentation factual and source-based.

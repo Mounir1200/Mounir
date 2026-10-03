@@ -24,7 +24,9 @@ Space Grotesk et Instrument Serif sont servis depuis `assets/fonts/`, avec licen
 
 ## Musique de fond
 
-`assets/audio/positive-chill-hop.mp3` est une copie du morceau « Positive Chill Hop » de ZephiraMusic fourni par Mounir et déclaré libre de droits par lui. L’original reste dans le dossier parent. La piste dure environ 2 min 01 s et joue en boucle ; le gain est fixé à 18 % via Web Audio (repli sur `audio.volume` si indisponible), indépendamment du défilement et des animations.
+Musique : [« Positive Chill-Hop » de ZephiraMusic, sur Pixabay](https://pixabay.com/fr/music/beats-positive-chill-hop-595886/). La page du morceau indique une utilisation sous la [licence de contenu Pixabay](https://pixabay.com/service/license-summary/).
+
+Le fichier du site est `assets/audio/positive-chill-hop.mp3`. La piste dure environ 2 min 01 s et joue en boucle ; le gain est fixé à 18 % via Web Audio (repli sur `audio.volume` si indisponible), indépendamment du défilement et des animations.
 
 Un essai de lecture est effectué à l’arrivée. Si le navigateur bloque l’audio automatique, le premier clic/toucher ou Entrée/Espace lance la lecture. Le bouton fixe permet de couper et reprendre au même endroit ; le choix est conservé dans le stockage local. Une commande synchronisée reste disponible dans la visionneuse photo. Les indicateurs reflètent la lecture réelle ; leurs animations respectent la réduction des mouvements. Les restrictions du navigateur/système peuvent suspendre la lecture en arrière-plan.
 
