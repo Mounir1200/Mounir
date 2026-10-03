@@ -1,0 +1,18 @@
+/* A quiet soundtrack, with its transport always within reach. */
+.sound-toggle{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:44px;padding:0 15px;border:1px solid var(--brown);background:var(--peach);color:var(--brown);font-size:11px;line-height:1;white-space:nowrap}
+.sound-toggle:hover{text-decoration:none;background:var(--brown);color:var(--peach)}
+.sound-toggle:focus-visible{outline:2px solid var(--peach);outline-offset:3px;box-shadow:0 0 0 6px var(--brown)}
+.sound-dock{position:fixed;left:max(16px,env(safe-area-inset-left));bottom:max(16px,env(safe-area-inset-bottom));z-index:95;border-radius:24px;box-shadow:3px 3px 0 var(--brown)}
+.sound-dock[aria-pressed="true"]{background:var(--brown);color:var(--peach);border-color:var(--peach)}
+.sound-bars{display:flex;align-items:center;justify-content:center;gap:3px;width:23px;height:20px;flex-shrink:0}
+.sound-bars i{display:block;width:2px;height:18px;background:currentColor;transform:scaleY(.2);transform-origin:center}
+.sound-bars i:nth-child(2){animation-delay:-.4s!important}.sound-bars i:nth-child(3){animation-delay:-.7s!important}.sound-bars i:nth-child(4){animation-delay:-.2s!important}.sound-bars i:nth-child(5){animation-delay:-.6s!important}
+html[data-sound="playing"] .sound-bars i{transform:scaleY(.65)}
+html[data-sound="playing"] .sound-bars i:nth-child(2n){transform:scaleY(1)}
+html[data-motion="full"][data-sound="playing"] .sound-bars i{animation:music-pulse .85s ease-in-out alternate infinite}
+.sound-dialog{margin-left:auto;margin-right:12px;box-shadow:none;border-color:var(--peach);color:var(--peach);background:transparent}
+.sound-dialog:hover{background:var(--peach);color:var(--brown)}
+html[data-sound] .contact-section{padding-bottom:90px}
+html[data-welcome="pending"] .sound-dock{visibility:hidden}
+@media(max-width:600px){.sound-dock{left:12px;bottom:max(12px,env(safe-area-inset-bottom))}.sound-dialog{padding:0 10px;margin-right:8px}.sound-dialog [data-sound-label]{display:none}}
+@media(prefers-reduced-motion:reduce){.sound-bars i{animation:none!important}}

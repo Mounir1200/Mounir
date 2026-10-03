@@ -91,7 +91,7 @@
 
 html[data-motion="full"] .life-photo img{transition:transform .7s cubic-bezier(.22,1,.36,1)}
 html[data-motion="full"] .life-photo:is(:hover,:focus-visible) img{transform:scale(1.045)}
-html[data-motion="full"] .music-story:is(:hover,:focus-within) .music-bars i{animation:music-pulse .85s ease-in-out alternate infinite}
+html[data-motion="full"][data-sound="playing"] .music-story .music-bars i{animation:music-pulse .85s ease-in-out alternate infinite}
 html[data-motion="full"] .training-mark{transition:transform .5s cubic-bezier(.22,1,.36,1)}
 html[data-motion="full"] .training-story:hover .training-mark{transform:translateY(-5px) rotate(-8deg)}
 @keyframes music-pulse{from{transform:scaleY(.3)}to{transform:scaleY(1)}}

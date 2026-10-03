@@ -135,3 +135,14 @@ Limites : contrôles réalisés dans le navigateur intégré, sans appareils phy
 - Script de publication scripts/build_site.py : 70 fichiers liés + .nojekyll, environ 11,86 Mio. Les sources de travail et anciens essais vidéo sont exclus de l’artefact publié.
 - Syntaxe des trois scripts JavaScript vérifiée. Workflow GitHub Actions avec build puis déploiement Pages et permissions séparées.
 - Dépôt local initialisé dans portfolio/ seulement ; fichiers d’origine du dossier parent conservés hors dépôt.
+
+## Fond sonore — 3 octobre 2026
+
+- MP3 fourni copié à l’identique (SHA-256 vérifié) dans assets/audio/positive-chill-hop.mp3 ; original conservé. Ressource HTML relative publiée automatiquement par le build.
+- Lecture en boucle native, durée mesurée dans le navigateur : 120,792 s. Retour observé de 114 s à 21 s avec lecture toujours active et ended=false.
+- Gain Web Audio de 0,18 avant lecture, repli audio.volume=0,18. Volume système indépendant ; aucun test d’écoute ou sur Safari/iPhone physique effectué.
+- Arrivée sans geste : refus d’autoplay géré, état prêt et aucun faux indicateur actif. Premier clic de navigation : lecture et indicateurs actifs. Navigation interne et galerie sans remise à zéro.
+- Pause, rechargement et navigation : silence conservé. Reprise depuis la commande de la galerie, commandes synchronisées ; bascules rapides contrôlées et aucune erreur console.
+- Bouton fixe de 44 px et contrôle de visionneuse vérifiés à 1280 px et 390 × 844, sans débordement horizontal. Animations des icônes liées à la lecture et respect du mouvement réduit audités dans le code.
+- Relecture indépendante : ajout de audio.load() uniquement après erreur de source, et effacement du message d’erreur à la reprise effective.
+- Syntaxe des quatre scripts vérifiée, git diff --check valide. Build : 73 ressources + .nojekyll, 15,55 Mio, dont MP3 et fichiers music.js/music.css.

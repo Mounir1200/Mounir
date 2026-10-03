@@ -22,6 +22,12 @@ Une entrée « Hello » en italique, puis une affiche de studio cinétique : gra
 
 Space Grotesk et Instrument Serif sont servis depuis `assets/fonts/`, avec licences OFL. Le portrait `assets/portrait-cobalt-peche.png` a été généré avec imagegen ; l’original reste dans `assets/portrait.jpg`, les prompts sont conservés dans assets.
 
+## Musique de fond
+
+`assets/audio/positive-chill-hop.mp3` est une copie du morceau « Positive Chill Hop » de ZephiraMusic fourni par Mounir et déclaré libre de droits par lui. L’original reste dans le dossier parent. La piste dure environ 2 min 01 s et joue en boucle ; le gain est fixé à 18 % via Web Audio (repli sur `audio.volume` si indisponible), indépendamment du défilement et des animations.
+
+Un essai de lecture est effectué à l’arrivée. Si le navigateur bloque l’audio automatique, le premier clic/toucher ou Entrée/Espace lance la lecture. Le bouton fixe permet de couper et reprendre au même endroit ; le choix est conservé dans le stockage local. Une commande synchronisée reste disponible dans la visionneuse photo. Les indicateurs reflètent la lecture réelle ; leurs animations respectent la réduction des mouvements. Les restrictions du navigateur/système peuvent suspendre la lecture en arrière-plan.
+
 ## Mouvement
 
 - À l’arrivée, « Hello » s’affiche pendant 1,4 s, puis son écran sort en 650 ms. L’affiche démarre ensuite, une fois le portrait chargé : typographie, cadre, portrait et orbites pendant 6,5 s. Une interaction permet de passer immédiatement l’accueil. En mode réduit, cet accueil est ignoré.
@@ -71,6 +77,7 @@ Les illustrations des projets sont des schémas conceptuels, pas des captures de
 - `narrative.css` : chapitres, liens entre les étapes, accueil Hello et couche du curseur.
 - `life.css` : albums Erasmus, hobbies, citations et navigation mobile à sept liens.
 - `photography.css` et `photography.js` : éventail photo continu, commandes, glissement et repli en grille.
+- `music.css` et `music.js` : fond sonore en boucle, volume discret et contrôles synchronisés.
 - `app.js` : état de l’intro, défilement, contrôles, visibilité, préférences et pointeur.
 - `cursor.js` : traînée SVG à durée limitée, uniquement au mouvement de la souris.
 - `VALIDATION.md` : vérifications et limites.

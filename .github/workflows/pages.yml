@@ -23,6 +23,7 @@ jobs:
           node --check app.js
           node --check cursor.js
           node --check photography.js
+          node --check music.js
       - name: Package linked website files
         run: python3 scripts/build_site.py
       - name: Upload website artifact

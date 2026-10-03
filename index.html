@@ -16,14 +16,19 @@
   <link rel="stylesheet" href="narrative.css">
   <link rel="stylesheet" href="life.css">
   <link rel="stylesheet" href="photography.css">
+  <link rel="stylesheet" href="music.css">
   <link rel="preload" href="assets/portrait-cobalt-peche.png" as="image">
   <link rel="preload" href="assets/fonts/InstrumentSerif-Italic.ttf" as="font" type="font/ttf" crossorigin>
   <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData) document.documentElement.dataset.welcome = 'pending';</script>
   <script src="app.js" defer></script>
   <script src="cursor.js" defer></script>
   <script src="photography.js" defer></script>
+  <script src="music.js" defer></script>
 </head>
 <body>
+  <audio id="background-music" src="assets/audio/positive-chill-hop.mp3" loop preload="none" aria-label="Positive Chill Hop — ZephiraMusic"></audio>
+  <button class="sound-toggle sound-dock" type="button" data-sound-toggle aria-label="Activer la musique de fond" aria-pressed="false" hidden><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-sound-label>Activer le son</span></button>
+  <p id="sound-status" class="sr-only" role="status" aria-live="polite"></p>
   <div id="welcome-screen" class="welcome-screen" aria-hidden="true"><p class="welcome-word">Hello<span>.</span></p></div>
   <svg id="cursor-trail" aria-hidden="true" focusable="false"></svg>
   <div id="page-transition" aria-hidden="true" hidden><span class="transition-panel"></span><span class="transition-panel"></span><span class="transition-panel"></span><span class="transition-word"></span></div>
@@ -222,7 +227,7 @@
     </footer>
   </main>
   <dialog id="gallery-dialog" class="gallery-dialog" aria-labelledby="gallery-dialog-title">
-    <div class="gallery-dialog-bar"><span id="gallery-counter" aria-live="polite"></span><button id="gallery-close" type="button" aria-label="Fermer la photo">Fermer <span aria-hidden="true">×</span></button></div>
+    <div class="gallery-dialog-bar"><span id="gallery-counter" aria-live="polite"></span><button class="sound-toggle sound-dialog" type="button" data-sound-toggle aria-label="Activer la musique de fond" aria-pressed="false" hidden><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-sound-label>Activer le son</span></button><button id="gallery-close" type="button" aria-label="Fermer la photo">Fermer <span aria-hidden="true">×</span></button></div>
     <div class="gallery-dialog-image"><img id="gallery-full-image" alt=""></div>
     <div class="gallery-dialog-footer"><div><h3 id="gallery-dialog-title"></h3><p id="gallery-dialog-caption"></p></div><div class="gallery-dialog-controls"><button id="gallery-prev" type="button" aria-label="Photo précédente">←</button><button id="gallery-next" type="button" aria-label="Photo suivante">→</button></div></div>
   </dialog>
