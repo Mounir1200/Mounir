@@ -1,98 +1,98 @@
-# Mounir DABIRE — affiche vivante
+# Mounir DABIRE — living poster
 
-Portfolio local d’ingénieur IA. La création du site pourra faire l’objet d’une publication sur les réseaux ; le site présente le parcours et les projets de Mounir.
+A static portfolio for AI engineer Mounir DABIRE, presenting his background and projects. The process of creating the site may also be shared on social media.
 
-## Lancer
+## Run locally
 
-Site statique, sans build ni dépendance JavaScript. Servir ce dossier avec `python -m http.server 4173 --bind 127.0.0.1`, puis ouvrir `http://127.0.0.1:4173/`.
+A static website with no build step or JavaScript dependencies required for local development. Serve this directory with `python -m http.server 4173 --bind 127.0.0.1`, then open `http://127.0.0.1:4173/`.
 
-## GitHub et déploiement
+## GitHub and deployment
 
-Dépôt public : https://github.com/Mounir1200/Mounir
+Public repository: https://github.com/Mounir1200/Mounir
 
-GitHub Pages : https://mounir1200.github.io/Mounir/
+GitHub Pages: https://mounir1200.github.io/Mounir/
 
-Chaque push sur `main` lance `.github/workflows/pages.yml` : vérification des scripts, préparation du dossier `_site`, puis publication via GitHub Actions. Un lancement manuel est aussi disponible dans Actions. Le site et le dépôt sont publics ; ce choix permet d’utiliser GitHub Pages avec l’abonnement actuel.
+Every push to `main` runs `.github/workflows/pages.yml`: checking scripts, preparing the `_site` directory, and publishing through GitHub Actions. The workflow can also be triggered manually from Actions. Both the site and repository are public, enabling GitHub Pages with the current account plan.
 
-Pour vérifier le contenu publié localement : `python scripts/build_site.py`. Le script copie uniquement la page, ses ressources liées et les licences des polices. Il vérifie les fichiers et les ancres, conserve les chemins relatifs compatibles avec `/Mounir/`, puis ajoute `.nojekyll`. Les documents de travail, manifestes de sources, captures de contrôle et anciens essais vidéo ne sont pas publiés.
+To check the published files locally, run `python scripts/build_site.py`. The script copies only the page, its linked assets, and font licenses. It checks files and anchors, preserves relative paths compatible with `/Mounir/`, and adds `.nojekyll`. Working documents, source manifests, review screenshots, and earlier video experiments are excluded from the published artifact.
 
-## Direction
+## Art direction
 
-Une entrée « Hello » en italique, puis une affiche de studio cinétique : grand nom sur pêche et portrait dans un cadre cobalt. Le récit suit la formation de Ouagadougou à Angers, les expériences dans leur ordre chronologique, les projets personnels puis quelques photos. Des transitions éditoriales relient les chapitres. Palette imposée : brun #6c2b11, pêche #f2ad78, bleu #0057ba. Texte courant brun/pêche (contraste 5,54:1) ; bleu/pêche réservé aux grands caractères et graphismes (3,59:1). Les photos de la galerie conservent leurs couleurs d’origine.
+An italic “Hello” introduces a kinetic studio poster: large lettering on peach, with a portrait in a cobalt frame. The narrative follows education from Ouagadougou to Angers, professional experience in chronological order, personal projects, and photographs. Editorial transitions connect the chapters. The palette uses brown #6c2b11, peach #f2ad78, and blue #0057ba. Body text uses brown and peach (5.54:1 contrast); blue and peach are reserved for large type and graphics (3.59:1). Gallery photographs retain their original colors.
 
-Space Grotesk et Instrument Serif sont servis depuis `assets/fonts/`, avec licences OFL. Le portrait `assets/portrait-cobalt-peche.png` a été généré avec imagegen ; l’original reste dans `assets/portrait.jpg`, les prompts sont conservés dans assets.
+Space Grotesk and Instrument Serif are served from `assets/fonts/`, with OFL licenses. The portrait in `assets/portrait-cobalt-peche.png` was generated with imagegen; the original remains in `assets/portrait.jpg`, and the prompts are kept locally in assets.
 
-## Musique de fond
+## Background music
 
-Musique : [« Positive Chill-Hop » de ZephiraMusic, sur Pixabay](https://pixabay.com/fr/music/beats-positive-chill-hop-595886/). La page du morceau indique une utilisation sous la [licence de contenu Pixabay](https://pixabay.com/service/license-summary/).
+Music: [“Positive Chill-Hop” by ZephiraMusic on Pixabay](https://pixabay.com/fr/music/beats-positive-chill-hop-595886/). The track page lists use under the [Pixabay Content License](https://pixabay.com/service/license-summary/).
 
-Le fichier du site est `assets/audio/positive-chill-hop.mp3`. La piste dure environ 2 min 01 s et joue en boucle ; le gain est fixé à 18 % via Web Audio (repli sur `audio.volume` si indisponible), indépendamment du défilement et des animations.
+The website uses `assets/audio/positive-chill-hop.mp3`. The track lasts approximately 2 minutes and 1 second and plays on a loop. Gain is set to 18% through Web Audio, falling back to `audio.volume` when unavailable, independently of scrolling and animations.
 
-Un essai de lecture est effectué à l’arrivée. Si le navigateur bloque l’audio automatique, le premier clic/toucher ou Entrée/Espace lance la lecture. Le bouton fixe permet de couper et reprendre au même endroit ; le choix est conservé dans le stockage local. Une commande synchronisée reste disponible dans la visionneuse photo. Les indicateurs reflètent la lecture réelle ; leurs animations respectent la réduction des mouvements. Les restrictions du navigateur/système peuvent suspendre la lecture en arrière-plan.
+Playback is attempted on arrival. If the browser blocks audio autoplay, the first click, tap, or Enter/Space interaction starts playback. A fixed control pauses and resumes the track at the same position; the choice is saved in local storage. A synchronized control is also available in the photo viewer. Indicators reflect actual playback, and their animations respect reduced-motion preferences. Browser or operating system restrictions may suspend background playback.
 
-## Langues et CV
+## Languages and CVs
 
-Le portfolio est disponible en français et en anglais. À la première visite, la première langue prise en charge dans les préférences du navigateur est utilisée ; si aucune ne correspond, l’anglais sert de repli. Le sélecteur FR/EN reste visible et mémorise le choix dans localStorage. Les liens `?lang=fr` et `?lang=en` permettent également de partager une langue précise ; le paramètre explicite est prioritaire sur le choix enregistré.
+The portfolio is available in French and English. On the first visit, it uses the first supported language in the browser’s preferences, falling back to English if none matches. The persistent FR/EN switch saves the choice in localStorage. Links with `?lang=fr` or `?lang=en` can also be used to share a specific language; an explicit URL parameter takes precedence over the saved choice.
 
-La bascule se fait sans rechargement : contenus, titres, textes alternatifs, légendes, commandes et messages accessibles sont actualisés sans recréer la page. La musique, les photos et l’introduction conservent leur état. Les chaînes françaises de `index.html` servent de clés à `translations.js` ; les libellés générés par JavaScript figurent dans `dynamic-translations.js`. Ajouter une traduction lors de toute modification de texte.
+Switching languages does not reload the page: content, titles, alternative text, captions, controls, and accessibility messages update without rebuilding the document. Music, photographs, and the introduction retain their state. French strings in `index.html` serve as keys in `translations.js`; labels generated by JavaScript are listed in `dynamic-translations.js`. Add or update the translation whenever source text changes.
 
-Les deux liens « Mon CV / My CV » téléchargent le fichier de la langue active : `assets/Mounir-DABIRE-CV.pdf` pour le français et `assets/Mounir-DABIRE-CV-EN.pdf` pour l’anglais. Ce sont les PDF fournis le 3 octobre 2026, copiés sans modification. Le build inclut les deux variantes déclarées dans `data-cv-fr` / `data-cv-en`. Sans JavaScript, le contenu français et le téléchargement du CV français restent disponibles.
+Both CV links download the file for the active language: `assets/Mounir-DABIRE-CV.pdf` for French and `assets/Mounir-DABIRE-CV-EN.pdf` for English. These are the PDFs supplied on October 3, 2026, copied without modification. The build includes both variants declared in `data-cv-fr` / `data-cv-en`. Without JavaScript, the French content and French CV download remain available.
 
-Contrôle de la sélection et de la mémorisation des langues : `node scripts/check_i18n.cjs` (également exécuté dans GitHub Actions).
+Check language selection and persistence with `node scripts/check_i18n.cjs`, which also runs in GitHub Actions.
 
-## Mouvement
+## Motion
 
-- À l’arrivée, « Hello » s’affiche pendant 1,4 s, puis son écran sort en 650 ms. L’affiche démarre ensuite, une fois le portrait chargé : typographie, cadre, portrait et orbites pendant 6,5 s. Une interaction permet de passer immédiatement l’accueil. En mode réduit, cet accueil est ignoré.
-- Une descente de 1,3 s mène ensuite à la présentation. Toute action de navigation ou de défilement, y compris Tab, annule cette avance et peut interrompre une descente en cours.
-- Pause/reprise et relecture accessibles dès l’accueil. Une relecture volontaire ne réarme jamais la descente automatique.
-- Une bande typographique XXL « Imaginer / Construire / Relier » défile uniquement dans le champ de vision. Les planches de projets tournent et changent légèrement d’échelle avec le défilement sur ordinateur ; elles réagissent aussi au pointeur précis. Les orbites de HindSight s’animent uniquement lorsqu’elles sont visibles.
-- Les liens internes déclenchent un passage en trois volets cobalt, pêche et brun d’environ une seconde. Le titre de destination accompagne le changement de section. Échap, une nouvelle interaction, un changement d’onglet ou le mode réduit ferment immédiatement la transition. La navigation au clavier transfère le focus à la section cible.
-- Une fine traînée cobalt/pêche accompagne le curseur à la souris et disparaît en moins de 500 ms au repos. Elle s’arrête hors de la page, pendant une saisie et dans la visionneuse. Pas de remplacement du curseur natif.
-- Onglet masqué : fin de l’accueil, pause de l’intro, annulation de l’avance automatique. Le mode réduit système et l’économie de données suppriment les mouvements automatiques.
-- Tous les contenus restent visibles sans JavaScript et en mode réduit. Le bouton global « Animations actives » a été retiré ; la pause et la relecture de l’intro restent disponibles.
+- On arrival, “Hello” appears for 1.4 seconds, followed by a 650 ms exit transition. Once the portrait loads, the poster starts a 6.5-second sequence involving typography, framing, the portrait, and orbits. An interaction skips the welcome screen immediately. Reduced-motion mode skips this welcome sequence.
+- A 1.3-second scroll then leads to the introduction. Any navigation or scrolling interaction, including Tab, cancels automatic advancement and can interrupt a scroll already in progress.
+- Pause, resume, and replay controls are available from the landing section. A manual replay never re-enables automatic scrolling.
+- A large “Imagine / Build / Connect” typography band moves only while in view. Project artwork rotates and scales slightly with scrolling on desktop and responds to a fine pointer. HindSight’s orbits animate only while visible.
+- Internal links trigger an approximately one-second transition through cobalt, peach, and brown panels. The destination title accompanies the section change. Escape, another interaction, a tab change, or reduced-motion mode immediately ends the transition. Keyboard navigation moves focus to the destination section.
+- A thin cobalt and peach trail follows mouse movement and fades within 500 ms when idle. It stops outside the page, during text input, and inside the photo viewer. The native cursor remains unchanged.
+- When the tab is hidden, the welcome screen finishes, the introduction pauses, and automatic advancement is canceled. System reduced-motion preferences and data-saving mode disable automatic movement.
+- All content remains visible without JavaScript and in reduced-motion mode. The global animation toggle has been removed; introduction pause and replay controls remain available.
 
 ## Navigation
 
-La barre principale reste fixée en haut de l’écran : Accueil, Parcours, Expériences, Projets, Hobbies, Galerie et Contact. Sur téléphone, le monogramme et les sept liens occupent une grille de deux lignes. La section courante est soulignée, et les arrivées par ancre laissent la place nécessaire sous la barre. Depuis n’importe quelle section, Accueil ramène au tout début.
+The main navigation stays fixed at the top: Home, Journey, Experience, Projects, Hobbies, Gallery, and Contact. On mobile, the monogram and seven links form a two-row grid. The current section is underlined, and anchor destinations leave enough space below the header. Home returns to the top from any section.
 
-La section `#galerie` remplace le film : quatre photos déjà fournies par Mounir, cadres décalés et agrandissement dans un dialogue natif. Boutons précédent/suivant, flèches du clavier, Échap et retour du focus à la miniature. Sans JavaScript, chaque photo reste un lien direct. Les anciennes ancres `#film` et `#film-details` redirigent vers la galerie.
+The `#galerie` section replaces the film with four supplied photographs, offset frames, and a native dialog for enlarged images. The viewer supports previous/next buttons, keyboard arrows, Escape, and focus restoration to the thumbnail. Without JavaScript, each photograph remains a direct link. Legacy `#film` and `#film-details` anchors redirect to the gallery.
 
-Les échanges KTU (Lituanie, 2023) et RWU (Allemagne, 2024–2025) ont chacun un album de trois photos dans le parcours. Le chapitre `#hobbies`, après les projets, présente la photographie au Pixel, les jeux vidéo et mangas, la lecture, la musique et la musculation. Les albums restent indépendants dans la visionneuse grâce à `data-gallery-group`.
+The KTU exchange in Lithuania (2023) and RWU exchange in Germany (2024–2025) each have a three-photo album in the Journey section. The `#hobbies` chapter follows the projects and covers Pixel photography, video games and manga, reading, music, and strength training. Albums remain separate in the viewer through `data-gallery-group`.
 
-Les images proviennent des quatre sous-dossiers de `Photos-1-001`. La partie Photographie présente les 16 fichiers de son dossier dans un éventail animé en boucle : déplacement continu, premier plan agrandi, pause au survol et au focus, précédent/suivant, clavier et glissement horizontal. Le bouton Pause permet un arrêt durable. Le mouvement automatique s’arrête hors écran, dans la visionneuse, dans un onglet masqué et avec une préférence de mouvement réduit. Sans JavaScript, les 16 liens restent disponibles dans une grille.
+Images come from the four subfolders of `Photos-1-001`. The Photography section displays all 16 files from its source folder in a continuously looping fan carousel: an enlarged foreground image, pause on hover and focus, previous/next controls, keyboard support, and horizontal dragging. The Pause button keeps the carousel stopped until resumed. Automatic motion stops offscreen, inside the viewer, in a hidden tab, and when reduced motion is preferred. Without JavaScript, all 16 links remain available in a grid.
 
-Les copies WebP de présentation (900 px maximum) sont chargées à la demande ; les versions de visionneuse (1 800 px maximum) ne sont demandées qu’à l’ouverture. Les 16 miniatures photo représentent environ 1,16 Mio. Les fichiers originaux restent intacts. `assets/life/sources.json` et `assets/life/photography.json` conservent la correspondance des sources.
+WebP previews, up to 900 px, are loaded on demand. Viewer versions, up to 1,800 px, are requested only when opened. The 16 photography thumbnails total approximately 1.16 MiB. Original files remain untouched. `assets/life/sources.json` and `assets/life/photography.json` record the source mappings.
 
-Référence visuelle de l’éventail demandée par Mounir : https://21st.dev/@ayushmxxn/components/image-fan-carousel. Implémentation locale en JavaScript/CSS natifs, sans ajouter React, Framer Motion ou une dépendance. Les textes, photos et la direction colorée restent ceux du portfolio.
+Visual reference for the fan carousel: https://21st.dev/@ayushmxxn/components/image-fan-carousel. The local implementation uses native JavaScript and CSS, without React, Framer Motion, or additional dependencies. Text, photographs, and the color direction belong to this portfolio.
 
-Les deux citations de lecture viennent du texte fourni par Mounir. Le passage sur le rêveur est présenté avec Dostoïevski, *Les Nuits blanches*. L’auteur exact du passage de la page 99 n’a pas été confirmé : sa légende indique seulement un passage retenu de l’exemplaire lu. La notice BnF https://catalogue.bnf.fr/ark:/12148/cb35591828m confirme une postface de Michel del Castillo dans l’édition Babel 1992, mais ne permet pas à elle seule d’attribuer cette citation.
+The two reading excerpts are transcribed from the supplied text. The passage about the dreamer is presented with Fiodor Dostoïevski’s *White Nights* (*Les Nuits blanches*). The author of the passage on page 99 has not been confirmed; its caption identifies it only as a passage retained from the copy being read. The BnF record at https://catalogue.bnf.fr/ark:/12148/cb35591828m confirms an afterword by Michel del Castillo in the 1992 Babel edition, but does not establish the quotation’s authorship on its own.
 
-Les fichiers vidéo et les deux prompts vidéo sont conservés comme archives de travail ; aucun lecteur vidéo n’est présent dans la page.
+Video files and the two video prompts are kept as working archives; there is no video player on the page.
 
 ## Sources
 
-- CV fourni, copié dans `assets/Mounir-DABIRE-CV.pdf` : ESAIP, ESSCA, compétences, contacts et projets principaux.
-- Portfolio antérieur : https://mounir1200.github.io/PortFolio/ (observé le 2 octobre 2026), projets complémentaires, Moov Africa et CPGE.
-- Dépôts : https://github.com/Mounir1200/urdwell-mcp et https://github.com/Mounir1200/HindSight.
+- Supplied CVs, copied to `assets/Mounir-DABIRE-CV.pdf` and `assets/Mounir-DABIRE-CV-EN.pdf`: ESAIP, ESSCA, skills, contact details, and main projects.
+- Previous portfolio: https://mounir1200.github.io/PortFolio/ (reviewed on October 2, 2026), additional projects, Moov Africa, and preparatory classes (CPGE).
+- Project repositories: https://github.com/Mounir1200/urdwell-mcp and https://github.com/Mounir1200/HindSight.
 
-Les illustrations des projets sont des schémas conceptuels, pas des captures de leurs interfaces. Aucun client, témoignage ni chiffre de performance n’est inventé.
+Project illustrations are conceptual diagrams, not screenshots of their interfaces. No clients, testimonials, or performance figures are fabricated.
 
-## Fichiers
+## Files
 
-- `index.html` : contenus et structure.
-- `style.css` : fondations, polices et composants.
-- `landing.css` : affiche et séquence d’ouverture.
-- `experience.css` : direction et mouvements des sections suivantes.
-- `encore.css` : bande typographique, planches au défilement et survols.
-- `transitions.css` : volets de navigation et mise en scène de l’affiche.
-- `gallery.css` : photos et visionneuse.
-- `narrative.css` : chapitres, liens entre les étapes, accueil Hello et couche du curseur.
-- `life.css` : albums Erasmus, hobbies, citations et navigation mobile à sept liens.
-- `photography.css` et `photography.js` : éventail photo continu, commandes, glissement et repli en grille.
-- `music.css` et `music.js` : fond sonore en boucle, volume discret et contrôles synchronisés.
-- `language.css`, `i18n.js`, `translations.js` et `dynamic-translations.js` : sélecteur FR/EN, préférences, traduction et choix du CV.
-- `app.js` : état de l’intro, défilement, contrôles, visibilité, préférences et pointeur.
-- `cursor.js` : traînée SVG à durée limitée, uniquement au mouvement de la souris.
-- `VALIDATION.md` : vérifications et limites.
+- `index.html`: content and structure.
+- `style.css`: foundations, fonts, and components.
+- `landing.css`: poster and opening sequence.
+- `experience.css`: visual direction and motion for subsequent sections.
+- `encore.css`: typography band, scroll-driven artwork, and hover effects.
+- `transitions.css`: navigation panels and poster staging.
+- `gallery.css`: photographs and viewer.
+- `narrative.css`: chapters, connections between stages, the Hello welcome screen, and cursor layer.
+- `life.css`: Erasmus albums, hobbies, reading excerpts, and mobile navigation with seven links.
+- `photography.css` and `photography.js`: continuous photo fan, controls, dragging, and grid fallback.
+- `music.css` and `music.js`: looping background audio, quiet volume, and synchronized controls.
+- `language.css`, `i18n.js`, `translations.js`, and `dynamic-translations.js`: FR/EN switch, preferences, translation, and CV selection.
+- `app.js`: introduction state, scrolling, controls, visibility, preferences, and pointer interactions.
+- `cursor.js`: a short-lived SVG trail, active only during mouse movement.
+- `VALIDATION.md`: checks and limitations.
 
-Les fichiers d’origine dans le dossier parent ne font pas partie du dépôt. Les anciens essais vidéo restent locaux et sont ignorés par Git.
+Original files in the parent directory are outside the repository. Earlier video experiments remain local and are ignored by Git.
