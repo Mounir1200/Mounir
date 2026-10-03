@@ -7,8 +7,10 @@
   if (!audio || !controls.length) return;
 
   const root = document.documentElement;
+  const t = (text, vars) => window.portfolioI18n?.t(text, vars) ?? text;
   const preferenceKey = 'mounir-background-music';
   const volume = .18;
+  let statusMessage = '';
   let wanted = true;
   let pending = false;
   let request = 0;
@@ -25,10 +27,15 @@
     controls.forEach(button => {
       button.hidden = false;
       button.setAttribute('aria-pressed', String(playing));
-      button.setAttribute('aria-label', playing || state === 'starting' ? 'Couper la musique de fond' : 'Activer la musique de fond');
-      button.title = playing ? 'Positive Chill Hop · ZephiraMusic — couper le son' : 'Écouter à faible volume';
-      button.querySelector('[data-sound-label]').textContent = label;
+      button.setAttribute('aria-label', t(playing || state === 'starting' ? 'Couper la musique de fond' : 'Activer la musique de fond'));
+      button.title = t(playing ? 'Positive Chill Hop · ZephiraMusic — couper le son' : 'Écouter à faible volume');
+      button.querySelector('[data-sound-label]').textContent = t(label);
     });
+  }
+
+  function setStatus(message) {
+    statusMessage = message;
+    status.textContent = message ? t(message) : '';
   }
 
   function remember() {
@@ -83,7 +90,7 @@
       pending = false;
       sync();
       if (error.name !== 'NotAllowedError' && error.name !== 'AbortError') {
-        status.textContent = 'La musique est momentanément indisponible. Vous pouvez réessayer.';
+        setStatus('La musique est momentanément indisponible. Vous pouvez réessayer.');
       }
     }
   }
@@ -95,10 +102,10 @@
       request++;
       audio.pause();
       render('off');
-      status.textContent = 'Musique de fond coupée.';
+      setStatus('Musique de fond coupée.');
     } else {
       wanted = true;
-      status.textContent = '';
+      setStatus('');
       start();
     }
     remember();
@@ -115,14 +122,19 @@
   audio.addEventListener('playing', () => {
     if (!wanted) { audio.pause(); return; }
     pending = false;
-    status.textContent = '';
+    setStatus('');
     sync();
   });
   ['pause', 'waiting', 'stalled', 'ended', 'volumechange'].forEach(event => audio.addEventListener(event, sync));
   audio.addEventListener('error', () => {
     pending = false;
     sync();
-    status.textContent = 'La musique est momentanément indisponible. Vous pouvez réessayer.';
+    setStatus('La musique est momentanément indisponible. Vous pouvez réessayer.');
+  });
+
+  document.addEventListener('languagechange', () => {
+    sync();
+    setStatus(statusMessage);
   });
 
   render(wanted ? 'ready' : 'off');

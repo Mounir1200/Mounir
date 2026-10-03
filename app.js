@@ -1,6 +1,9 @@
 (() => {
   'use strict';
 
+  const t = (source, variables = {}) => window.portfolioI18n?.t(source, variables)
+    ?? source.replace(/\{(\w+)\}/g, (match, name) => variables[name] ?? match);
+
   const root = document.documentElement;
   const welcomeScreen = document.getElementById('welcome-screen');
   const hero = document.getElementById('univers');
@@ -60,7 +63,7 @@
 
   function updateCue() {
     const label = cue?.querySelector('span:first-child');
-    if (label) label.textContent = autoAdvance ? 'La suite après l’intro' : 'Explorer le portfolio';
+    if (label) label.textContent = t(autoAdvance ? 'La suite après l’intro' : 'Explorer le portfolio');
   }
 
   function finishWelcome(resumeIntro = true) {
@@ -128,15 +131,29 @@
     galleryAnimation = null;
   }
 
+  function refreshGalleryText() {
+    if (!activeGalleryLinks.length) return;
+    const link = activeGalleryLinks[galleryIndex];
+    // The language runtime translates these source attributes before its event.
+    galleryImage.alt = link.querySelector('img')?.alt || link.dataset.galleryTitle || t('Photographie de Mounir');
+    galleryTitle.textContent = link.dataset.galleryTitle || t('Galerie');
+    galleryCaption.textContent = link.dataset.galleryCaption || '';
+    const position = { current: galleryIndex + 1, total: activeGalleryLinks.length };
+    galleryCounter.textContent = t('{current} / {total}', position);
+    galleryCounter.setAttribute('aria-label', t('Photo {current} sur {total}', position));
+  }
+
+  function refreshGalleryControls() {
+    galleryPrevious?.setAttribute('aria-label', t('Photo précédente'));
+    galleryNext?.setAttribute('aria-label', t('Photo suivante'));
+    galleryClose?.setAttribute('aria-label', t('Fermer la photo'));
+  }
+
   function showGalleryImage(index) {
     if (!activeGalleryLinks.length) return;
     galleryIndex = ((index % activeGalleryLinks.length) + activeGalleryLinks.length) % activeGalleryLinks.length;
-    const link = activeGalleryLinks[galleryIndex];
-    galleryImage.alt = link.querySelector('img')?.alt || link.dataset.galleryTitle || 'Photographie de Mounir';
-    galleryImage.src = link.href;
-    galleryTitle.textContent = link.dataset.galleryTitle || 'Galerie';
-    galleryCaption.textContent = link.dataset.galleryCaption || '';
-    galleryCounter.textContent = (galleryIndex + 1) + ' / ' + activeGalleryLinks.length;
+    galleryImage.src = activeGalleryLinks[galleryIndex].href;
+    refreshGalleryText();
   }
 
   function openGallery(link) {
@@ -199,7 +216,8 @@
     const transition = { animations: [], cancelled: false, navigated: false, timeout: null };
     activeTransition = transition;
     const labels = { projets: 'Projets', portrait: 'Parcours', experiences: 'Expériences', contact: 'Contact', presentation: 'Explorer', univers: 'Accueil', galerie: 'Galerie', hobbies: 'Hobbies' };
-    transitionWord.textContent = labels[target.id] || 'Explorer';
+    transition.labelSource = labels[target.id] || 'Explorer';
+    transitionWord.textContent = t(transition.labelSource);
     transitionOverlay.hidden = false;
     transitionOverlay.dataset.active = 'true';
     transitionOverlay.style.visibility = 'visible';
@@ -262,15 +280,15 @@
     if (hero) hero.dataset.intro = next;
     if (toggle) {
       toggle.disabled = reduced || !imageReady || imageFailed;
-      toggle.textContent = reduced ? 'Animations réduites' : next === 'playing' ? 'Pause' : next === 'complete' ? 'Revoir' : 'Animer';
-      toggle.setAttribute('aria-label', reduced ? 'Animations réduites' : next === 'playing' ? 'Mettre l’introduction en pause' : next === 'complete' ? 'Revoir l’introduction' : 'Animer l’introduction');
+      toggle.textContent = t(reduced ? 'Animations réduites' : next === 'playing' ? 'Pause' : next === 'complete' ? 'Revoir' : 'Animer');
+      toggle.setAttribute('aria-label', t(reduced ? 'Animations réduites' : next === 'playing' ? 'Mettre l’introduction en pause' : next === 'complete' ? 'Revoir l’introduction' : 'Animer l’introduction'));
       toggle.setAttribute('aria-pressed', String(next === 'paused'));
     }
     if (replay) {
       replay.disabled = reduced || !imageReady || imageFailed;
-      replay.setAttribute('aria-label', 'Rejouer l’introduction sans défilement automatique');
+      replay.setAttribute('aria-label', t('Rejouer l’introduction sans défilement automatique'));
     }
-    if (introStatus) introStatus.textContent = imageFailed ? 'Le portrait ne peut pas être chargé.' : reduced ? 'Animations réduites.' : next === 'paused' ? 'Introduction en pause.' : next === 'complete' ? 'Introduction terminée.' : '';
+    if (introStatus) introStatus.textContent = t(imageFailed ? 'Le portrait ne peut pas être chargé.' : reduced ? 'Animations réduites.' : next === 'paused' ? 'Introduction en pause.' : next === 'complete' ? 'Introduction terminée.' : '');
   }
 
   function pauseIntro() {
@@ -526,6 +544,15 @@
     if (positionFrame === null) positionFrame = requestAnimationFrame(updatePositions);
   }, true);
   document.addEventListener('visibilitychange', syncPageVisibility);
+  document.addEventListener('languagechange', () => {
+    updateCue();
+    setState(state);
+    refreshGalleryControls();
+    if (galleryDialog?.open) refreshGalleryText();
+    if (activeTransition && transitionWord) transitionWord.textContent = t(activeTransition.labelSource);
+    updateNavigationOffset();
+    if (positionFrame === null) positionFrame = requestAnimationFrame(updatePositions);
+  });
   window.addEventListener('pagehide', interruptNavigation);
   window.addEventListener('popstate', interruptNavigation);
   window.addEventListener('hashchange', migrateLegacyFilmAnchor);
@@ -564,6 +591,7 @@
   beginWelcome();
   cancelPageTransition();
   updateCue();
+  refreshGalleryControls();
   setProgress();
   syncPageVisibility();
 })();

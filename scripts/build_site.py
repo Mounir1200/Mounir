@@ -28,7 +28,7 @@ class SiteReferences(HTMLParser):
             if attrs["id"] in self.ids:
                 raise ValueError(f"Duplicate ID: {attrs['id']}")
             self.ids.add(attrs["id"])
-        for key in ("src", "href"):
+        for key in ("src", "href", "data-cv-fr", "data-cv-en"):
             reference = attrs.get(key, "")
             if reference.startswith("#"):
                 self.anchors.append(unquote(reference[1:]))

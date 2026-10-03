@@ -1,6 +1,9 @@
 (() => {
   'use strict';
 
+  const t = (source, variables = {}) => window.portfolioI18n?.t(source, variables)
+    ?? source.replace(/\{(\w+)\}/g, (match, name) => variables[name] ?? match);
+
   const fan = document.querySelector('.photo-fan');
   if (!fan) return;
   const stage = fan.querySelector('.fan-stage');
@@ -37,6 +40,7 @@
   let clickTimer = null;
   let reduced = false;
   let focusAfterMove = false;
+  let announcedIndex = null;
 
   const wrap = value => ((value % count) + count) % count;
   const activeIndex = () => wrap(Math.round(phase));
@@ -68,16 +72,35 @@
       links[i].tabIndex = i === index ? 0 : -1;
       card.setAttribute('aria-hidden', String(i !== index));
     });
-    title.textContent = links[index].dataset.galleryTitle;
-    caption.textContent = links[index].dataset.galleryCaption;
-    counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(count).padStart(2, '0')}`;
+    renderCaption();
+  }
+
+  function renderCaption() {
+    if (current < 0) return;
+    // Titles and captions have already been localized on the source links.
+    title.textContent = links[current].dataset.galleryTitle || '';
+    caption.textContent = links[current].dataset.galleryCaption || '';
+    counter.textContent = t('{current} / {total}', {
+      current: String(current + 1).padStart(2, '0'), total: String(count).padStart(2, '0')
+    });
+    counter.setAttribute('aria-label', t('Photo {current} sur {total}', { current: current + 1, total: count }));
+  }
+
+  function renderAnnouncement() {
+    if (announcedIndex === null) return;
+    announcement.textContent = t('Photo {current} sur {total} : {title}', {
+      current: announcedIndex + 1, total: count, title: links[announcedIndex].dataset.galleryTitle || ''
+    });
   }
 
   function updateControls() {
     const stopped = reduced || paused;
-    play.querySelector('.fan-play-label').textContent = stopped ? 'Défiler' : 'Pause';
+    play.querySelector('.fan-play-label').textContent = t(stopped ? 'Défiler' : 'Pause');
     play.querySelector('.fan-play-symbol').textContent = stopped ? '▷' : 'Ⅱ';
-    play.setAttribute('aria-label', stopped ? 'Lancer le défilement des photos' : 'Mettre le défilement des photos en pause');
+    play.setAttribute('aria-label', t(stopped ? 'Lancer le défilement des photos' : 'Mettre le défilement des photos en pause'));
+    previous.setAttribute('aria-label', t('Photographie précédente'));
+    next.setAttribute('aria-label', t('Photographie suivante'));
+    stage.setAttribute('aria-label', t('Les photographies'));
     play.disabled = reduced;
     play.hidden = reduced;
     fan.dataset.playing = String(autoAllowed());
@@ -128,8 +151,8 @@
       tween = { from: phase, to: target, start: performance.now() };
     }
     if (announceChange) {
-      const index = wrap(Math.round(target));
-      announcement.textContent = `Photo ${index + 1} sur ${count} : ${links[index].dataset.galleryTitle}`;
+      announcedIndex = wrap(Math.round(target));
+      renderAnnouncement();
     }
     sync();
   }
@@ -236,6 +259,11 @@
   }, true);
 
   document.addEventListener('visibilitychange', sync);
+  document.addEventListener('languagechange', () => {
+    renderCaption();
+    updateControls();
+    renderAnnouncement();
+  });
   window.addEventListener('pagehide', sync);
   preference.addEventListener('change', syncPreference);
   navigator.connection?.addEventListener?.('change', syncPreference);

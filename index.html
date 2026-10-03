@@ -17,15 +17,20 @@
   <link rel="stylesheet" href="life.css">
   <link rel="stylesheet" href="photography.css">
   <link rel="stylesheet" href="music.css">
+  <link rel="stylesheet" href="language.css">
   <link rel="preload" href="assets/portrait-cobalt-peche.png" as="image">
   <link rel="preload" href="assets/fonts/InstrumentSerif-Italic.ttf" as="font" type="font/ttf" crossorigin>
   <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData) document.documentElement.dataset.welcome = 'pending';</script>
+  <script src="translations.js" defer></script>
+  <script src="dynamic-translations.js" defer></script>
+  <script src="i18n.js" defer></script>
   <script src="app.js" defer></script>
   <script src="cursor.js" defer></script>
   <script src="photography.js" defer></script>
   <script src="music.js" defer></script>
 </head>
 <body>
+  <div class="language-switch language-dock" role="group" aria-label="Langue du site" hidden><button type="button" data-language="fr" lang="fr" aria-label="Afficher en français" aria-pressed="true" data-i18n-ignore>FR</button><span aria-hidden="true">/</span><button type="button" data-language="en" lang="en" aria-label="Switch to English" aria-pressed="false" data-i18n-ignore>EN</button></div>
   <audio id="background-music" src="assets/audio/positive-chill-hop.mp3" loop preload="none" aria-label="Positive Chill Hop — ZephiraMusic"></audio>
   <button class="sound-toggle sound-dock" type="button" data-sound-toggle aria-label="Activer la musique de fond" aria-pressed="false" hidden><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-sound-label>Activer le son</span></button>
   <p id="sound-status" class="sr-only" role="status" aria-live="polite"></p>
@@ -44,7 +49,7 @@
       <a href="#galerie" data-nav>Galerie</a>
       <a href="#contact" data-nav>Contact</a>
     </nav>
-    <a class="header-link" href="assets/Mounir-DABIRE-CV.pdf" target="_blank" rel="noopener">Mon CV <span aria-hidden="true">↗</span></a>
+    <a class="header-link" href="assets/Mounir-DABIRE-CV.pdf" data-cv-fr="assets/Mounir-DABIRE-CV.pdf" data-cv-en="assets/Mounir-DABIRE-CV-EN.pdf" download="DABIRE_Mounir_CV_FR.pdf">Mon CV <span aria-hidden="true">↗</span></a>
   </header>
 
   <main>
@@ -78,7 +83,7 @@
 
     <section class="portrait-section section-shell" id="portrait" aria-labelledby="portrait-title">
       <div class="portrait-photo"><img src="assets/portrait-cobalt-peche.png" alt="Portrait de Mounir DABIRE revisité par IA, chemise bleue et tee-shirt pêche sur fond bleu" width="1122" height="1402" loading="lazy"><span class="photo-caption">Mounir DABIRE / Angers, France</span><span class="photo-cross" aria-hidden="true">+</span></div>
-      <div class="portrait-copy motion-reveal"><p class="micro-label">01 — Apprendre</p><h2 id="portrait-title">De Ouagadougou<br><em>à Angers.</em></h2><p>Après deux années de classes préparatoires à La Salle, à Ouagadougou, j’ai rejoint l’ESAIP à Angers pour me spécialiser en Big Data.</p><p>Deux échanges Erasmus, à KTU en Lituanie puis à RWU en Allemagne, ont aussi jalonné cette formation. En 2026, j’obtiens mon diplôme d’ingénieur.</p><p class="portrait-bridge">La suite se joue sur le terrain : des systèmes de données chez Moov Africa aux assistants IA à l’ESSCA.</p><div class="portrait-story-links"><a class="text-link" href="#experiences">Passer à la pratique <span aria-hidden="true">↓</span></a><a class="text-link" href="assets/Mounir-DABIRE-CV.pdf" target="_blank" rel="noopener">Mon CV <span aria-hidden="true">↗</span></a></div></div>
+      <div class="portrait-copy motion-reveal"><p class="micro-label">01 — Apprendre</p><h2 id="portrait-title">De Ouagadougou<br><em>à Angers.</em></h2><p>Après deux années de classes préparatoires à La Salle, à Ouagadougou, j’ai rejoint l’ESAIP à Angers pour me spécialiser en Big Data.</p><p>Deux échanges Erasmus, à KTU en Lituanie puis à RWU en Allemagne, ont aussi jalonné cette formation. En 2026, j’obtiens mon diplôme d’ingénieur.</p><p class="portrait-bridge">La suite se joue sur le terrain : des systèmes de données chez Moov Africa aux assistants IA à l’ESSCA.</p><div class="portrait-story-links"><a class="text-link" href="#experiences">Passer à la pratique <span aria-hidden="true">↓</span></a><a class="text-link" href="assets/Mounir-DABIRE-CV.pdf" data-cv-fr="assets/Mounir-DABIRE-CV.pdf" data-cv-en="assets/Mounir-DABIRE-CV-EN.pdf" download="DABIRE_Mounir_CV_FR.pdf">Mon CV <span aria-hidden="true">↗</span></a></div></div>
       <details class="education-details"><summary>Les repères de ma formation <span class="detail-symbol" aria-hidden="true">+</span></summary><div class="education-grid"><div><h3>ESAIP</h3><p>2022–2026 · Diplôme d'ingénieur, spécialisation Big Data, parcours anglophone.</p></div><div><h3>Deux échanges Erasmus</h3><p>RWU, Allemagne · 2024–2025<br>KTU, Lituanie · 2023</p></div><div><h3>CPGE La Salle</h3><p>2020–2022 · Classes préparatoires à Ouagadougou, Burkina Faso.</p></div></div></details>
       <div class="exchange-story" aria-labelledby="exchange-title">
         <div class="exchange-heading motion-reveal"><h3 id="exchange-title">Apprendre <em>ailleurs.</em></h3><p>Deux échanges Erasmus, et des souvenirs qui débordent des salles de cours.</p></div>
@@ -227,7 +232,7 @@
     </footer>
   </main>
   <dialog id="gallery-dialog" class="gallery-dialog" aria-labelledby="gallery-dialog-title">
-    <div class="gallery-dialog-bar"><span id="gallery-counter" aria-live="polite"></span><button class="sound-toggle sound-dialog" type="button" data-sound-toggle aria-label="Activer la musique de fond" aria-pressed="false" hidden><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-sound-label>Activer le son</span></button><button id="gallery-close" type="button" aria-label="Fermer la photo">Fermer <span aria-hidden="true">×</span></button></div>
+    <div class="gallery-dialog-bar"><span id="gallery-counter" aria-live="polite"></span><div class="language-switch language-dialog" role="group" aria-label="Langue du site" hidden><button type="button" data-language="fr" lang="fr" aria-label="Afficher en français" aria-pressed="true" data-i18n-ignore>FR</button><span aria-hidden="true">/</span><button type="button" data-language="en" lang="en" aria-label="Switch to English" aria-pressed="false" data-i18n-ignore>EN</button></div><button class="sound-toggle sound-dialog" type="button" data-sound-toggle aria-label="Activer la musique de fond" aria-pressed="false" hidden><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-sound-label>Activer le son</span></button><button id="gallery-close" type="button" aria-label="Fermer la photo">Fermer <span aria-hidden="true">×</span></button></div>
     <div class="gallery-dialog-image"><img id="gallery-full-image" alt=""></div>
     <div class="gallery-dialog-footer"><div><h3 id="gallery-dialog-title"></h3><p id="gallery-dialog-caption"></p></div><div class="gallery-dialog-controls"><button id="gallery-prev" type="button" aria-label="Photo précédente">←</button><button id="gallery-next" type="button" aria-label="Photo suivante">→</button></div></div>
   </dialog>

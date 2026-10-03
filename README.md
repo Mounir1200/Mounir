@@ -28,6 +28,16 @@ Space Grotesk et Instrument Serif sont servis depuis `assets/fonts/`, avec licen
 
 Un essai de lecture est effectué à l’arrivée. Si le navigateur bloque l’audio automatique, le premier clic/toucher ou Entrée/Espace lance la lecture. Le bouton fixe permet de couper et reprendre au même endroit ; le choix est conservé dans le stockage local. Une commande synchronisée reste disponible dans la visionneuse photo. Les indicateurs reflètent la lecture réelle ; leurs animations respectent la réduction des mouvements. Les restrictions du navigateur/système peuvent suspendre la lecture en arrière-plan.
 
+## Langues et CV
+
+Le portfolio est disponible en français et en anglais. À la première visite, la première langue prise en charge dans les préférences du navigateur est utilisée ; si aucune ne correspond, l’anglais sert de repli. Le sélecteur FR/EN reste visible et mémorise le choix dans localStorage. Les liens `?lang=fr` et `?lang=en` permettent également de partager une langue précise ; le paramètre explicite est prioritaire sur le choix enregistré.
+
+La bascule se fait sans rechargement : contenus, titres, textes alternatifs, légendes, commandes et messages accessibles sont actualisés sans recréer la page. La musique, les photos et l’introduction conservent leur état. Les chaînes françaises de `index.html` servent de clés à `translations.js` ; les libellés générés par JavaScript figurent dans `dynamic-translations.js`. Ajouter une traduction lors de toute modification de texte.
+
+Les deux liens « Mon CV / My CV » téléchargent le fichier de la langue active : `assets/Mounir-DABIRE-CV.pdf` pour le français et `assets/Mounir-DABIRE-CV-EN.pdf` pour l’anglais. Ce sont les PDF fournis le 3 octobre 2026, copiés sans modification. Le build inclut les deux variantes déclarées dans `data-cv-fr` / `data-cv-en`. Sans JavaScript, le contenu français et le téléchargement du CV français restent disponibles.
+
+Contrôle de la sélection et de la mémorisation des langues : `node scripts/check_i18n.cjs` (également exécuté dans GitHub Actions).
+
 ## Mouvement
 
 - À l’arrivée, « Hello » s’affiche pendant 1,4 s, puis son écran sort en 650 ms. L’affiche démarre ensuite, une fois le portrait chargé : typographie, cadre, portrait et orbites pendant 6,5 s. Une interaction permet de passer immédiatement l’accueil. En mode réduit, cet accueil est ignoré.
@@ -78,6 +88,7 @@ Les illustrations des projets sont des schémas conceptuels, pas des captures de
 - `life.css` : albums Erasmus, hobbies, citations et navigation mobile à sept liens.
 - `photography.css` et `photography.js` : éventail photo continu, commandes, glissement et repli en grille.
 - `music.css` et `music.js` : fond sonore en boucle, volume discret et contrôles synchronisés.
+- `language.css`, `i18n.js`, `translations.js` et `dynamic-translations.js` : sélecteur FR/EN, préférences, traduction et choix du CV.
 - `app.js` : état de l’intro, défilement, contrôles, visibilité, préférences et pointeur.
 - `cursor.js` : traînée SVG à durée limitée, uniquement au mouvement de la souris.
 - `VALIDATION.md` : vérifications et limites.

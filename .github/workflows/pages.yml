@@ -24,6 +24,11 @@ jobs:
           node --check cursor.js
           node --check photography.js
           node --check music.js
+          node --check translations.js
+          node --check dynamic-translations.js
+          node --check i18n.js
+      - name: Check language selection and CV routing
+        run: node scripts/check_i18n.cjs
       - name: Package linked website files
         run: python3 scripts/build_site.py
       - name: Upload website artifact

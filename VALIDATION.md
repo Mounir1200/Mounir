@@ -146,3 +146,14 @@ Limites : contrôles réalisés dans le navigateur intégré, sans appareils phy
 - Bouton fixe de 44 px et contrôle de visionneuse vérifiés à 1280 px et 390 × 844, sans débordement horizontal. Animations des icônes liées à la lecture et respect du mouvement réduit audités dans le code.
 - Relecture indépendante : ajout de audio.load() uniquement après erreur de source, et effacement du message d’erreur à la reprise effective.
 - Syntaxe des quatre scripts vérifiée, git diff --check valide. Build : 73 ressources + .nojekyll, 15,55 Mio, dont MP3 et fichiers music.js/music.css.
+
+## Modes FR/EN et CV — 3 octobre 2026
+
+- 366 chaînes statiques couvertes par translations.js (dont noms/symboles conservés) et 45 libellés dynamiques dans dynamic-translations.js. Couverture HTML contrôlée : aucune clé manquante ni traduction vide.
+- Détection testée pour fr-FR/fr-CA/en-GB/en-US et préférences multiples, repli anglais, priorité URL puis choix mémorisé, stockage bloqué, changement répété FR→EN→FR et conservation des paramètres/ancre. Ces contrôles sont exécutés par scripts/check_i18n.cjs dans GitHub Actions.
+- Les PDF fournis ont été copiés sans modification. Téléchargement réel des CV EN et FR dans le navigateur ; SHA-256 des téléchargements identiques aux fichiers sources : EN 465FC7E0C19052570191A4B52FBC00D2AEA53DC60F5DCDD92C3D3904562243B1 ; FR AC21810B34E61B50AEFDC4B187A6997B3EEAC875DECFF72EC894643FA6442297.
+- Les deux liens CV changent de cible et de nom de téléchargement selon la langue. Les deux PDF sont inclus dans le build, y compris la cible EN déclarée dans data-cv-en.
+- Version anglaise vérifiée dans le navigateur : accueil, titres, navigation, photo courante, légende/date, commandes audio et carrousel. Sélection par Entrée et choix EN conservé lors d’une navigation sans paramètre lang.
+- Bascule de langue pendant la lecture : audio toujours actif, temps de lecture croissant. Carrousel en pause conservé sur 01/16 ; titre et commandes traduits. Bascule dans la visionneuse : même src, même photo et compteur, titre/alt/légende mis à jour.
+- Affichage contrôlé à 1280 × 800 et 320 × 780. Espace réservé sous l’accueil pour les commandes fixes. Barre de galerie corrigée à 320 px (fermeture par icône avec nom accessible), aucune largeur excédentaire. Pas de test sur téléphone physique.
+- Syntaxe JavaScript et diff validés ; aucune erreur console relevée. Build : 78 ressources + .nojekyll, 15,71 Mio.
