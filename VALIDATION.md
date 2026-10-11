@@ -206,3 +206,10 @@ Limites : contrôles réalisés dans le navigateur intégré, sans appareils phy
 - Captures ouvertes et repliées contrôlées sur mobile et ordinateur ; script check-technology.cjs et captures technology-*.png dans .review/ui-ux-update-2026-10-11/. Versions de contenu CSS/traductions et réponses HTTP vérifiées. Syntaxe JavaScript, contrôle i18n et build validés.
 
 - Ajustement demandé par Mounir : Python et RAG apparaissent en tête des trois listes ESSCA. Les mentions Azure restent dans les missions concernées ; le doublon sous la mission de déploiement du PFE est supprimé. Contrôle FR/EN à 390 et 1440 px : listes visibles après repli, aucun débordement ; contrôle i18n validé. Captures python-rag-*.png dans le même dossier.
+
+### Commandes du header et repli des projets — 11 octobre 2026
+
+- Libellé réduit à « CV » dans le header et le menu ; mention PDF retirée du lien du parcours. Les téléchargements français et anglais sont conservés. Bouton audio de 44 × 44 px, rayon de 12 px, icône SVG aux traits arrondis avec états muet/ondes liés à la lecture réelle.
+- Le panneau de test replié réservait toute une colonne vide. La présentation répartit désormais titre et explications sur deux colonnes, puis le cas de test occupe la largeur en dessous. Le texte et les liens restent stables lors de l’ouverture/fermeture ; sur mobile, l’ensemble suit une seule colonne.
+- Contrôles Edge FR/EN à 320, 390, 768, 1024, 1440 et 1920 px : panneaux sous leur présentation, largeur complète, diminution réelle de la hauteur après repli, aucun débordement horizontal, ouverture/fermeture Entrée/Espace et focus conservé. Repli sans JavaScript vérifié ; aucune erreur JavaScript relevée.
+- Lecture audio réelle démarrée avec Entrée puis arrêtée avec Espace ; état visuel, aria-pressed, labels FR/EN et CV anglais vérifiés. Captures desktop/mobile inspectées dans .review/ui-ux-update-2026-10-11/ : compact-final-*.png, project-layout-open-1440.png, header-rounded-*.png. Versions des styles/traductions actualisées ; contrôle i18n et build validés.
