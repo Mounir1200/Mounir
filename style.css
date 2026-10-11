@@ -116,6 +116,9 @@ em{font-family:var(--editorial);font-style:italic;font-weight:400;letter-spacing
 .project-copy h3{font-size:clamp(40px,4.3vw,68px);letter-spacing:-.055em;font-weight:500;margin-bottom:17px;color:var(--blue)}
 .project-copy>p{font-family:var(--editorial);font-size:32px;line-height:1.13;letter-spacing:-.01em}
 .project-description{font-size:15px;line-height:1.8;margin:22px 0 30px;max-width:440px}
+.project-copy>p.project-decision{font:400 15px/1.7 var(--body);letter-spacing:0;max-width:470px;margin:0 0 28px}
+.project-decision strong{display:block;font-weight:600;margin-bottom:7px}
+.project-decision span{display:block}
 .project-link{font-size:14px;display:flex;justify-content:space-between;align-items:center;padding:17px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:440px}
 .project-link span{font-size:24px;color:var(--blue)}
 .hindsight-project{padding-top:25px}

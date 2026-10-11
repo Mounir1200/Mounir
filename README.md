@@ -18,9 +18,21 @@ To check the published files locally, run `python scripts/build_site.py`. The sc
 
 ## Art direction
 
-An italic “Hello” introduces a kinetic studio poster: large lettering on peach, with a portrait in a cobalt frame. The narrative follows education from Ouagadougou to Angers, professional experience in chronological order, personal projects, and photographs. Editorial transitions connect the chapters. The palette uses brown #6c2b11, peach #f2ad78, and blue #0057ba. Body text uses brown and peach (5.54:1 contrast); blue and peach are reserved for large type and graphics (3.59:1). Gallery photographs retain their original colors.
+An italic “Hello” introduces a kinetic studio poster: large lettering on peach, with a portrait in a cobalt frame. Selected projects and linked test cases come immediately after the poster, followed by professional experience, education from Ouagadougou to Angers, and personal photographs. The hero links directly to projects and contact. The palette uses brown #6c2b11, peach #f2ad78, and blue #0057ba. Body text uses brown and peach (5.54:1 contrast); blue and peach are reserved for large type and graphics (3.59:1). Gallery photographs retain their original colors.
 
 Space Grotesk and Instrument Serif are served from `assets/fonts/`, with OFL licenses. The portrait in `assets/portrait-cobalt-peche.png` was generated with imagegen; the original remains in `assets/portrait.jpg`, and the prompts are kept locally in assets.
+
+The page serves responsive WebP versions of the portrait: 560 × 700 (43,172 bytes) and 1122 × 1402 (199,924 bytes). The PNG master remains unchanged. The build includes `srcset` and responsive preload references.
+
+The project panels visualize existing test cases, not product screenshots or client results. UrdWell's example comes from [`test_pipeline.py`](https://github.com/Mounir1200/urdwell-mcp/blob/main/test_pipeline.py#L89-L130). HindSight's synthetic billing example comes from [`test_retroactive_rate.py`](https://github.com/Mounir1200/HindSight/blob/main/tests/test_retroactive_rate.py#L37-L45). These public sources were reviewed on October 11, 2026; their remote tests were not executed as part of the portfolio update.
+
+Each test panel is an independent native disclosure, initially open, with translated expand/collapse labels and keyboard support even without JavaScript. Featured project titles and the explicit “View the project on GitHub” links open their repositories; repository links remain accessible when test panels are collapsed.
+
+Project descriptions explain the problem, the proposed approach and the reason for the technical choices in plain language. Test panels explain the scenario and the assertions: UrdWell preserves an inactive memory when a supplied correction replaces it; HindSight reconstructs a July 2 bill after receiving a retroactive rate on July 3. These are descriptions of source tests, not claims that the external test suites were run for this site update.
+
+Professional experience is presented from newest to oldest. Each entry keeps its dates, role, employer, purpose and a short technology or topic list visible. Independent native disclosures reveal responsibilities, with technical details placed directly below the relevant tasks. The latest ESSCA role is expanded initially. ESSCA responsibilities and tool associations are drawn from the supplied French and English CVs; the October 9, 2026 contract end was supplied separately by Mounir. Moov Africa retains only the responsibilities and topics already documented in the portfolio. The disclosures work without JavaScript, support keyboard input and use translated FR/EN labels.
+
+The HTML references `experience.css` and `translations.js` with content-version query parameters so an existing browser tab fetches their updated contents. When changing either file, refresh its `?v=` value in `index.html` with the first 12 characters of its SHA-256 hash. The build resolves and packages these versioned references normally.
 
 ## Background music
 
@@ -28,7 +40,7 @@ Music: [“Positive Chill-Hop” by ZephiraMusic on Pixabay](https://pixabay.com
 
 The website uses `assets/audio/positive-chill-hop.mp3`. The track lasts approximately 2 minutes and 1 second and plays on a loop. Gain is set to 18% through Web Audio, falling back to `audio.volume` when unavailable, independently of scrolling and animations.
 
-Playback is attempted on arrival. If the browser blocks audio autoplay, the first click, tap, or Enter/Space interaction starts playback. A fixed control pauses and resumes the track at the same position; the choice is saved in local storage. A synchronized control is also available in the photo viewer. Indicators reflect actual playback, and their animations respect reduced-motion preferences. Browser or operating system restrictions may suspend background playback.
+Every visit starts silently. Playback begins only when the user activates the sound control in the header or photo viewer. Ordinary navigation, clicks and keyboard actions do not start audio. The controls pause and resume at the same position, and their indicators reflect actual playback. Animations respect reduced-motion preferences. Browser or operating system restrictions may suspend background playback.
 
 ## Languages and CVs
 
@@ -36,26 +48,25 @@ The portfolio is available in French and English. On the first visit, it uses th
 
 Switching languages does not reload the page: content, titles, alternative text, captions, controls, and accessibility messages update without rebuilding the document. Music, photographs, and the introduction retain their state. French strings in `index.html` serve as keys in `translations.js`; labels generated by JavaScript are listed in `dynamic-translations.js`. Add or update the translation whenever source text changes.
 
-Both CV links download the file for the active language: `assets/Mounir-DABIRE-CV.pdf` for French and `assets/Mounir-DABIRE-CV-EN.pdf` for English. These are the PDFs supplied on October 3, 2026, copied without modification. The build includes both variants declared in `data-cv-fr` / `data-cv-en`. Without JavaScript, the French content and French CV download remain available.
+The CV links download the file for the active language: `assets/Mounir-DABIRE-CV.pdf` for French and `assets/Mounir-DABIRE-CV-EN.pdf` for English. These are the PDFs supplied on October 3, 2026, copied without modification. The build includes both variants declared in `data-cv-fr` / `data-cv-en`. Without JavaScript, the French content and French CV download remain available.
 
 Check language selection and persistence with `node scripts/check_i18n.cjs`, which also runs in GitHub Actions.
 
 ## Motion
 
 - On arrival, “Hello” appears for 1.4 seconds, followed by a 650 ms exit transition. Once the portrait loads, the poster starts a 6.5-second sequence involving typography, framing, the portrait, and orbits. An interaction skips the welcome screen immediately. Reduced-motion mode skips this welcome sequence.
-- A 1.3-second scroll then leads to the introduction. Any navigation or scrolling interaction, including Tab, cancels automatic advancement and can interrupt a scroll already in progress.
-- Pause, resume, and replay controls are available from the landing section. A manual replay never re-enables automatic scrolling.
-- A large “Imagine / Build / Connect” typography band moves only while in view. Project artwork rotates and scales slightly with scrolling on desktop and responds to a fine pointer. HindSight’s orbits animate only while visible.
-- Internal links trigger an approximately one-second transition through cobalt, peach, and brown panels. The destination title accompanies the section change. Escape, another interaction, a tab change, or reduced-motion mode immediately ends the transition. Keyboard navigation moves focus to the destination section.
+- The poster never advances the page automatically. Pause, resume, and replay controls remain available from the landing section.
+- The “Imagine / Build / Connect” band and project evidence panels stay still, keeping their text and links easy to read and use.
+- Internal links use a short 240 ms transition. The skip link and reduced-motion navigation are immediate. Escape, another interaction, or a tab change ends the transition. Keyboard navigation moves focus to the destination section.
 - A thin cobalt and peach trail follows mouse movement and fades within 500 ms when idle. It stops outside the page, during text input, and inside the photo viewer. The native cursor remains unchanged.
-- When the tab is hidden, the welcome screen finishes, the introduction pauses, and automatic advancement is canceled. System reduced-motion preferences and data-saving mode disable automatic movement.
+- When the tab is hidden, the welcome screen finishes and the introduction pauses. System reduced-motion preferences and data-saving mode disable automatic movement.
 - All content remains visible without JavaScript and in reduced-motion mode. The global animation toggle has been removed; introduction pause and replay controls remain available.
 
 ## Navigation
 
-The main navigation stays fixed at the top: Home, Journey, Experience, Projects, Hobbies, Gallery, and Contact. On mobile, the monogram and seven links form a two-row grid. The current section is underlined, and anchor destinations leave enough space below the header. Home returns to the top from any section.
+The main navigation stays fixed at the top: Home, Projects, Experience, Journey, Hobbies, Gallery, and Contact. Sound and language controls share the header rather than covering content at the bottom of the screen. At widths up to 1100 px, an accessible Menu button reveals the links and CV download. Escape closes the menu and returns focus to the button; selecting a link also closes it. Without JavaScript, the navigation remains visible. The current section is underlined, and anchor destinations leave space below the header.
 
-The `#galerie` section replaces the film with four supplied photographs, offset frames, and a native dialog for enlarged images. The viewer supports previous/next buttons, keyboard arrows, Escape, and focus restoration to the thumbnail. Without JavaScript, each photograph remains a direct link. Legacy `#film` and `#film-details` anchors redirect to the gallery.
+The `#galerie` section replaces the film with four supplied photographs, offset frames, and a native dialog for enlarged images. The viewer supports previous/next buttons, keyboard arrows, Escape, and focus restoration to the thumbnail. Loading and error messages explain unavailable images, with a retry button; stale image requests cannot replace a newer selection. Without JavaScript, each photograph remains a direct link. Legacy `#film` and `#film-details` anchors redirect to the gallery.
 
 The KTU exchange in Lithuania (2023) and RWU exchange in Germany (2024–2025) each have a three-photo album in the Journey section. The `#hobbies` chapter follows the projects and covers Pixel photography, video games and manga, reading, music, and strength training. Albums remain separate in the viewer through `data-gallery-group`.
 

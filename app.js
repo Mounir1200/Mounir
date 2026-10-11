@@ -8,10 +8,8 @@
   const welcomeScreen = document.getElementById('welcome-screen');
   const hero = document.getElementById('univers');
   const portrait = document.getElementById('poster-image');
-  const presentation = document.getElementById('presentation');
   const toggle = document.getElementById('intro-toggle');
   const replay = document.getElementById('intro-replay');
-  const cue = document.getElementById('intro-cue');
   const introStatus = document.getElementById('intro-status');
   const meter = document.querySelector('.poster-meter > span');
   const galleryLinks = [...document.querySelectorAll('.gallery-link')];
@@ -23,6 +21,8 @@
   const galleryPrevious = document.getElementById('gallery-prev');
   const galleryNext = document.getElementById('gallery-next');
   const galleryClose = document.getElementById('gallery-close');
+  const galleryStatus = document.getElementById('gallery-status');
+  const galleryRetry = document.getElementById('gallery-retry');
   const systemMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const connection = navigator.connection;
@@ -43,6 +43,8 @@
   let galleryIndex = 0;
   let galleryReturnFocus = null;
   let galleryAnimation = null;
+  let galleryRequest = 0;
+  let galleryPendingImage = null;
   let reduced = false;
   let imageReady = Boolean(portrait?.complete && portrait.naturalWidth > 0);
   let imageFailed = Boolean(portrait?.complete && !portrait.naturalWidth);
@@ -50,7 +52,6 @@
   let elapsed = 0;
   let lastTime = 0;
   let introFrame = null;
-  let scrollFrame = null;
   let positionFrame = null;
   let manuallyPaused = false;
   let suspendedByPage = false;
@@ -58,13 +59,6 @@
   let welcomeDone = !welcomeScreen || root.dataset.welcome !== 'pending';
   let welcomeTimer = null;
   let welcomeExitTimer = null;
-  let autoAdvance = Boolean(hero && presentation && portrait)
-    && window.scrollY <= 8 && !location.hash && !document.hidden && !imageFailed;
-
-  function updateCue() {
-    const label = cue?.querySelector('span:first-child');
-    if (label) label.textContent = t(autoAdvance ? 'La suite après l’intro' : 'Explorer le portfolio');
-  }
 
   function finishWelcome(resumeIntro = true) {
     clearTimeout(welcomeTimer);
@@ -79,7 +73,6 @@
 
   function beginWelcome() {
     if (welcomeDone || reduced || document.hidden) {
-      if (document.hidden) cancelAutomaticScroll();
       finishWelcome(false);
       return;
     }
@@ -87,22 +80,12 @@
     welcomeTimer = setTimeout(() => {
       welcomeTimer = null;
       if (reduced || document.hidden) {
-        cancelAutomaticScroll();
         finishWelcome();
         return;
       }
       root.dataset.welcome = 'leaving';
       welcomeExitTimer = setTimeout(() => finishWelcome(), 650);
     }, 1400);
-  }
-
-  function cancelAutomaticScroll() {
-    autoAdvance = false;
-    if (scrollFrame !== null) {
-      cancelAnimationFrame(scrollFrame);
-      scrollFrame = null;
-    }
-    updateCue();
   }
 
   function cancelPageTransition() {
@@ -121,7 +104,6 @@
   }
 
   function interruptNavigation() {
-    cancelAutomaticScroll();
     cancelPageTransition();
     if (!welcomeDone) finishWelcome();
   }
@@ -147,13 +129,53 @@
     galleryPrevious?.setAttribute('aria-label', t('Photo précédente'));
     galleryNext?.setAttribute('aria-label', t('Photo suivante'));
     galleryClose?.setAttribute('aria-label', t('Fermer la photo'));
+    if (galleryRetry) galleryRetry.textContent = t('Réessayer');
+  }
+
+  function setGalleryImageState(next) {
+    if (!galleryDialog || !galleryImage) return;
+    galleryDialog.dataset.imageState = next;
+    galleryImage.hidden = next !== 'ready';
+    if (galleryRetry) {
+      if (next !== 'error' && document.activeElement === galleryRetry) galleryClose?.focus({ preventScroll: true });
+      galleryRetry.hidden = next !== 'error';
+    }
+    if (galleryStatus) galleryStatus.textContent = t(next === 'loading' ? 'Chargement de la photo…'
+      : next === 'error' ? 'La photo n’a pas pu être chargée. Réessayez ou passez à la suivante.' : '');
+  }
+
+  function cancelGalleryRequest() {
+    galleryRequest++;
+    if (galleryPendingImage) {
+      galleryPendingImage.onload = null;
+      galleryPendingImage.onerror = null;
+      galleryPendingImage = null;
+    }
   }
 
   function showGalleryImage(index) {
     if (!activeGalleryLinks.length) return;
+    cancelGalleryRequest();
     galleryIndex = ((index % activeGalleryLinks.length) + activeGalleryLinks.length) % activeGalleryLinks.length;
-    galleryImage.src = activeGalleryLinks[galleryIndex].href;
     refreshGalleryText();
+    setGalleryImageState('loading');
+    const request = galleryRequest;
+    const source = activeGalleryLinks[galleryIndex].href;
+    const image = new Image();
+    galleryPendingImage = image;
+    image.onload = () => {
+      if (request !== galleryRequest) return;
+      galleryPendingImage = null;
+      galleryImage.src = source;
+      setGalleryImageState('ready');
+    };
+    image.onerror = () => {
+      if (request !== galleryRequest) return;
+      galleryPendingImage = null;
+      galleryImage.removeAttribute('src');
+      setGalleryImageState('error');
+    };
+    image.src = source;
   }
 
   function openGallery(link) {
@@ -165,7 +187,7 @@
     showGalleryImage(activeGalleryLinks.indexOf(link));
     try {
       if (!galleryDialog.open) galleryDialog.showModal();
-    } catch (_) { return false; }
+    } catch (_) { cancelGalleryRequest(); return false; }
     interruptNavigation();
     galleryReturnFocus = link;
     document.body.classList.add('gallery-open');
@@ -186,7 +208,6 @@
     if (document.readyState !== 'complete' || !['#film', '#film-details'].includes(location.hash)) return;
     const gallery = document.getElementById('galerie');
     if (!gallery) return;
-    cancelAutomaticScroll();
     cancelPageTransition();
     history.replaceState(history.state, '', '#galerie');
     gallery.scrollIntoView({ behavior: 'instant', block: 'start' });
@@ -238,23 +259,23 @@
       if (activeTransition !== transition) return;
       if (!reduced && !document.hidden) navigate();
       cancelPageTransition();
-    }, 1800);
+    }, 600);
     try {
       const entering = transitionPanels.map((panel, index) => animate(panel,
         [{ transform: 'translateY(100%)' }, { transform: 'translateY(0)' }],
-        { duration: 420, delay: index * 45, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'both' }));
+        { duration: 100, delay: index * 10, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'both' }));
       animate(transitionWord,
         [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }],
-        { duration: 280, delay: 180, easing: 'ease-out', fill: 'both' });
+        { duration: 80, delay: 20, easing: 'ease-out', fill: 'both' });
       await Promise.all(entering.map(animation => animation.finished));
       if (activeTransition !== transition || transition.cancelled || reduced || document.hidden) return;
       navigate();
       const exiting = transitionPanels.map((panel, index) => animate(panel,
         [{ transform: 'translateY(0)' }, { transform: 'translateY(-100%)' }],
-        { duration: 420, delay: (transitionPanels.length - 1 - index) * 45, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'both' }));
+        { duration: 100, delay: (transitionPanels.length - 1 - index) * 10, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'both' }));
       animate(transitionWord,
         [{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-16px)' }],
-        { duration: 220, easing: 'ease-in', fill: 'both' });
+        { duration: 80, easing: 'ease-in', fill: 'both' });
       await Promise.all(exiting.map(animation => animation.finished));
     } catch (_) {
       if (activeTransition === transition && !transition.cancelled && !reduced && !document.hidden) navigate();
@@ -297,23 +318,6 @@
     if (state === 'playing') setState('paused');
   }
 
-  function advanceToPresentation() {
-    // Each frame is cancellable: user input cannot leave a native scroll queued.
-    const start = window.scrollY;
-    const margin = parseFloat(getComputedStyle(presentation).scrollMarginTop) || 0;
-    const padding = parseFloat(getComputedStyle(root).scrollPaddingTop) || navigationOffset;
-    const target = Math.max(0, start + presentation.getBoundingClientRect().top - margin - padding);
-    const startedAt = performance.now();
-    function step(now) {
-      if (reduced || document.hidden) { cancelAutomaticScroll(); return; }
-      const fraction = Math.min(1, (now - startedAt) / 1300);
-      const eased = fraction < 0.5 ? 4 * fraction ** 3 : 1 - (-2 * fraction + 2) ** 3 / 2;
-      window.scrollTo({ top: start + (target - start) * eased, behavior: 'instant' });
-      scrollFrame = fraction < 1 ? requestAnimationFrame(step) : null;
-    }
-    scrollFrame = requestAnimationFrame(step);
-  }
-
   function tick(now) {
     if (state !== 'playing') return;
     elapsed = Math.min(duration, elapsed + Math.max(0, now - lastTime));
@@ -325,10 +329,6 @@
     }
     introFrame = null;
     setState('complete');
-    const shouldAdvance = autoAdvance && !reduced && !document.hidden
-      && imageReady && !imageFailed && inHero() && window.scrollY <= 20;
-    cancelAutomaticScroll();
-    if (shouldAdvance) advanceToPresentation();
   }
 
   function startIntro(restart = false) {
@@ -400,7 +400,6 @@
     reduced = systemMotion.matches || Boolean(connection?.saveData);
     root.dataset.motion = reduced ? 'reduced' : 'full';
     if (reduced) {
-      cancelAutomaticScroll();
       if (!welcomeDone) finishWelcome(false);
       cancelPageTransition();
       stopGalleryAnimation();
@@ -425,12 +424,10 @@
   function syncPageVisibility() {
     if (!welcomeDone) {
       if (!document.hidden) return;
-      cancelAutomaticScroll();
       finishWelcome(false);
     }
     if (document.hidden || !inHero()) {
       if (document.hidden) {
-        cancelAutomaticScroll();
         cancelPageTransition();
         stopGalleryAnimation();
       }
@@ -445,7 +442,6 @@
   }
 
   toggle?.addEventListener('click', () => {
-    cancelAutomaticScroll();
     if (state === 'playing') {
       manuallyPaused = true;
       suspendedByPage = false;
@@ -453,7 +449,6 @@
     } else startIntro(state === 'complete');
   });
   replay?.addEventListener('click', () => {
-    cancelAutomaticScroll();
     startIntro(true);
   });
   galleryPrevious?.addEventListener('click', () => {
@@ -463,6 +458,9 @@
     if (galleryDialog?.open) showGalleryImage(galleryIndex + 1);
   });
   galleryClose?.addEventListener('click', () => galleryDialog?.close?.());
+  galleryRetry?.addEventListener('click', () => {
+    if (galleryDialog?.open) showGalleryImage(galleryIndex);
+  });
   galleryDialog?.addEventListener('keydown', event => {
     if (!galleryDialog.open || event.ctrlKey || event.metaKey || event.altKey) return;
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -477,6 +475,7 @@
   });
   galleryDialog?.addEventListener('close', () => {
     stopGalleryAnimation();
+    cancelGalleryRequest();
     document.body.classList.remove('gallery-open');
     if (galleryReturnFocus?.isConnected) galleryReturnFocus.focus({ preventScroll: true });
     galleryReturnFocus = null;
@@ -493,7 +492,6 @@
   });
   portrait?.addEventListener('error', () => {
     imageFailed = true;
-    cancelAutomaticScroll();
     pauseIntro();
     setState('idle');
   });
@@ -511,15 +509,12 @@
     else cancelPageTransition();
     const link = event.target.closest?.('a[href]');
     if (!link) return;
-    cancelAutomaticScroll();
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
       || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
     if (link.classList.contains('gallery-link')) {
       if (openGallery(link)) event.preventDefault();
       return;
     }
-    if (reduced || document.hidden || !transitionOverlay || transitionPanels.length !== 3 || !transitionWord
-      || !transitionPanels.every(panel => typeof panel.animate === 'function') || typeof transitionWord.animate !== 'function') return;
     let url;
     let target;
     try {
@@ -529,10 +524,15 @@
     } catch (_) { return; }
     if (!target) return;
     event.preventDefault();
+    if (link.classList.contains('skip-link') || reduced || document.hidden || !transitionOverlay
+      || transitionPanels.length !== 3 || !transitionWord
+      || !transitionPanels.every(panel => typeof panel.animate === 'function') || typeof transitionWord.animate !== 'function') {
+      goToAnchor(target, url, event.detail === 0);
+      return;
+    }
     transitionToAnchor(target, url, event.detail === 0);
   });
   window.addEventListener('scroll', () => {
-    if (scrollFrame === null && window.scrollY > 20) cancelAutomaticScroll();
     if (positionFrame === null) positionFrame = requestAnimationFrame(updatePositions);
     syncPageVisibility();
   }, { passive: true });
@@ -545,10 +545,12 @@
   }, true);
   document.addEventListener('visibilitychange', syncPageVisibility);
   document.addEventListener('languagechange', () => {
-    updateCue();
     setState(state);
     refreshGalleryControls();
-    if (galleryDialog?.open) refreshGalleryText();
+    if (galleryDialog?.open) {
+      refreshGalleryText();
+      setGalleryImageState(galleryDialog.dataset.imageState || 'ready');
+    }
     if (activeTransition && transitionWord) transitionWord.textContent = t(activeTransition.labelSource);
     updateNavigationOffset();
     if (positionFrame === null) positionFrame = requestAnimationFrame(updatePositions);
@@ -590,7 +592,6 @@
   syncMotion();
   beginWelcome();
   cancelPageTransition();
-  updateCue();
   refreshGalleryControls();
   setProgress();
   syncPageVisibility();

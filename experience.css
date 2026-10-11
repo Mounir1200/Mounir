@@ -109,3 +109,47 @@ html[data-motion="full"] details[open]>.register-body,html[data-motion="full"] d
 @media(prefers-reduced-motion:reduce){.motion-reveal,.project-art{transform:none!important}.expertise-strip::after{transform:none}.time-orbits i{animation:none!important}}
 html[data-motion="reduced"] .motion-reveal,html[data-motion="reduced"] .project-art{transform:none}
 html[data-motion="reduced"] .expertise-strip::after{transform:none}
+
+/* Read the role at a glance, then open its concrete responsibilities. */
+.experience-timeline{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--brown)}
+.experience-entry{position:relative;padding:38px 0;border-top:1px solid var(--brown)}
+.experience-entry>article{display:grid;grid-template-columns:minmax(170px,.7fr) minmax(0,2.3fr);gap:clamp(32px,5vw,80px)}
+.experience-period{position:relative;padding-left:24px;border-left:1px solid var(--line)}
+.experience-period::before{content:"";position:absolute;top:6px;left:-5px;width:9px;height:9px;background:var(--blue)}
+.experience-period .experience-date{font-size:14px;line-height:1.65}
+.experience-phase{font:italic 400 25px/1.2 var(--editorial);margin-top:14px;max-width:220px}
+.experience-main{min-width:0}
+.experience-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px 24px}
+.experience-heading h3{font-size:clamp(26px,2.5vw,38px);line-height:1.15;letter-spacing:-.04em;font-weight:500;color:var(--blue)}
+.experience-company{font-size:15px;line-height:1.5}
+.experience-overview{font-size:17px;line-height:1.75;max-width:760px;margin:18px 0 12px}
+.experience-stack{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;font-size:14px;line-height:1.7;margin:14px 0 12px;max-width:760px}
+.experience-stack-label{font-weight:500}
+.experience-details>summary{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:52px;padding:12px 0;font-size:14px;font-weight:500;max-width:280px}
+.experience-details>summary:focus-visible{outline:2px solid var(--brown);outline-offset:5px}
+.mission-toggle-icon{position:relative;width:18px;height:18px;flex:none}
+.mission-toggle-icon::before,.mission-toggle-icon::after{content:"";position:absolute;inset:8px 0 auto;height:2px;background:currentColor}
+.mission-toggle-icon::after{transform:rotate(90deg)}
+.experience-details[open] .mission-toggle-icon::after{display:none}
+.experience-details[open] .mission-open,.experience-details:not([open]) .mission-close{display:none}
+.experience-body{padding:23px 0 4px;border-top:1px solid var(--line)}
+.mission-list{margin:0;padding-left:20px;display:grid;gap:18px;font-size:15px;line-height:1.75;max-width:760px}
+.mission-list li{padding-left:5px}
+.mission-list li::marker{color:var(--brown)}
+.mission-tech{display:block;margin-top:6px;font-size:13px;line-height:1.7}
+@media(max-width:1100px){
+ .experience-heading{display:block}.experience-company{margin-top:10px}
+}
+@media(max-width:700px){
+ .experience-entry{padding:28px 0}
+ .experience-entry>article{display:flex;flex-direction:column;gap:18px}
+ .experience-period{padding-left:18px;border-left:0}
+ .experience-period::before{left:0}
+ .experience-phase{display:none}
+ .experience-heading h3{font-size:29px}
+ .experience-company{font-size:14px;margin-top:8px}
+ .experience-overview{font-size:16px;line-height:1.7;margin-top:16px}
+ .experience-details>summary{max-width:none;min-height:52px}
+ .experience-body{padding-top:19px}
+ .mission-list{font-size:15px;gap:14px}
+}

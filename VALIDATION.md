@@ -157,3 +157,52 @@ Limites : contrôles réalisés dans le navigateur intégré, sans appareils phy
 - Bascule de langue pendant la lecture : audio toujours actif, temps de lecture croissant. Carrousel en pause conservé sur 01/16 ; titre et commandes traduits. Bascule dans la visionneuse : même src, même photo et compteur, titre/alt/légende mis à jour.
 - Affichage contrôlé à 1280 × 800 et 320 × 780. Espace réservé sous l’accueil pour les commandes fixes. Barre de galerie corrigée à 320 px (fermeture par icône avec nom accessible), aucune largeur excédentaire. Pas de test sur téléphone physique.
 - Syntaxe JavaScript et diff validés ; aucune erreur console relevée. Build : 78 ressources + .nojekyll, 15,71 Mio.
+
+## Corrections UI/UX — 11 octobre 2026
+
+- Projets placés après l’accueil, avec deux appels à l’action explicites. Les schémas UrdWell et HindSight présentent des cas de tests publics liés à leur source ; ces tests distants n’ont pas été exécutés.
+- Commandes de langue et de musique déplacées dans l’en-tête. Menu compact, navigation au clavier, fermeture par Échap et retour du focus vérifiés, y compris au changement de largeur et après téléchargement du CV.
+- Aucun défilement automatique après dix secondes sur l’accueil. Musique silencieuse et aucune requête MP3 avant activation explicite, même avec une ancienne préférence active ; lecture et pause vérifiées.
+- Galerie : chargement retardé et erreur HTTP simulés, traduction FR/EN de l’erreur, réessai réussi, flèches et restauration du focus vérifiés. Le bouton suivant de l’éventail et les légendes sont dégagés.
+- Captures et interactions contrôlées dans Edge via Playwright à 1440 × 1000, 768 × 1024, 390 × 844 et 320 × 780 ; aucun débordement horizontal ni erreur JavaScript relevés. Mode de mouvement réduit, version anglaise et navigation sans JavaScript vérifiés. Aucun essai sur téléphone physique.
+- Portrait WebP responsive : 43 172 octets à 560 px et 199 924 octets à 1122 px, contre 2 172 811 octets pour le PNG conservé. Chargement de l’image et inclusion des variantes dans le site construit vérifiés.
+- Syntaxe des huit scripts JavaScript, contrôle i18n et git diff --check validés. Build : 81 fichiers liés + .nojekyll, 13,88 Mio. Résultats et captures locaux dans .review/ui-ux-update-2026-10-11/.
+- Aperçu local préparé ; aucun commit ni déploiement effectué pendant cette correction.
+
+### Liens des projets et cas de test repliables — 11 octobre 2026
+
+- Titres UrdWell/HindSight cliquables et liens « Voir le projet sur GitHub » explicites pour les quatre dépôts connus. Ces quatre destinations répondent HTTP 200. Aucun dépôt public ChartMind identifié sur le compte ; aucune URL inventée.
+- Les deux cas de test utilisent details/summary, ouverts au départ et repliables indépendamment. Repli et réouverture par Entrée/Espace, focus conservé et contenu masqué non visible vérifiés dans Edge à 320, 390 et 1440 px, avec libellés FR/EN et sans débordement horizontal.
+- Fonctionnement sans JavaScript vérifié à 390 px, rendu mobile stable contrôlé après réouverture, aucune erreur JavaScript observée. Contrôle i18n et build validés.
+
+### Explications des projets — 11 octobre 2026
+
+- Descriptions reformulées autour du problème, de l’approche et de la raison du choix technique ; jargon de recherche et de mémoire expliqué en termes courants. Descriptions des projets secondaires et académiques également clarifiées.
+- Cas UrdWell : correction fournie par le test, ancienne version inactive conservée et reliée à la nouvelle. Cas HindSight : facture du 2 juillet, tarif corrigé reçu le 3 mais applicable dès le 1er, écart de 1 €. Source des scénarios et limites vérifiées dans les dépôts publics ; aucune suite de tests distante exécutée.
+- Tous les nœuds de texte de la section Projets disposent d’une traduction. Rendu et repli des panneaux contrôlés dans Edge à 320, 390 et 1440 px, en FR/EN ; projets secondaires ouverts et contrôlés, aucun débordement horizontal ni erreur JavaScript. Captures locales dans .review/ui-ux-update-2026-10-11/clear-*.png.
+
+- Complément : Grant Copilot, ADQUA et ChartMind présentent désormais le public, le besoin et le fonctionnement en deux paragraphes simples, sans rubrique technique ni cas de test. Catégories reformulées par usage. Projets académiques inchangés pendant ce complément. Couverture FR/EN, ouverture des trois fiches et absence de débordement vérifiées à 320, 390 et 1440 px ; build et contrôle i18n validés.
+
+- Fin du contrat ESSCA communiquée par Mounir : vendredi 9 octobre 2026. La chronologie affiche « Avril — octobre 2026 » / « April — October 2026 », à la place de « présent » / « present », en conservant la précision au mois utilisée pour les expériences.
+
+### Missions professionnelles — 11 octobre 2026
+
+- Constat : les quatre expériences se limitaient à une phrase technique. Décision : chronologie de la plus récente à la première, poste/entreprise/dates/objectif toujours visibles, volets « Voir mes missions » pour les tâches concrètes et l’environnement technique. La dernière expérience ESSCA est ouverte initialement ; les quatre volets restent indépendants.
+- Les missions ESSCA proviennent des deux CV fournis, lus sans modification ; la fin du contrat d’octobre 2026 conserve la correction de Mounir. Pour Moov Africa, absent de ces CV, seuls les faits déjà présents dans le portfolio sont développés. Aucun résultat chiffré ajouté.
+- Vérifications Edge : ordre des quatre expériences, état initial, ouverture/fermeture Entrée et Espace, maintien du focus, indépendance des volets et masquage du contenu replié. Lecture et ouverture possibles sans JavaScript. Couverture des textes et commandes FR/EN contrôlée.
+- Rendu vérifié à 1440, 768, 390 et 320 px ; aucun débordement horizontal ni erreur JavaScript. Captures missions-initial-*.png et missions-en-*.png dans .review/ui-ux-update-2026-10-11/. Contrôle i18n et build validés.
+
+### Correction du chargement des styles de missions — 11 octobre 2026
+
+- La capture utilisateur montrait une liste numérotée sans les styles de la chronologie et les deux libellés « Voir / Replier » simultanément. Le serveur délivrait bien le nouveau CSS ; les vérifications précédentes utilisaient un navigateur neuf et ne couvraient pas le mélange avec une ancienne ressource en cache.
+- Ajout d’une version de contenu aux URLs experience.css et translations.js. Les fichiers sont désormais demandés sous une nouvelle adresse ; le build accepte et conserve ces paramètres.
+- Régression reproduite avec l’ancien CSS servi avec une heure de cache. Dans le même onglet, navigation vers le HTML corrigé : nouveau CSS effectivement demandé, disparition des numéros natifs et un seul libellé visible par commande. Aperçu réel revérifié à 622 px (proche de la capture), 390 et 1440 px sans débordement. Le cache exact du navigateur intégré n’a pas été inspecté directement.
+- Script de reproduction et captures avant/après conservés dans .review/ui-ux-update-2026-10-11/check-missions-cache.cjs et missions-cache-before.png / missions-fixed-*.png.
+
+### Technologies des expériences — 11 octobre 2026
+
+- Une courte liste de technologies, approches ou sujets reste visible sous chaque résumé lorsque les missions sont repliées. Les outils détaillés sont rattachés aux missions concernées ; les anciens blocs finaux « Environnement technique » sont retirés. Les associations respectent les CV et les faits déjà documentés pour Moov Africa.
+- Vérification Edge en FR/EN à 320, 390, 622, 768 et 1440 px : ordre résumé/technologies/commande, visibilité des technologies après repli, masquage des précisions, ouverture et fermeture au clavier, maintien du focus et absence de débordement horizontal. Aucune erreur JavaScript relevée. Repli sans JavaScript vérifié à 390 px.
+- Captures ouvertes et repliées contrôlées sur mobile et ordinateur ; script check-technology.cjs et captures technology-*.png dans .review/ui-ux-update-2026-10-11/. Versions de contenu CSS/traductions et réponses HTTP vérifiées. Syntaxe JavaScript, contrôle i18n et build validés.
+
+- Ajustement demandé par Mounir : Python et RAG apparaissent en tête des trois listes ESSCA. Les mentions Azure restent dans les missions concernées ; le doublon sous la mission de déploiement du PFE est supprimé. Contrôle FR/EN à 390 et 1440 px : listes visibles après repli, aucun débordement ; contrôle i18n validé. Captures python-rag-*.png dans le même dossier.

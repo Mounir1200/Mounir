@@ -11,13 +11,13 @@
   const preferenceKey = 'mounir-background-music';
   const volume = .18;
   let statusMessage = '';
-  let wanted = true;
+  // Playback requires the sound control to be activated during this visit.
+  let wanted = false;
   let pending = false;
   let request = 0;
   let context;
   let gain;
   let source;
-  try { wanted = localStorage.getItem(preferenceKey) !== 'off'; } catch (_) { /* Storage can be disabled. */ }
   audio.volume = volume;
 
   function render(state) {
@@ -111,14 +111,6 @@
     remember();
   }));
 
-  function unlock(event) {
-    if (!wanted || event.target.closest?.('[data-sound-toggle]')) return;
-    if (event.type === 'keydown' && (event.repeat || event.ctrlKey || event.metaKey || event.altKey || !['Enter', ' '].includes(event.key))) return;
-    if (!isAudible()) start();
-  }
-  document.addEventListener('click', unlock);
-  document.addEventListener('keydown', unlock);
-
   audio.addEventListener('playing', () => {
     if (!wanted) { audio.pause(); return; }
     pending = false;
@@ -137,6 +129,5 @@
     setStatus(statusMessage);
   });
 
-  render(wanted ? 'ready' : 'off');
-  if (wanted) start();
+  render('off');
 })();

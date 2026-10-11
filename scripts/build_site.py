@@ -34,6 +34,11 @@ class SiteReferences(HTMLParser):
                 self.anchors.append(unquote(reference[1:]))
             elif reference:
                 self.references.append(reference)
+        for key in ("srcset", "imagesrcset"):
+            # The portfolio uses local, whitespace-free paths with width descriptors.
+            for candidate in attrs.get(key, "").split(","):
+                if candidate.strip():
+                    self.references.append(candidate.strip().split()[0])
 
 
 def local_asset(reference, parent=ROOT):

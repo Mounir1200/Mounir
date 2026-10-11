@@ -1,6 +1,9 @@
 // Dynamic UI strings consumed by app.js, photography.js and music.js.
 // Load this inventory before the language runtime merges its dictionaries.
 window.portfolioDynamicTranslations = {
+  'Chargement de la photo…': 'Loading the photo…',
+  'La photo n’a pas pu être chargée. Réessayez ou passez à la suivante.': 'The photo could not be loaded. Try again or move to the next one.',
+  'Réessayer': 'Try again',
   'La suite après l’intro': 'Continue after the intro',
   'Explorer le portfolio': 'Explore the portfolio',
   'Photographie de Mounir': 'Photograph of Mounir',
