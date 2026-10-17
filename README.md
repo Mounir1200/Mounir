@@ -14,7 +14,21 @@ GitHub Pages: https://mounir1200.github.io/Mounir/
 
 Every push to `main` runs `.github/workflows/pages.yml`: checking scripts, preparing the `_site` directory, and publishing through GitHub Actions. The workflow can also be triggered manually from Actions. Both the site and repository are public, enabling GitHub Pages with the current account plan.
 
-To check the published files locally, run `python scripts/build_site.py`. The script copies only the page, its linked assets, and font licenses. It checks files and anchors, preserves relative paths compatible with `/Mounir/`, and adds `.nojekyll`. Working documents, source manifests, review screenshots, and earlier video experiments are excluded from the published artifact.
+To check the published files locally, run `python scripts/build_site.py`. The script copies only the page, its linked assets, font licenses, and `sitemap.xml`. It checks files and anchors, preserves relative paths compatible with `/Mounir/`, and adds `.nojekyll`. Working documents, source manifests, review screenshots, and earlier video experiments are excluded from the published artifact.
+
+## Search visibility
+
+The primary portfolio URL is `https://mounir1200.github.io/Mounir/`. The HTML declares this canonical URL, and `sitemap.xml` lists it as the site's single page. Section anchors and language parameters are not separate sitemap entries. French and English currently share this page through the existing JavaScript language switch; separate language indexing is not configured.
+
+After publishing, configure [Google Search Console](https://search.google.com/search-console/):
+
+1. Add a URL-prefix property for `https://mounir1200.github.io/Mounir/`.
+2. Choose HTML-tag verification. The owner's supplied verification tag is already in the `<head>` of `index.html`; publish it before validating ownership, and keep the tag afterward.
+3. Verify ownership, inspect the home page, and request indexing if appropriate.
+4. Submit `https://mounir1200.github.io/Mounir/sitemap.xml` in the Sitemaps report.
+5. Monitor page indexing and search performance for the portfolio owner's name.
+
+Use the primary URL on public profiles and project links. Retiring or redirecting the previous `/PortFolio/` site requires a separate change in its own deployment; this repository does not control it. A `robots.txt` under `/Mounir/` would not control crawling: the crawler reads that file at the host root. See Google's [verification instructions](https://support.google.com/webmasters/answer/9008080?hl=en) and [canonical URL guidance](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls).
 
 ## Art direction
 

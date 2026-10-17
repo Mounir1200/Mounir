@@ -63,7 +63,7 @@ def main():
         raise ValueError(f"Missing anchors: {sorted(missing_anchors)}")
 
     assets = {ROOT / "index.html"}
-    pending = parser.references + list(LICENSES)
+    pending = parser.references + list(LICENSES) + ["sitemap.xml"]
     while pending:
         asset = local_asset(pending.pop())
         if asset is None or asset in assets:

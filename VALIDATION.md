@@ -213,3 +213,10 @@ Limites : contrôles réalisés dans le navigateur intégré, sans appareils phy
 - Le panneau de test replié réservait toute une colonne vide. La présentation répartit désormais titre et explications sur deux colonnes, puis le cas de test occupe la largeur en dessous. Le texte et les liens restent stables lors de l’ouverture/fermeture ; sur mobile, l’ensemble suit une seule colonne.
 - Contrôles Edge FR/EN à 320, 390, 768, 1024, 1440 et 1920 px : panneaux sous leur présentation, largeur complète, diminution réelle de la hauteur après repli, aucun débordement horizontal, ouverture/fermeture Entrée/Espace et focus conservé. Repli sans JavaScript vérifié ; aucune erreur JavaScript relevée.
 - Lecture audio réelle démarrée avec Entrée puis arrêtée avec Espace ; état visuel, aria-pressed, labels FR/EN et CV anglais vérifiés. Captures desktop/mobile inspectées dans .review/ui-ux-update-2026-10-11/ : compact-final-*.png, project-layout-open-1440.png, header-rounded-*.png. Versions des styles/traductions actualisées ; contrôle i18n et build validés.
+
+## Adresse principale et sitemap — 17 octobre 2026
+
+- Adresse retenue : https://mounir1200.github.io/Mounir/. Ajout d’une canonical unique dans le HTML et d’un sitemap XML contenant cette seule page ; ancres et paramètres de langue exclus du sitemap.
+- Inclusion explicite de sitemap.xml dans le build : 82 fichiers + .nojekyll, 13,91 Mio. Canonical et XML analysés dans les sources et dans _site ; URL identique et copies générées identiques aux sources.
+- Contrôle i18n réussi : préférences du navigateur, choix enregistré, changement de langue, CV et stockage bloqué. Aucun changement visuel ni modification du comportement de traduction.
+- Procédure Search Console documentée dans le README. Balise personnelle de validation Google fournie par Mounir et intégrée dans le head ; présence unique et valeur exacte vérifiées dans les sources et le site généré. Ces contrôles ont été effectués avant publication ; aucune demande d’indexation ni modification de /PortFolio/ n’a été réalisée.
