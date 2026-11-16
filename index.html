@@ -11,8 +11,8 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="landing.css">
-  <link rel="stylesheet" href="experience.css?v=955132e840d7">
-  <link rel="stylesheet" href="encore.css?v=bff5a447fec2">
+  <link rel="stylesheet" href="experience.css?v=4f91f25e41db">
+  <link rel="stylesheet" href="encore.css?v=2540c6fa40ed">
   <link rel="stylesheet" href="transitions.css">
   <link rel="stylesheet" href="gallery.css">
   <link rel="stylesheet" href="narrative.css">
@@ -24,7 +24,7 @@
   <link rel="preload" href="assets/portrait-cobalt-peche-1122.webp" as="image" imagesrcset="assets/portrait-cobalt-peche-560.webp 560w, assets/portrait-cobalt-peche-1122.webp 1122w" imagesizes="(max-width: 700px) 80vw, 480px">
   <link rel="preload" href="assets/fonts/InstrumentSerif-Italic.ttf" as="font" type="font/ttf" crossorigin>
   <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData) document.documentElement.dataset.welcome = 'pending';</script>
-  <script src="translations.js?v=fc25fb2156d4" defer></script>
+  <script src="translations.js?v=3b673972e64b" defer></script>
   <script src="dynamic-translations.js" defer></script>
   <script src="i18n.js" defer></script>
   <script src="app.js" defer></script>
@@ -83,10 +83,31 @@
     </section>
 
     <section class="projects-section section-shell" id="projets" aria-labelledby="projects-title">
-      <div class="section-heading motion-reveal"><div><p class="chapter-label">01 — Projets sélectionnés</p><h2 id="projects-title">Des idées.<br><span class="outline-text">Des systèmes.</span></h2></div><div class="section-aside"><p>Comment aider une IA à se souvenir ? Et comment comprendre une décision qui semble mauvaise après coup ? Deux projets pour explorer ces questions.</p><span class="mono">PROJETS PERSONNELS & OPEN SOURCE</span></div></div>
+      <div class="section-heading motion-reveal"><div><p class="chapter-label">01 — Projets sélectionnés</p><h2 id="projects-title">Des idées.<br><span class="outline-text">Des systèmes.</span></h2></div><div class="section-aside"><p>Comment relier des lycéens à leurs aînés ? Comment aider une IA à se souvenir ? Comment comprendre une décision qui semble mauvaise après coup ? Trois projets, dont un bénévole.</p><span class="mono">BÉNÉVOLAT, PROJETS PERSONNELS & OPEN SOURCE</span></div></div>
+      <article class="featured-project volunteer-project motion-reveal">
+        <div class="project-copy">
+          <div class="project-number">[ 01 ] <span>Projet bénévole · Tech Lead</span></div>
+          <div class="project-heading"><h3><a href="https://lsnb-alumni-web.onrender.com/" target="_blank" rel="noopener">Alumni LSNB</a></h3>
+          <p>Partir loin.<br>Rester reliés.</p></div>
+          <div class="project-explanation">
+          <div class="project-description"><p><strong>Le besoin</strong>Relier les élèves du Lycée Scientifique National de Bobo-Dioulasso, au Burkina Faso, aux anciens partis étudier et travailler ailleurs : découvrir leurs parcours, puis demander conseil à un mentor.</p><p><strong>Mon rôle</strong>Bénévole et à distance, je dirige une équipe de cinq développeurs : j’anime les réunions, j’arbitre les fonctionnalités, je décide de l’architecture et je développe. La plateforme de mentorat est passée en production en dix semaines.</p></div>
+          <p class="project-decision"><strong>Choix technique — et pourquoi</strong><span>La plateforme accueille des lycéens : chaque table est protégée par des règles d’accès dans la base, les inscriptions sont validées et les abus peuvent être bloqués et signalés. Chaque semaine, l’IA rédige des portraits d’alumni vérifiés sur leurs profils. Coût : moins de 2&nbsp;€ par an, avec deux appels par semaine, un plafond de tokens et aucun appel déclenché par les visites.</span></p>
+          </div>
+          <a class="project-link" href="https://lsnb-alumni-web.onrender.com/" target="_blank" rel="noopener">Voir la plateforme en ligne <span aria-hidden="true">↗</span></a>
+        </div>
+        <details class="project-art evidence-art volunteer-evidence" open>
+          <summary class="evidence-toggle"><span class="evidence-caption">Le projet en chiffres</span><span class="evidence-toggle-action"><span class="evidence-expand">Déplier</span><span class="evidence-collapse">Replier</span><span class="evidence-toggle-icon" aria-hidden="true"></span></span></summary>
+          <div class="evidence-body">
+          <ol class="evidence-steps"><li><strong>Mener l’équipe</strong><p>Cinq développeurs bénévoles, à distance : animer les réunions, arbitrer les fonctionnalités, décider de l’architecture et des migrations.</p></li><li><strong>Protéger les lycéens</strong><p>Validation des inscriptions, blocage et signalement, limites de débit, correctifs issus des revues de sécurité et 61 fichiers de tests sur l’API.</p></li><li><strong>Préparer la reprise</strong><p>Deux scénarios chiffrés pour l’administration du lycée, avec un hébergement au Burkina Faso : de 410 à 760&nbsp;€ par an.</p></li></ol>
+          <dl class="impact-figures"><div><dt>Jusqu’à la production</dt><dd>10&nbsp;semaines</dd></div><div><dt>Pull requests · migrations</dt><dd>30 · 34</dd></div><div><dt>Tables protégées par RLS</dt><dd>26 / 26</dd></div><div><dt>Coût annuel de l’IA</dt><dd>&lt;&nbsp;2&nbsp;€</dd></div></dl>
+          <p class="evidence-note" data-i18n-ignore>React 19 · TypeScript · Supabase · Fastify · OpenAI · Render · GitHub Actions</p>
+          <a class="evidence-source" href="https://github.com/Mounir1200/lsnb-alumni" target="_blank" rel="noopener">Voir le code sur GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </details>
+      </article>
       <article class="featured-project memory-project motion-reveal">
         <div class="project-copy">
-          <div class="project-number">[ 01 ] <span>Projet personnel · Architecture & développement</span></div>
+          <div class="project-number">[ 02 ] <span>Projet personnel · Architecture & développement</span></div>
           <div class="project-heading"><h3><a href="https://github.com/Mounir1200/urdwell-mcp" target="_blank" rel="noopener">UrdWell</a></h3>
           <p>Une mémoire qui survit<br>à la conversation.</p></div>
           <div class="project-explanation">
@@ -109,7 +130,7 @@
       </article>
       <article class="featured-project hindsight-project motion-reveal">
         <div class="project-copy">
-          <div class="project-number">[ 02 ] <span>Projet personnel · Architecture & développement</span></div>
+          <div class="project-number">[ 03 ] <span>Projet personnel · Architecture & développement</span></div>
           <div class="project-heading"><h3><a href="https://github.com/Mounir1200/HindSight" target="_blank" rel="noopener">HindSight</a></h3>
           <p>Comprendre une décision<br>avant de la juger.</p></div>
           <div class="project-explanation">
@@ -130,10 +151,10 @@
         </details>
       </article>
       <div class="project-register" id="autres-projets"><p class="register-title">D'autres façons de rendre l'IA utile.</p>
-        <details><summary><span>03</span><h3>Grant Copilot</h3><span class="register-category">Recherche de financements</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Pour une petite association, trouver une subvention adaptée peut prendre beaucoup de temps. Grant Copilot aide à repérer les financements fédéraux américains qui correspondent à son profil et à préparer une candidature.</p><p>Depuis Slack, l’association retrouve des offres de Grants.gov filtrées selon ses critères. L’IA explique pourquoi elles peuvent convenir et prépare un premier brouillon de dossier. L’équipe garde la main pour le vérifier, le compléter et l’envoyer.</p><a class="text-link" href="https://github.com/Mounir1200/Grant-Copilot" target="_blank" rel="noopener">Voir le projet sur GitHub <span aria-hidden="true">↗</span></a></div></details>
-        <details><summary><span>04</span><h3>ADQUA</h3><span class="register-category">Recherche d’emploi</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Quand on cherche un emploi, il est difficile de repérer les annonces qui correspondent vraiment à ses compétences parmi toutes celles disponibles. ADQUA aide à faire ce tri et à suivre ses candidatures.</p><p>On fournit son CV en PDF et une page carrière d’entreprise. L’outil récupère les offres et les classe selon leur proximité avec le profil, même lorsque le CV et l’annonce n’utilisent pas exactement les mêmes mots.</p><a class="text-link" href="https://github.com/Mounir1200/Ad-qua" target="_blank" rel="noopener">Voir le projet sur GitHub <span aria-hidden="true">↗</span></a></div></details>
-        <details><summary><span>05</span><h3>ChartMind</h3><span class="register-category">Analyse de graphiques</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Un graphique financier rassemble des courbes et des indicateurs qui ne sont pas toujours faciles à interpréter. ChartMind cherche à aider les personnes qui analysent un marché à mieux comprendre ce qu’elles observent.</p><p>Le projet prend la forme d’une application web et mobile qui utilise l’IA pour accompagner la lecture des graphiques. L’objectif est de rendre leur analyse plus accessible et d’aider à comprendre les mouvements de prix et les indicateurs affichés.</p></div></details>
-        <details><summary><span>06</span><h3>Projets académiques</h3><span class="register-category">Vision · UX · Accessibilité</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body academic-projects"><p><strong>Visages synthétiques.</strong> Comment distinguer un vrai visage d’une image modifiée ? Préparation des images, entraînement d’un modèle et évaluation de ses prédictions.</p><p><strong>Activ’ESAIP.</strong> Comment faciliter l’estimation du coût d’un réseau de chauffage urbain ? Conception du parcours permettant de saisir les données nécessaires au calcul.</p><p><strong>Design4Green.</strong> Comment repérer les obstacles qui rendent un site difficile à utiliser pour les personnes en situation de handicap ? Conception d’une expérience web écoresponsable pour évaluer les sites selon le référentiel d’accessibilité RGAA.</p></div></details>
+        <details><summary><span>04</span><h3>Grant Copilot</h3><span class="register-category">Recherche de financements</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Pour une petite association, trouver une subvention adaptée peut prendre beaucoup de temps. Grant Copilot aide à repérer les financements fédéraux américains qui correspondent à son profil et à préparer une candidature.</p><p>Depuis Slack, l’association retrouve des offres de Grants.gov filtrées selon ses critères. L’IA explique pourquoi elles peuvent convenir et prépare un premier brouillon de dossier. L’équipe garde la main pour le vérifier, le compléter et l’envoyer.</p><a class="text-link" href="https://github.com/Mounir1200/Grant-Copilot" target="_blank" rel="noopener">Voir le projet sur GitHub <span aria-hidden="true">↗</span></a></div></details>
+        <details><summary><span>05</span><h3>ADQUA</h3><span class="register-category">Recherche d’emploi</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Quand on cherche un emploi, il est difficile de repérer les annonces qui correspondent vraiment à ses compétences parmi toutes celles disponibles. ADQUA aide à faire ce tri et à suivre ses candidatures.</p><p>On fournit son CV en PDF et une page carrière d’entreprise. L’outil récupère les offres et les classe selon leur proximité avec le profil, même lorsque le CV et l’annonce n’utilisent pas exactement les mêmes mots.</p><a class="text-link" href="https://github.com/Mounir1200/Ad-qua" target="_blank" rel="noopener">Voir le projet sur GitHub <span aria-hidden="true">↗</span></a></div></details>
+        <details><summary><span>06</span><h3>ChartMind</h3><span class="register-category">Analyse de graphiques</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body"><p>Un graphique financier rassemble des courbes et des indicateurs qui ne sont pas toujours faciles à interpréter. ChartMind cherche à aider les personnes qui analysent un marché à mieux comprendre ce qu’elles observent.</p><p>Le projet prend la forme d’une application web et mobile qui utilise l’IA pour accompagner la lecture des graphiques. L’objectif est de rendre leur analyse plus accessible et d’aider à comprendre les mouvements de prix et les indicateurs affichés.</p></div></details>
+        <details><summary><span>07</span><h3>Projets académiques</h3><span class="register-category">Vision · UX · Accessibilité</span><span class="detail-symbol" aria-hidden="true">+</span></summary><div class="register-body academic-projects"><p><strong>Visages synthétiques.</strong> Comment distinguer un vrai visage d’une image modifiée ? Préparation des images, entraînement d’un modèle et évaluation de ses prédictions.</p><p><strong>Activ’ESAIP.</strong> Comment faciliter l’estimation du coût d’un réseau de chauffage urbain ? Conception du parcours permettant de saisir les données nécessaires au calcul.</p><p><strong>Design4Green.</strong> Comment repérer les obstacles qui rendent un site difficile à utiliser pour les personnes en situation de handicap ? Conception d’une expérience web écoresponsable pour évaluer les sites selon le référentiel d’accessibilité RGAA.</p></div></details>
       </div>
     </section>
 

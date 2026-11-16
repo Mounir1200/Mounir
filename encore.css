@@ -35,7 +35,7 @@ html[data-motion="full"] .project-link span{transition:transform .35s cubic-bezi
 html[data-motion="full"] .project-link:is(:hover,:focus-visible) span{transform:rotate(45deg)}
 html[data-motion="full"] #portrait .portrait-photo{transform:translateY(calc((.5 - var(--section-progress,.5))*32px));transition:transform .35s ease-out}
 html[data-motion="full"] #portrait .portrait-copy h2 em::after{transform:scaleX(calc(.25 + var(--section-progress,.5)*.75));transition:transform .35s ease-out}
-@media(min-width:1101px){.featured-project{padding-top:50px;padding-bottom:110px}.hindsight-project{padding-top:76px}.featured-project .project-copy{padding-top:30px}.featured-project .project-copy h3{font-size:clamp(64px,6.3vw,98px)}}
+@media(min-width:1101px){.featured-project{padding-top:50px;padding-bottom:110px}.featured-project+.featured-project{padding-top:76px}.featured-project .project-copy{padding-top:30px}.featured-project .project-copy h3{font-size:clamp(64px,6.3vw,98px)}}
 @media(max-width:900px){
  .kinetic-band{padding:18px 0 22px}.kinetic-band-track>span{font-size:clamp(58px,12vw,108px)}.kinetic-band::after{bottom:6px}
  html[data-motion="full"] .featured-project .project-art{transform:none!important}
@@ -76,10 +76,17 @@ html[data-motion="full"] #portrait .portrait-copy h2 em::after{transform:scaleX(
 .memory-evidence .evidence-outcome{grid-column:2;grid-row:1}
 .memory-evidence .evidence-context:not(:first-child){grid-column:2;grid-row:2}
 .memory-evidence .evidence-note{grid-column:2;grid-row:3}
-.hindsight-evidence .evidence-steps{grid-column:1;grid-row:1/span 3;align-content:start}
-.hindsight-evidence .billing-proof{grid-column:2;grid-row:1}
+.hindsight-evidence .evidence-steps,.volunteer-evidence .evidence-steps{grid-column:1;grid-row:1/span 3;align-content:start}
+.hindsight-evidence .billing-proof,.volunteer-evidence .impact-figures{grid-column:2;grid-row:1}
 .hindsight-evidence .evidence-context{grid-column:2;grid-row:2}
 .hindsight-evidence .evidence-note{grid-column:2;grid-row:3}
+.volunteer-evidence .evidence-note{grid-column:2;grid-row:2;align-self:end}
+/* The volunteer project is the one featured project printed in reverse: brown paper, peach ink (5.54:1). */
+.featured-project .volunteer-evidence{background:var(--brown);color:var(--peach);border-color:var(--brown)}
+.volunteer-evidence .evidence-body,.volunteer-evidence .evidence-source{border-top-color:var(--peach)}
+.volunteer-evidence .impact-figures>div{border-bottom-color:#f2ad7840}
+.volunteer-evidence .evidence-toggle:hover{background:#f2ad7814}
+.volunteer-evidence .evidence-toggle:focus-visible{outline-color:var(--peach)}
 .evidence-body .evidence-source{grid-column:1/-1;grid-row:4}
 .project-copy h3 a{color:inherit;text-decoration:none}
 .project-copy h3 a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em}
@@ -97,10 +104,10 @@ html[data-motion="full"] #portrait .portrait-copy h2 em::after{transform:scaleX(
 .evidence-steps strong{display:block;font-weight:600;margin-bottom:6px}
 .evidence-source{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:auto;padding-top:16px;border-top:1px solid var(--brown);min-height:44px;font-size:13px}
 .evidence-source span{font-size:22px}
-.billing-proof{display:grid;gap:14px}
-.billing-proof>div{display:flex;align-items:baseline;justify-content:space-between;gap:15px;border-bottom:1px solid #6c2b1133;padding-bottom:14px}
-.billing-proof dt{font-size:14px}
-.billing-proof dd{font-size:clamp(26px,3vw,44px);font-weight:500;letter-spacing:-.05em;white-space:nowrap}
+.billing-proof,.impact-figures{display:grid;gap:14px}
+.billing-proof>div,.impact-figures>div{display:flex;align-items:baseline;justify-content:space-between;gap:15px;border-bottom:1px solid #6c2b1133;padding-bottom:14px}
+.billing-proof dt,.impact-figures dt{font-size:14px}
+.billing-proof dd,.impact-figures dd{font-size:clamp(26px,3vw,44px);font-weight:500;letter-spacing:-.05em;white-space:nowrap}
 .featured-project .project-number{white-space:nowrap}
 .featured-project .project-number span{line-height:1.5;white-space:normal}
 .projects-section .section-aside{font-size:16px;max-width:390px}
@@ -126,6 +133,7 @@ html[data-motion="full"] #portrait .portrait-copy h2 em::after{transform:scaleX(
   .evidence-caption{font-size:11px}
   .evidence-outcome{font-size:26px}
   .billing-proof dd{font-size:34px}
+  .impact-figures dd{font-size:28px}
 }
 @media(max-width:390px){.project-heading>p{font-size:30px}}
 html[data-motion="reduced"] .kinetic-band-track{animation:none;transform:none;flex-wrap:wrap;width:100%;padding:0 var(--gutter)}

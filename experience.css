@@ -13,8 +13,7 @@
 .section-heading h2{font-size:clamp(52px,7.1vw,112px)}
 .section-aside{max-width:260px;line-height:1.6}
 .featured-project{position:relative;gap:clamp(35px,6vw,100px);padding:36px 0 84px;perspective:1400px}
-.hindsight-project{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);padding-top:56px;border-top:1px solid var(--brown)}
-.hindsight-project .project-art{order:2}.hindsight-project .project-copy{order:1}
+.featured-project+.featured-project{padding-top:56px;border-top:1px solid var(--brown)}
 .project-art{width:100%;max-width:100%;aspect-ratio:1.16;min-height:330px;border:1px solid var(--brown);transform-origin:center;backface-visibility:hidden}
 .art-meta{inset:0 0 auto;padding:14px 18px;min-height:48px;border-bottom:1px solid var(--brown);font-size:10px;gap:10px;line-height:1.4}
 .art-footer{inset:auto 0 0;background:var(--peach);color:var(--brown);padding:14px 18px;min-height:62px;border-top:1px solid var(--brown);align-items:center;gap:14px}
