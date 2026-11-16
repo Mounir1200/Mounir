@@ -64,7 +64,7 @@ Switching languages does not reload the page: content, titles, alternative text,
 
 The CV links download the file for the active language: `assets/Mounir-DABIRE-CV.pdf` for French and `assets/Mounir-DABIRE-CV-EN.pdf` for English. These are the PDFs supplied on October 3, 2026, copied without modification. The build includes both variants declared in `data-cv-fr` / `data-cv-en`. Without JavaScript, the French content and French CV download remain available.
 
-Check language selection and persistence with `node scripts/check_i18n.cjs`, which also runs in GitHub Actions.
+Check language selection and persistence with `node scripts/check_i18n.cjs`, which also runs in GitHub Actions. `node scripts/check_translations.cjs` reads `index.html` the way `i18n.js` does and fails when a French text or translatable attribute has no entry in `translations.js` or `dynamic-translations.js`; it also runs in GitHub Actions.
 
 ## Motion
 

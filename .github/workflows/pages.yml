@@ -30,6 +30,8 @@ jobs:
           node --check i18n.js
       - name: Check language selection and CV routing
         run: node scripts/check_i18n.cjs
+      - name: Check every French string has an English translation
+        run: node scripts/check_translations.cjs
       - name: Package linked website files
         run: python3 scripts/build_site.py
       - name: Upload website artifact
