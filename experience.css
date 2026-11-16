@@ -1,14 +1,23 @@
 /* Editorial rhythm below the opening. Three inks; all content remains visible. */
-#presentation{position:relative;padding-top:clamp(72px,9vw,140px);padding-bottom:52px;border-top:2px solid var(--brown)}
+#presentation{position:relative;padding-top:clamp(64px,7vw,104px);padding-bottom:52px;border-top:2px solid var(--brown)}
 #presentation .section-index{justify-content:space-between;max-width:440px;border-bottom:1px solid var(--brown);padding-bottom:15px}
 #presentation .crosshair{font-size:42px;font-weight:400}
 #intro-title{max-width:1150px;font-size:clamp(38px,6.7vw,104px);line-height:1.04;margin-top:46px;margin-bottom:44px}
 #intro-title em{display:inline-block;padding-right:.06em}
-.intro-bottom{padding-left:clamp(0px,9vw,150px)}
 .intro-bottom p{max-width:600px}
 .expertise-strip{margin-top:72px;padding:26px 0;border-top:2px solid var(--brown);border-bottom:1px solid var(--brown);font-size:14px;position:relative}
+/* Wide screens: the explanation sits beside the headline, never below an empty half-page. */
+@media(min-width:1101px){
+ #presentation{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:clamp(48px,6vw,96px);align-items:start}
+ #presentation .section-index{grid-column:1/-1;max-width:none;justify-content:flex-start}
+ #intro-title{grid-column:1;margin:44px 0 0}
+ #presentation .intro-bottom{grid-column:2;grid-row:2;display:block;margin-top:52px}
+ #presentation .intro-bottom p{max-width:none}
+ #presentation .intro-bottom .text-link{margin-top:20px}
+ #presentation .expertise-strip{grid-column:1/-1;margin-top:56px}
+}
 .expertise-strip::after{content:"";position:absolute;bottom:-1px;left:0;height:3px;width:100%;background:var(--blue);transform-origin:left;transform:scaleX(clamp(0,var(--scroll-progress,0),1));pointer-events:none}
-.projects-section{padding-top:90px;padding-bottom:115px}
+.projects-section{padding-top:90px;padding-bottom:80px}
 .section-heading{padding-bottom:42px;border-bottom:1px solid var(--brown);gap:48px}
 .section-heading h2{font-size:clamp(52px,7.1vw,112px)}
 .section-aside{max-width:260px;line-height:1.6}
@@ -50,7 +59,7 @@
 .portrait-copy h2{font-size:clamp(38px,4.5vw,70px);line-height:1.04;margin-top:34px;margin-bottom:33px}
 .portrait-copy h2 em{display:inline-block;font-size:1.36em;line-height:1.05}
 .portrait-copy .text-link{margin-top:22px}
-.experience-section{padding-top:clamp(75px,9vw,138px);padding-bottom:100px}
+.experience-section{padding-top:clamp(64px,6.5vw,104px);padding-bottom:100px}
 .experience-head{gap:55px;margin-bottom:64px}
 .experience-head h2{font-size:clamp(38px,4.7vw,73px)}
 .experience-row{position:relative;padding:32px 0 32px 24px;border-top:1px solid var(--brown)}

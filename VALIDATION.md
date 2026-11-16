@@ -231,3 +231,10 @@ Limites : contrôles réalisés dans le navigateur intégré, sans appareils phy
 - Qualité du script de contrôle : crapper au plus 5 (seuil 10), mutator 28 mutants tués sur 28, dryer sans doublon (dryer ne lit pas le JavaScript ; seul le Python du dépôt est comparé).
 - Build : 86 fichiers + .nojekyll, 14,11 Mio ; ancres et ressources vérifiées par `scripts/build_site.py`.
 - Limites : captures et rendu vérifiés en local, sans appareil physique ni Lighthouse. Le site publié n’est pas encore mis à jour : aucun push n’a été effectué.
+
+## Espaces vides sur grand écran — 16 novembre 2026
+
+- Constat sur le rendu à 1440 et 1920 px : plusieurs titres occupaient seuls la moitié gauche, avec un grand vide à droite (« Apprendre. Construire. », en-tête des Hobbies), et l’écart entre Projets et Expériences atteignait environ 245 px.
+- Corrections à partir de 1101 px : le texte d’accompagnement se place à côté du titre (grille 7/5 pour la présentation, colonne de 300 à 400 px pour les Hobbies) ; le bandeau d’expertises reste pleine largeur dessous. Le titre « Lecture » reste collé à côté des citations pendant le défilement. Marges ramenées à une échelle régulière (Projets → Expériences ≈ 174 px, galerie : colonnes à 4,5vw au plus 72 px). Tablette et mobile inchangés.
+- Contrôle de mise en page dans Edge (Playwright), FR et EN, à 1101, 1280, 1440 et 1920 px : il échouait sur les 16 cas avant correction (rien à côté des titres) et passe sur les 16 après, sans chevauchement entre titre et texte. Titre des Hobbies sur 2 lignes à toutes ces largeurs.
+- Hauteurs à 1440 px : présentation 809 → 724 px, Hobbies 4834 → 4712 px, Expériences 2277 → 2241 px ; page entière 19 196 → 18 927 px. Aucun débordement horizontal à 390 et 768 px, aucune erreur de console. Contrôles i18n, traductions et build réussis.

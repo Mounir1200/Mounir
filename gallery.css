@@ -6,9 +6,9 @@
 .gallery-heading h2 em{font:italic 400 1.18em/1 var(--editorial);letter-spacing:-.03em}
 .gallery-heading>p{font-size:16px;line-height:1.7;max-width:330px}
 .gallery-heading>p>span{display:block;font-size:11px;margin-top:25px}
-.gallery-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start;gap:70px clamp(30px,7vw,110px);padding:72px 18px 50px}
+.gallery-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start;gap:56px clamp(30px,4.5vw,72px);padding:56px 18px 40px}
 .gallery-item{margin:0;min-width:0}
-.gallery-water{padding-top:110px}.gallery-studio{padding-top:70px}
+.gallery-water{padding-top:88px}.gallery-studio{padding-top:56px}
 .gallery-link{display:block;padding:8px;background:var(--peach);transform-origin:50% 85%;transform:rotate(-1.5deg)}
 .gallery-water .gallery-link{transform:rotate(2deg)}
 .gallery-everyday .gallery-link{transform:rotate(1deg)}
