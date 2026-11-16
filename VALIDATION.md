@@ -220,3 +220,14 @@ Limites : contrôles réalisés dans le navigateur intégré, sans appareils phy
 - Inclusion explicite de sitemap.xml dans le build : 82 fichiers + .nojekyll, 13,91 Mio. Canonical et XML analysés dans les sources et dans _site ; URL identique et copies générées identiques aux sources.
 - Contrôle i18n réussi : préférences du navigateur, choix enregistré, changement de langue, CV et stockage bloqué. Aucun changement visuel ni modification du comportement de traduction.
 - Procédure Search Console documentée dans le README. Balise personnelle de validation Google fournie par Mounir et intégrée dans le head ; présence unique et valeur exacte vérifiées dans les sources et le site généré. Ces contrôles ont été effectués avant publication ; aucune demande d’indexation ni modification de /PortFolio/ n’a été réalisée.
+
+## Nouveaux CV, Alumni LSNB et autres portfolios — 16 novembre 2026
+
+- CV : `assets/Mounir-DABIRE-CV.pdf` et `assets/Mounir-DABIRE-CV-EN.pdf` remplacés par les PDF fournis le 16 novembre 2026, copiés sans modification ; empreintes SHA-256 identiques aux sources (FR 7790b180…, EN 77c78f6a…). Chemins inchangés : tous les liens CV et le routage FR/EN restent valides.
+- Projets : Alumni LSNB ouvre la section en [ 01 ] comme projet bénévole (Tech Lead), avant UrdWell [ 02 ] et HindSight [ 03 ] ; projets secondaires renumérotés de 04 à 07. Chiffres repris du CV uniquement.
+- Hobbies : nouvelle rubrique « 03 / Explorer » avec Planète Mounir et Mounir Town ; Lecture, Musique et Musculation passent de 04 à 06. Les deux sites et la plateforme LSNB répondaient en HTTP 200 le jour de l’ajout.
+- Traductions : nouveau contrôle `scripts/check_translations.cjs`, exécuté en CI avec ses 9 tests unitaires. Il a échoué en listant les 25 chaînes LSNB puis les 19 chaînes des hobbies, et passe une fois les traductions ajoutées. Un retrait volontaire de la clé « Le problème » le fait échouer.
+- Rendu : FR et EN vérifiés avec Playwright et Edge à 320, 390, 768 et 1440 px, mouvement réduit : aucun débordement horizontal, aucune erreur de console. Espacement des projets mis en avant inchangé (28 px sur mobile, 50/76 px sur bureau), séparateur au-dessus des projets 2 et 3 seulement. Focus clavier visible sur les cartes (contour de 2 px) ; au survol, seul le titre de la carte est souligné. Nom accessible des cartes : titre et action.
+- Qualité du script de contrôle : crapper au plus 5 (seuil 10), mutator 28 mutants tués sur 28, dryer sans doublon (dryer ne lit pas le JavaScript ; seul le Python du dépôt est comparé).
+- Build : 86 fichiers + .nojekyll, 14,11 Mio ; ancres et ressources vérifiées par `scripts/build_site.py`.
+- Limites : captures et rendu vérifiés en local, sans appareil physique ni Lighthouse. Le site publié n’est pas encore mis à jour : aucun push n’a été effectué.
