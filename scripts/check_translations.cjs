@@ -18,10 +18,14 @@ const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' 
 
 const normalize = value => value.replace(/\s+/g, ' ').trim();
 const hasLetter = value => /\p{L}/u.test(value);
-const decode = value => value.replace(/&(#x[\da-f]+|#\d+|\w+);/gi, (match, entity) => {
-  if (entity[0] !== '#') return ENTITIES[entity] ?? match;
-  return String.fromCodePoint(entity[1].toLowerCase() === 'x' ? parseInt(entity.slice(2), 16) : Number(entity.slice(1)));
-});
+const isInsideIgnored = stack => stack.at(-1)?.ignored === true;
+
+function decodeEntity(match, entity) {
+  if (entity[0] !== '#') return ENTITIES[entity] || match;
+  const isHex = entity[1].toLowerCase() === 'x';
+  return String.fromCodePoint(isHex ? parseInt(entity.slice(2), 16) : Number(entity.slice(1)));
+}
+const decode = value => value.replace(/&(#x[\da-f]+|#\d+|\w+);/gi, decodeEntity);
 
 function parseAttributes(source) {
   const attributes = new Map();
@@ -31,31 +35,41 @@ function parseAttributes(source) {
   return attributes;
 }
 
+function translatableAttributes(name, attributes) {
+  const values = TRANSLATED_ATTRIBUTES.filter(key => attributes.has(key)).map(key => attributes.get(key));
+  if (name === 'meta' && attributes.get('name') === 'description') values.push(attributes.get('content'));
+  return values;
+}
+
+// Returns the attribute strings of the opened element that i18n.js translates.
+function openElement(stack, name, attributes) {
+  const ignored = isInsideIgnored(stack) || SKIPPED_ELEMENTS.has(name) || attributes.has('data-i18n-ignore');
+  if (!VOID_ELEMENTS.has(name)) stack.push({ name, ignored });
+  return ignored ? [] : translatableAttributes(name, attributes);
+}
+
+function closeElement(stack, name) {
+  const opened = stack.map(entry => entry.name).lastIndexOf(name);
+  if (opened >= 0) stack.length = opened;
+}
+
 function translatableStrings(html) {
   const strings = [];
   const stack = [];
-  const isIgnored = () => stack.length > 0 && stack.at(-1).ignored;
-  const collect = value => { const text = normalize(value); if (hasLetter(text)) strings.push(text); };
   let cursor = 0;
   for (const match of html.matchAll(TOKEN)) {
-    if (!isIgnored()) collect(decode(html.slice(cursor, match.index)));
+    if (!isInsideIgnored(stack)) strings.push(decode(html.slice(cursor, match.index)));
     cursor = match.index + match[0].length;
-    const [, closing, rawName, rawAttributes = ''] = match;
-    if (!rawName) continue;
-    const name = rawName.toLowerCase();
-    if (closing) {
-      const opened = stack.map(entry => entry.name).lastIndexOf(name);
-      if (opened >= 0) stack.length = opened;
-      continue;
-    }
-    const attributes = parseAttributes(rawAttributes);
-    const ignored = isIgnored() || SKIPPED_ELEMENTS.has(name) || attributes.has('data-i18n-ignore');
-    if (!ignored) TRANSLATED_ATTRIBUTES.filter(key => attributes.has(key)).forEach(key => collect(attributes.get(key)));
-    if (name === 'meta' && attributes.get('name') === 'description') collect(attributes.get('content'));
-    if (!VOID_ELEMENTS.has(name)) stack.push({ name, ignored });
+    const [, closing, name, rawAttributes] = match;
+    if (!name) continue;
+    if (closing) closeElement(stack, name.toLowerCase());
+    else strings.push(...openElement(stack, name.toLowerCase(), parseAttributes(rawAttributes)));
   }
-  return strings;
+  return strings.map(normalize).filter(hasLetter);
 }
+
+const missingTranslations = (html, translations) =>
+  [...new Set(translatableStrings(html))].filter(text => !Object.hasOwn(translations, text));
 
 function loadTranslations() {
   const context = { window: {} };
@@ -64,7 +78,11 @@ function loadTranslations() {
   return { ...context.window.portfolioTranslations, ...context.window.portfolioDynamicTranslations };
 }
 
-const translations = loadTranslations();
-const missing = [...new Set(translatableStrings(read('index.html')))].filter(text => !Object.hasOwn(translations, text));
-assert.deepEqual(missing, [], `French strings without an English translation in translations.js:\n${missing.join('\n')}`);
-console.log('Translation checks passed: every French string in index.html has an English translation.');
+function main() {
+  const missing = missingTranslations(read('index.html'), loadTranslations());
+  assert.deepEqual(missing, [], `French strings without an English translation in translations.js:\n${missing.join('\n')}`);
+  console.log('Translation checks passed: every French string in index.html has an English translation.');
+}
+
+if (require.main === module) main();
+module.exports = { translatableStrings, missingTranslations };
