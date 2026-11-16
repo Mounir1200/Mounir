@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="transitions.css">
   <link rel="stylesheet" href="gallery.css">
   <link rel="stylesheet" href="narrative.css">
-  <link rel="stylesheet" href="life.css">
+  <link rel="stylesheet" href="life.css?v=1d2021c55428">
   <link rel="stylesheet" href="photography.css">
   <link rel="stylesheet" href="music.css?v=b8f0318c613a">
   <link rel="stylesheet" href="language.css">
@@ -24,7 +24,7 @@
   <link rel="preload" href="assets/portrait-cobalt-peche-1122.webp" as="image" imagesrcset="assets/portrait-cobalt-peche-560.webp 560w, assets/portrait-cobalt-peche-1122.webp 1122w" imagesizes="(max-width: 700px) 80vw, 480px">
   <link rel="preload" href="assets/fonts/InstrumentSerif-Italic.ttf" as="font" type="font/ttf" crossorigin>
   <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData) document.documentElement.dataset.welcome = 'pending';</script>
-  <script src="translations.js?v=3b673972e64b" defer></script>
+  <script src="translations.js?v=d7370295ef9e" defer></script>
   <script src="dynamic-translations.js" defer></script>
   <script src="i18n.js" defer></script>
   <script src="app.js" defer></script>
@@ -333,8 +333,28 @@
         </div>
       </article>
 
+      <article class="explore-story" aria-labelledby="explore-title">
+        <div class="hobby-intro motion-reveal"><div><span class="hobby-index">03 / Explorer</span><h3 id="explore-title">D’autres DA,<br><em>d’autres technos.</em></h3></div><p>J’aime explorer de nouvelles directions artistiques et de nouvelles technos. Alors je refais parfois mon portfolio autrement : le même parcours, un autre univers, une autre façon de le construire. En voici deux, à parcourir comme un jeu.</p></div>
+        <div class="explore-grid">
+          <a class="explore-card motion-reveal" href="https://mounir1200.github.io/planete-mounir/" target="_blank" rel="noopener" aria-labelledby="explore-planete-title explore-planete-action">
+            <span class="explore-shot"><img src="assets/life/portfolio-planete-small.webp" srcset="assets/life/portfolio-planete-small.webp 640w, assets/life/portfolio-planete.webp 1200w" sizes="(max-width: 700px) 92vw, 44vw" alt="Accueil de Planète Mounir : une petite planète en 3D couverte de forêts et de bâtiments, dans un ciel étoilé" width="1200" height="750" loading="lazy" decoding="async"></span>
+            <h4 id="explore-planete-title">Planète Mounir</h4>
+            <p>Une petite planète à parcourir en 3D. Quinze lieux reprennent mon parcours, de Ouagadougou à Angers, avec des projets et des compétences à découvrir en chemin.</p>
+            <dl class="explore-facts"><div><dt>Direction artistique</dt><dd>3D low poly, nuit étoilée</dd></div><div><dt>Technos</dt><dd data-i18n-ignore>Three.js · Rust · WebAssembly</dd></div></dl>
+            <span class="explore-action" id="explore-planete-action">Explorer la planète <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="explore-card motion-reveal" href="https://mounir1200.github.io/mounir-town/" target="_blank" rel="noopener" aria-labelledby="explore-town-title explore-town-action">
+            <span class="explore-shot"><img src="assets/life/portfolio-town-small.webp" srcset="assets/life/portfolio-town-small.webp 640w, assets/life/portfolio-town.webp 1200w" sizes="(max-width: 700px) 92vw, 44vw" alt="Mounir Town en jeu : une place pavée en pixel art devant la maison de Mounir, entre arbres bleus, lampadaires et fontaine" width="1200" height="750" loading="lazy" decoding="async"></span>
+            <h4 id="explore-town-title">Mounir Town</h4>
+            <p>Une ville en pixel art, vue de dessus. Chaque bâtiment ouvre une partie du portfolio : le Labo IA pour les projets, l’aéroport pour Erasmus, la poste pour me contacter.</p>
+            <dl class="explore-facts"><div><dt>Direction artistique</dt><dd>Pixel art dessiné en code, palette pêche et cobalt</dd></div><div><dt>Technos</dt><dd data-i18n-ignore>JavaScript · Canvas 2D</dd></div></dl>
+            <span class="explore-action" id="explore-town-action">Visiter la ville <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+      </article>
+
       <article class="reading-story" aria-labelledby="reading-title">
-        <div class="reading-heading motion-reveal"><span class="hobby-index">03 / Lecture</span><h3 id="reading-title">Quelques lignes<br><em>qui restent.</em></h3><p>Dans les marges de mes lectures.</p><span class="reading-asterisk" aria-hidden="true">✳</span></div>
+        <div class="reading-heading motion-reveal"><span class="hobby-index">04 / Lecture</span><h3 id="reading-title">Quelques lignes<br><em>qui restent.</em></h3><p>Dans les marges de mes lectures.</p><span class="reading-asterisk" aria-hidden="true">✳</span></div>
         <div class="reading-quotes">
           <figure class="reading-quote motion-reveal"><blockquote><p>« Le rêveur, s’il faut le définir en détail, n’est pas un homme, mais, savez-vous ? une espèce de créature du genre neutre. Il gîte la plupart du temps quelques part dans un coin inaccessible, comme s’il s’y cachait même de la lumière du jour, et, une fois retiré chez lui, il y est collé comme l’escargot, ou du moins il ressemble beaucoup, à cet égard, à ce curieux animal qui est à la fois animal et maison et qui s’appelle tortue. »</p></blockquote><figcaption>Fiodor Dostoïevski <span>Les Nuits blanches</span></figcaption></figure>
           <figure class="reading-quote reading-note motion-reveal"><blockquote><p>« Il suffit de fournir à l’esprit un alibi, si possible le plus généreux et le plus altruiste, pour que chacun se sente aussitôt en droit d’écraser son semblable. La conscience morale est bien ce masque dont Nietzsche se moque »</p></blockquote><figcaption>Un passage retenu de ma lecture de <cite>Les Nuits blanches</cite> de Fiodor Dostoïevski<span>Page 99 de mon exemplaire</span></figcaption></figure>
@@ -342,8 +362,8 @@
       </article>
 
       <div class="hobby-rhythms">
-        <article class="rhythm-story music-story motion-reveal"><span class="hobby-index">04 / Écouter</span><div class="rhythm-title"><h3>Musique</h3><div class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><p>La musique fait aussi partie de mon quotidien.</p></article>
-        <article class="rhythm-story training-story motion-reveal"><span class="hobby-index">05 / Bouger</span><div class="rhythm-title"><h3>Musculation</h3><svg class="training-mark" viewBox="0 0 100 60" aria-hidden="true" focusable="false"><path d="M12 19v22M25 9v42M25 30h50M75 9v42M88 19v22"/></svg></div><p>Du temps pour moi, aussi à la salle.</p></article>
+        <article class="rhythm-story music-story motion-reveal"><span class="hobby-index">05 / Écouter</span><div class="rhythm-title"><h3>Musique</h3><div class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><p>La musique fait aussi partie de mon quotidien.</p></article>
+        <article class="rhythm-story training-story motion-reveal"><span class="hobby-index">06 / Bouger</span><div class="rhythm-title"><h3>Musculation</h3><svg class="training-mark" viewBox="0 0 100 60" aria-hidden="true" focusable="false"><path d="M12 19v22M25 9v42M25 30h50M75 9v42M88 19v22"/></svg></div><p>Du temps pour moi, aussi à la salle.</p></article>
       </div>
       <div class="hobbies-outro"><p>Des projets, des détours,<br><em>et quelques instants à garder.</em></p><a class="text-link" href="#galerie">Ouvrir l’album <span aria-hidden="true">↓</span></a></div>
     </section>

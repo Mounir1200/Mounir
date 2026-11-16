@@ -142,5 +142,29 @@
       506,
       900
     ]
+  },
+  {
+    "source": "Screenshot of https://mounir1200.github.io/planete-mounir/ (title screen, captured 2026-11-16)",
+    "asset": "portfolio-planete",
+    "full": [
+      1200,
+      750
+    ],
+    "small": [
+      640,
+      400
+    ]
+  },
+  {
+    "source": "Screenshot of https://mounir1200.github.io/mounir-town/ (first scene after start, captured 2026-11-16)",
+    "asset": "portfolio-town",
+    "full": [
+      1200,
+      750
+    ],
+    "small": [
+      640,
+      400
+    ]
   }
 ]
